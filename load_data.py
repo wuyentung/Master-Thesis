@@ -86,6 +86,7 @@ def single_insurer(df, name):
             name = "First Life"
     return [cal_insurance_exp(df=df, col=name), cal_operation_exp(df=df, col=name), cal_insurance_income(df=df, col=name), cal_reinsurance_exp(df=df, col=name), cal_reinsurance_income(df=df, col=name), cal_underwriting_profit(df=df, col=name), cal_investment_profit(df=df, col=name), ]
 #%%
+ATTRIBUTES = ["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"]
 LIFE2018 = pd.DataFrame([single_insurer(df=life2018_raw_df, name=name) for name in ENG_NAMES], index=[name+" 18" for name in ENG_NAMES], columns=["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"])
 LIFE2019 = pd.DataFrame([single_insurer(df=life2019_raw_df, name=name) for name in ENG_NAMES], index=[name+" 19" for name in ENG_NAMES], columns=["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"])
 LIFE2020 = pd.DataFrame([single_insurer(df=life2020_raw_df, name=name) for name in ENG_NAMES], index=[name+" 20" for name in ENG_NAMES], columns=["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"])
