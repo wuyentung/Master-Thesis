@@ -48,6 +48,9 @@ def sys_smrts(df:pd.DataFrame, project=False):
     if project:
         px, py, lambdas = solver.project_frontier(x=np.array(transformed_df[['insurance_exp', 'operation_exp']].T), y=np.array(transformed_df[['underwriting_profit', 'investment_profit']].T), rs="vrs", orient="IO")
         exp = dmp.get_smrts_dfs(dmu=[i for i in range(px.shape[1])], x=px, y=py, trace=False, round_to=5, dmu_wanted=None)
+        old_keys = list(exp.keys())
+        for old_key in old_keys:
+            exp[df.index.tolist()[old_key]] = exp.pop(old_key)
         return exp
     
     eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[['insurance_exp', 'operation_exp']].T), y=np.array(transformed_df[['underwriting_profit', 'investment_profit']].T))
@@ -59,12 +62,43 @@ def sys_smrts(df:pd.DataFrame, project=False):
     
     df = transformed_df.T[eff_dmu_name].T
     exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, dmu_wanted=None)
+    old_keys = list(exp.keys())
+    for old_key in old_keys:
+        exp[eff_dmu_name[old_key]] = exp.pop(old_key)
     return exp
-#%%
-expALL = sys_smrts(df=LIFE)
-#%%
+# #%%
+# expALL = sys_smrts(df=LIFE)
+# #%%
 exp18 = sys_smrts(df=LIFE2018)
 exp19 = sys_smrts(df=LIFE2019)
 exp20 = sys_smrts(df=LIFE2020)
-#%%
 ## 好奇怪，個別年的算得出來，綜合在一起卻算不出來，不知道會不會是 transform 的問題
+#%%
+for key, value in exp18.items():
+    value.to_csv("./result/s-MRTS %s.csv" %key)
+#%%
+for key, value in exp18.items():
+    print(key)
+    print(value)
+    print()
+#%%
+for key, value in exp19.items():
+    value.to_csv("./result/s-MRTS %s.csv" %key)
+#%%
+for key, value in exp19.items():
+    print(key)
+    print(value)
+    print()
+
+#%%
+for key, value in exp20.items():
+    value.to_csv("./result/s-MRTS %s.csv" %key)
+#%%
+for key, value in exp20.items():
+    print(key)
+    print(value)
+    print()
+
+#%%
+
+#%%
