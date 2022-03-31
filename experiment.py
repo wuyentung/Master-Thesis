@@ -76,29 +76,48 @@ exp20 = sys_smrts(df=LIFE2020)
 #%%
 for key, value in exp18.items():
     value.to_csv("./result/s-MRTS %s.csv" %key)
-#%%
-for key, value in exp18.items():
-    print(key)
-    print(value)
-    print()
-#%%
 for key, value in exp19.items():
     value.to_csv("./result/s-MRTS %s.csv" %key)
-#%%
-for key, value in exp19.items():
-    print(key)
-    print(value)
-    print()
-
-#%%
 for key, value in exp20.items():
     value.to_csv("./result/s-MRTS %s.csv" %key)
 #%%
-for key, value in exp20.items():
-    print(key)
-    print(value)
-    print()
-
+# for key, value in exp18.items():
+#     print(key)
+#     print(value)
+#     print()
 #%%
+## 多年度綜合跟單年度的有效率 DMU
+def find_eff_dmu(df:pd.DataFrame):
+    transformed_df = denoise_nonpositive(df, .1)
+    # print(transformed_df)
+    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[['insurance_exp', 'operation_exp']].T), y=np.array(transformed_df[['underwriting_profit', 'investment_profit']].T))
 
+    eff_dmu_name = []
+    for key, value in eff_dict.items():
+        if round(value, 5) == 1:
+            eff_dmu_name.append(key)
+    return eff_dmu_name
+#%%
+eff_dmu18 = find_eff_dmu(LIFE2018)
+eff_dmu19 = find_eff_dmu(LIFE2019)
+eff_dmu20 = find_eff_dmu(LIFE2020)
+eff_dmuALL = find_eff_dmu(LIFE)
+#%%
+transformed18 = denoise_nonpositive(LIFE2018, min_value=.1)
+#%%
+transformed19 = denoise_nonpositive(LIFE2019, min_value=.1)
+#%%
+transformed20 = denoise_nonpositive(LIFE2020, min_value=.1)
+#%%
+transformedALL = denoise_nonpositive(LIFE, min_value=.1)
+#%%
+transformedALL2 = denoise_nonpositive(pd.concat([transformed18, transformed19, transformed20]), min_value=.1)
+#%%
+eff_anual_dmu = find_eff_dmu(pd.concat([transformed18, transformed19, transformed20]).T[eff_dmu18+eff_dmu19+eff_dmu20].T)
+#%%
+eff_anual_dmu = find_eff_dmu(pd.concat([transformed18, transformed19, transformed20]))
+#%%
+find_eff_dmu(transformedALL)
+#%%
+find_eff_dmu(transformedALL2)
 #%%

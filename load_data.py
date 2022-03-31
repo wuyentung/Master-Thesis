@@ -89,17 +89,23 @@ def single_insurer(df, name):
 ATTRIBUTES = ["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"]
 LIFE2018 = pd.DataFrame([single_insurer(df=life2018_raw_df, name=name) for name in ENG_NAMES], index=[name+" 18" for name in ENG_NAMES], columns=["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"])
 LIFE2019 = pd.DataFrame([single_insurer(df=life2019_raw_df, name=name) for name in ENG_NAMES], index=[name+" 19" for name in ENG_NAMES], columns=["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"])
-LIFE2020 = pd.DataFrame([single_insurer(df=life2020_raw_df, name=name) for name in ENG_NAMES], index=[name+" 20" for name in ENG_NAMES], columns=["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"])
+LIFE2020 = pd.DataFrame([single_insurer(df=life2020_raw_df, name=name) for name in ENG_NAMES], index=[name+" 20" for name in ENG_NAMES], columns=["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"]).astype("float")
 #%%
-def denoise_nonpositive(df:pd.DataFrame):
+def denoise_nonpositive(df:pd.DataFrame, min_value=.1):
     ## correct df to at least .1 if there is value <= 0
     df = df.copy()
     for col in df.columns:
-        if df[col].min() <= 0:
+        if df[col].min()-min_value < 0:
+            # print(col)
+            # print(df[col])
+            # print()
             df[col] = df[col] - df[col].min()
+            # print(df[col])
             for index, value in df[col].items():
-                if value == df[col].min():
-                    df[col][index]+=.1
+                if value-min_value < 0:
+                # if value == df[col].min():
+                    df[col][index]+=min_value
+                    # print(df[col][index])
     return df
 #%%
 LIFE = pd.concat([LIFE2018, LIFE2019, LIFE2020])
