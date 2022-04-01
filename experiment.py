@@ -61,7 +61,7 @@ def sys_smrts(df:pd.DataFrame, project=False):
             eff_dmu_name.append(key)
     
     df = transformed_df.T[eff_dmu_name].T
-    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, dmu_wanted=None)
+    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, dmu_wanted=None, i_star=1)
     old_keys = list(exp.keys())
     for old_key in old_keys:
         exp[eff_dmu_name[old_key]] = exp.pop(old_key)
@@ -74,17 +74,20 @@ exp19 = sys_smrts(df=LIFE2019)
 exp20 = sys_smrts(df=LIFE2020)
 ## 好奇怪，個別年的算得出來，綜合在一起卻算不出來，不知道會不會是 transform 的問題
 #%%
+'''
+## 儲存了
 for key, value in exp18.items():
     value.to_csv("./result/s-MRTS %s.csv" %key)
 for key, value in exp19.items():
     value.to_csv("./result/s-MRTS %s.csv" %key)
 for key, value in exp20.items():
     value.to_csv("./result/s-MRTS %s.csv" %key)
+'''
 #%%
-# for key, value in exp18.items():
-#     print(key)
-#     print(value)
-#     print()
+for key, value in exp20.items():
+    print(key)
+    print(value)
+    print()
 #%%
 ## 多年度綜合跟單年度的有效率 DMU
 def find_eff_dmu(df:pd.DataFrame):
@@ -104,20 +107,58 @@ eff_dmu20 = find_eff_dmu(LIFE2020)
 eff_dmuALL = find_eff_dmu(LIFE)
 #%%
 transformed18 = denoise_nonpositive(LIFE2018, min_value=.1)
-#%%
 transformed19 = denoise_nonpositive(LIFE2019, min_value=.1)
-#%%
 transformed20 = denoise_nonpositive(LIFE2020, min_value=.1)
 #%%
 transformedALL = denoise_nonpositive(LIFE, min_value=.1)
 #%%
 transformedALL2 = denoise_nonpositive(pd.concat([transformed18, transformed19, transformed20]), min_value=.1)
 #%%
+## 轉換後找各年度有效率的公司
 eff_anual_dmu = find_eff_dmu(pd.concat([transformed18, transformed19, transformed20]).T[eff_dmu18+eff_dmu19+eff_dmu20].T)
 #%%
-eff_anual_dmu = find_eff_dmu(pd.concat([transformed18, transformed19, transformed20]))
+## 還是無法
+'''
+exp_anualALL = sys_smrts(pd.concat([transformed18, transformed19, transformed20]).T[eff_anual_dmu].T)
+'''
+## 只能一個一個拿掉來看了
 #%%
-find_eff_dmu(transformedALL)
+anual_dmu_df = pd.concat([transformed18, transformed19, transformed20]).T[eff_anual_dmu].T
 #%%
-find_eff_dmu(transformedALL2)
+from itertools import combinations
+#%%
+# valid_comb = []
+# for i in range(17, 0, -1):
+#     valid_comb_i = []
+#     n_comb_i = 0
+comb_expALLs = []
+for comb in combinations(eff_anual_dmu, 16):
+    # n_comb_i+=1
+    try:
+        comb_expALL = sys_smrts(anual_dmu_df.T[list(comb)].T)
+        comb_expALLs.append(comb_expALL)
+        # print(i, comb, "\n")
+        # break
+    except:
+        continue
+    # if len(valid_comb_i) < n_comb_i:
+    #     print(i, len(valid_comb_i))
+    #     valid_comb.append(valid_comb_i)
+    # else:
+    #     print(f"all combination of {i} is validable")
+    #     break
+#%%
+for r in eff_anual_dmu:
+    v = []
+    for comb in comb_expALLs:
+        v.append(np.sum([1 if r in c else 0 for c in comb.keys()]))
+    print(f"{r}: {v}")
+#%%
+abanded_eff = ["First-Aviva Life 18", "First-Aviva Life 19", "Bank Taiwan Life 20", "First-Aviva Life 20"]
+abanded_df = anual_dmu_df.T[abanded_eff].T
+#%%
+for key, value in comb_expALLs[1].items():
+    print(key)
+    print(value)
+    print()
 #%%

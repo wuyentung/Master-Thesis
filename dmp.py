@@ -27,7 +27,7 @@ gy: array([
     gy1, gy2, ..., gyJ
 ])
 '''
-def cal_alpha(dmu:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int=0, THRESHOLD=0.000000000001, dmu_wanted:list=None):
+def cal_alpha(dmu:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, THRESHOLD=0.000000000001, dmu_wanted:list=None):
     ## i_star: index of the change of single input Xi*, which is the target we want to investigate
     ## dmu_wanted: the dmu we want to investigate, defalt None
     
@@ -128,7 +128,7 @@ DIRECTIONS = [
     [0, 1], 
 ]
 #%%
-def get_smrts_dfs(dmu, x, y, trace=False, round_to:int=2, dmu_wanted:list=None):
+def get_smrts_dfs(dmu, x, y, trace=False, round_to:int=2, dmu_wanted:list=None, i_star:int=0):
     ## dmu_wanted: the dmu we want to investigate
     if dmu_wanted is None:
         dmu_wanted = dmu
@@ -139,7 +139,7 @@ def get_smrts_dfs(dmu, x, y, trace=False, round_to:int=2, dmu_wanted:list=None):
     # smrts_directions = []
     for i in range(len(DIRECTIONS)):
         direction = DIRECTIONS[i]
-        alpha = cal_alpha(dmu=dmu, x=x, y=y, gy=direction, dmu_wanted=dmu_wanted)
+        alpha = cal_alpha(dmu=dmu, x=x, y=y, gy=direction, dmu_wanted=dmu_wanted, i_star=i_star)
         dmp = cal_dmp(dmu=dmu, alpha=alpha, y=y, gy=direction, dmu_wanted=dmu_wanted)
         # alpha_directions.append(alpha)
         dmp_directions.append(dmp)
