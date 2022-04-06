@@ -13,6 +13,7 @@ import numpy as np
 import solver
 import solver_r
 from load_data import LIFE, LIFE2019, denoise_nonpositive, ATTRIBUTES, LIFE2018, LIFE2020
+from itertools import combinations
 #%%
 #### 測試 #####
 life_transformed = denoise_nonpositive(LIFE)
@@ -39,7 +40,7 @@ peff_dict, plambdas_dict = solver.dea_dual(dmu=life_transformed.index, x=px_19, 
 peff_dict
 #### 測試結束 #####
 #%%
-def sys_smrts(df:pd.DataFrame, project=False):
+def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
     ## transform data
     ## s-MRTS for  whole system
     transformed_df = denoise_nonpositive(df)
@@ -61,16 +62,18 @@ def sys_smrts(df:pd.DataFrame, project=False):
             eff_dmu_name.append(key)
     
     df = transformed_df.T[eff_dmu_name].T
-    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, dmu_wanted=None, i_star=1)
+    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, dmu_wanted=None, i_star=i_star)
     old_keys = list(exp.keys())
     for old_key in old_keys:
         exp[eff_dmu_name[old_key]] = exp.pop(old_key)
     return exp
 # #%%
 # expALL = sys_smrts(df=LIFE)
-# #%%
+#%%
 exp18 = sys_smrts(df=LIFE2018)
+#%%
 exp19 = sys_smrts(df=LIFE2019)
+#%%
 exp20 = sys_smrts(df=LIFE2020)
 ## 好奇怪，個別年的算得出來，綜合在一起卻算不出來，不知道會不會是 transform 的問題
 #%%
@@ -101,18 +104,88 @@ def find_eff_dmu(df:pd.DataFrame):
             eff_dmu_name.append(key)
     return eff_dmu_name
 #%%
+def comb_fun(df:pd.DataFrame, fun, comb_n=None):
+    results = []
+    combs = []
+    if comb_n is None:
+        comb_n = len(df.index.tolist())
+    for comb in combinations(df.index.tolist(), comb_n):
+        # n_comb_i+=1
+        try:
+            result = fun(df.T[list(comb)].T)
+            results.append(result)
+            combs.append(list(comb))
+            # print(i, comb, "\n")
+            # break
+        except:
+            continue
+    if 0 == len(combs):
+        return comb_fun(df, fun, comb_n-1)
+    return results, combs
+#%%
 eff_dmu18 = find_eff_dmu(LIFE2018)
-eff_dmu19 = find_eff_dmu(LIFE2019)
+#%%
+# eff_dmu19_combs = []
+combs = []
+for comb in combinations(LIFE2019.index.tolist(), 21):
+    # n_comb_i+=1
+    try:
+        eff_dmu19_comb = find_eff_dmu(LIFE2019.T[list(comb)].T)
+        # eff_dmu19_combs.append(eff_dmu19_comb)
+        combs.append(list(comb))
+        # print(i, comb, "\n")
+        # break
+    except:
+        continue
+#%%
+eff_dmu19 = find_eff_dmu(LIFE2019.T[combs[0]].T)
+#%%
 eff_dmu20 = find_eff_dmu(LIFE2020)
+#%%
 eff_dmuALL = find_eff_dmu(LIFE)
 #%%
+combs_smrts, combs_comb = comb_fun(df=LIFE.T[eff_dmuALL].T, fun=sys_smrts)
+#%%
+success_smrts_dmu = ['Chunghwa Post 18', 'TransGlobe Life 18', 'Hontai Life 19', 'Bank Taiwan Life 20', 'Taiwan Life 20', 'Cathay Life 20', 'China Life 20', 'Nan Shan Life 20', 'Shin Kong Life 20', 'Fubon Life 20', 'Hontai Life 20']
+success_smrts_df = denoise_nonpositive(LIFE).T[success_smrts_dmu].T
+#%%
+sys_smrts(success_smrts_df, i_star=0)
+#%%
+path = 'success_smrts.txt'
+f = open(path, 'w')
+for key, value in combs_smrts[0].items():
+    print(key, file=f)
+    print(value, file=f)
+    print("\n", file=f)
+    # f.write(key)
+    # f.write(value.to_string())
+    # f.write("/n")
+f.close()
+#%%
 transformed18 = denoise_nonpositive(LIFE2018, min_value=.1)
-transformed19 = denoise_nonpositive(LIFE2019, min_value=.1)
+transformed19 = denoise_nonpositive(LIFE2019.T[combs[0]].T, min_value=.1)
+# transformed19 = denoise_nonpositive(LIFE2019, min_value=.1)
 transformed20 = denoise_nonpositive(LIFE2020, min_value=.1)
 #%%
-transformedALL = denoise_nonpositive(LIFE, min_value=.1)
+# transformedALL = denoise_nonpositive(LIFE, min_value=.1)
 #%%
 transformedALL2 = denoise_nonpositive(pd.concat([transformed18, transformed19, transformed20]), min_value=.1)
+#%%
+eff_anual_combs = []
+combs_anual = []
+for comb in combinations(transformedALL2.index.tolist(), 63):
+    # n_comb_i+=1
+    try:
+        eff_anual_comb = find_eff_dmu(transformedALL2.T[list(comb)].T)
+        # sys_smrts(transformedALL2.T[list(comb)].T)
+        eff_anual_combs.append(eff_anual_comb)
+        combs_anual.append(list(comb))
+        # print(i, comb, "\n")
+        # break
+    except:
+        continue
+#%%
+eff_anual_dmu = find_eff_dmu(transformedALL2)
 #%%
 ## 轉換後找各年度有效率的公司
 eff_anual_dmu = find_eff_dmu(pd.concat([transformed18, transformed19, transformed20]).T[eff_dmu18+eff_dmu19+eff_dmu20].T)
@@ -124,8 +197,6 @@ exp_anualALL = sys_smrts(pd.concat([transformed18, transformed19, transformed20]
 ## 只能一個一個拿掉來看了
 #%%
 anual_dmu_df = pd.concat([transformed18, transformed19, transformed20]).T[eff_anual_dmu].T
-#%%
-from itertools import combinations
 #%%
 # valid_comb = []
 # for i in range(17, 0, -1):
