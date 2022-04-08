@@ -111,7 +111,7 @@ def comb_fun(df:pd.DataFrame, fun, comb_n=None):
     if comb_n is None:
         comb_n = len(df.index.tolist())
     for comb in combinations(df.index.tolist(), comb_n):
-        print(list(comb))
+        # print(len(list(comb)))
         # n_comb_i+=1
         try:
             result = fun(df.T[list(comb)].T)
@@ -195,7 +195,11 @@ hac = AgglomerativeClustering(n_clusters=K_cluster, affinity='euclidean', linkag
 hac_life = pd.concat([LIFE, pd.DataFrame(hac, columns=["HAC cluster"], index=LIFE.index)], axis=1)
 #%%
 combs_hac0_smrts, combs_hac0_comb = comb_fun(df=hac_life[hac_life["HAC cluster"] == 0], fun=sys_smrts)
-# result: ['Cathay Life 20', 'Nan Shan Life 20', 'Shin Kong Life 20', 'Fubon Life 20']
+# print(combs_hac0_comb[0])
+#%%
+hac0_comb = ['Cathay Life 18', 'Nan Shan Life 18', 'Fubon Life 18', 'Cathay Life 19', 'Nan Shan Life 19', 'Shin Kong Life 19', 'Fubon Life 19', 'Cathay Life 20', 'Nan Shan Life 20', 'Shin Kong Life 20', 'Fubon Life 20']
+hac0_smrts0 = sys_smrts(df=hac_life.T[hac0_comb].T, i_star=0)
+hac0_smrts1 = sys_smrts(df=hac_life.T[hac0_comb].T, i_star=1)
 #%%
 combs_hac1_eff, combs_hac1_effcomb = comb_fun(df=hac_life[hac_life["HAC cluster"] == 1], fun=find_eff_dmu)
 #%%
