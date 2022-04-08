@@ -195,9 +195,11 @@ hac = AgglomerativeClustering(n_clusters=K_cluster, affinity='euclidean', linkag
 hac_life = pd.concat([LIFE, pd.DataFrame(hac, columns=["HAC cluster"], index=LIFE.index)], axis=1)
 #%%
 combs_hac0_smrts, combs_hac0_comb = comb_fun(df=hac_life[hac_life["HAC cluster"] == 0], fun=sys_smrts)
+# result: ['Cathay Life 20', 'Nan Shan Life 20', 'Shin Kong Life 20', 'Fubon Life 20']
 #%%
 combs_hac1_eff, combs_hac1_effcomb = comb_fun(df=hac_life[hac_life["HAC cluster"] == 1], fun=find_eff_dmu)
 #%%
 hac1_dmu = ['Hontai Life 18', 'Chunghwa Post 18', 'First-Aviva Life 18', 'TransGlobe Life 18', 'First-Aviva Life 19', 'Bank Taiwan Life 20', 'Taiwan Life 20', 'China Life 20', 'Hontai Life 20', 'Chunghwa Post 20', 'First-Aviva Life 20']
 combs_hac1_smrts, combs_hac1_comb = comb_fun(df=hac_life.T[hac1_dmu].T, fun=sys_smrts)
+# result: ['Hontai Life 18', 'Chunghwa Post 18', 'TransGlobe Life 18', 'Bank Taiwan Life 20', 'Taiwan Life 20', 'China Life 20', 'Hontai Life 20']
 #%%
