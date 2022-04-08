@@ -14,6 +14,7 @@ import solver
 import solver_r
 from load_data import LIFE, LIFE2019, denoise_nonpositive, ATTRIBUTES, LIFE2018, LIFE2020
 from itertools import combinations
+import matplotlib.pyplot as plt
 #%%
 #### 測試 #####
 '''life_transformed = denoise_nonpositive(LIFE)
@@ -126,17 +127,17 @@ def comb_fun(df:pd.DataFrame, fun, comb_n=None):
 # eff_dmu18 = find_eff_dmu(LIFE2018)
 #%%
 # eff_dmu19_combs = []
-combs = []
-for comb in combinations(LIFE2019.index.tolist(), 21):
-    # n_comb_i+=1
-    try:
-        eff_dmu19_comb = find_eff_dmu(LIFE2019.T[list(comb)].T)
-        # eff_dmu19_combs.append(eff_dmu19_comb)
-        combs.append(list(comb))
-        # print(i, comb, "\n")
-        # break
-    except:
-        continue
+# combs = []
+# for comb in combinations(LIFE2019.index.tolist(), 21):
+#     # n_comb_i+=1
+#     try:
+#         eff_dmu19_comb = find_eff_dmu(LIFE2019.T[list(comb)].T)
+#         # eff_dmu19_combs.append(eff_dmu19_comb)
+#         combs.append(list(comb))
+#         # print(i, comb, "\n")
+#         # break
+#     except:
+#         continue
 #%%
 # eff_dmu19 = find_eff_dmu(LIFE2019.T[combs[0]].T)
 # #%%
@@ -146,8 +147,9 @@ for comb in combinations(LIFE2019.index.tolist(), 21):
 #%%
 ## 結果在下一行找好了
 # combs_smrts, combs_comb = comb_fun(df=LIFE.T[eff_dmuALL].T, fun=sys_smrts)
+denoise_LIFE = denoise_nonpositive(LIFE)
 success_smrts_dmu = ['Chunghwa Post 18', 'TransGlobe Life 18', 'Hontai Life 19', 'Bank Taiwan Life 20', 'Taiwan Life 20', 'Cathay Life 20', 'China Life 20', 'Nan Shan Life 20', 'Shin Kong Life 20', 'Fubon Life 20', 'Hontai Life 20']
-success_smrts_df = denoise_nonpositive(LIFE).T[success_smrts_dmu].T
+success_smrts_df = denoise_LIFE.T[success_smrts_dmu].T
 success_smrts = sys_smrts(success_smrts_df)
 #%%
 sys_smrts(success_smrts_df, i_star=0)
@@ -161,10 +163,23 @@ for key, value in success_smrts.items():
     print(value, file=f)
     print("\n", file=f)
 f.close()
-# #%%
+#%%
+plt.figure(figsize=(8, 6))
+plt.scatter(denoise_LIFE["underwriting_profit"], denoise_LIFE["investment_profit"], c="blue")
+plt.scatter(LIFE["underwriting_profit"], LIFE["investment_profit"], c="green")
+plt.show()
+#%%
+plt.figure(figsize=(8, 6))
+plt.scatter(denoise_LIFE[ATTRIBUTES[0]], denoise_LIFE[ATTRIBUTES[0]], c="blue")
+# plt.scatter(LIFE[ATTRIBUTES[0]], LIFE[ATTRIBUTES[0]], c="green")
+plt.show()
+#%%
+from sklearn.cluster import KMeans
+from scipy.cluster.hierarchy import dendrogram, linkage
+from sklearn.cluster import AgglomerativeClustering
+#%%
 # transformed18 = denoise_nonpositive(LIFE2018, min_value=.1)
 # transformed19 = denoise_nonpositive(LIFE2019.T[combs[0]].T, min_value=.1)
-# # transformed19 = denoise_nonpositive(LIFE2019, min_value=.1)
 # transformed20 = denoise_nonpositive(LIFE2020, min_value=.1)
 # #%%
 # # transformedALL = denoise_nonpositive(LIFE, min_value=.1)
@@ -233,3 +248,5 @@ f.close()
 #     print(value)
 #     print()
 # #%%
+
+#%%
