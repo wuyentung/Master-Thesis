@@ -4432,3 +4432,4808 @@ Iteration    Objective       Primal Inf.    Dual Inf.      Time
 
 Solved in 4 iterations and 0.00 seconds
 Optimal objective  2.831566530e-19
+
+Gurobi 9.0.3 (win64) logging started Fri Apr  8 16:29:41 2022
+
+Changed value of parameter LogFile to log.txt
+   Prev:   Default: 
+Parameter LogToConsole unchanged
+   Value: 0  Min: 0  Max: 1  Default: 1
+Parameter LogFile unchanged
+   Value: log.txt  Default: 
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x22c338da
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 2e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.433498e+01   0.000000e+00      0s
+       7    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0xf37128f4
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 4e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   1.368205e+02   0.000000e+00      0s
+       7    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0xe982aa8c
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 1e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.433498e+01   0.000000e+00      0s
+       3    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x87ea3182
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 2e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.433498e+01   0.000000e+00      0s
+       3    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x1a5f34b3
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 7e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   2.278046e+02   0.000000e+00      0s
+       9    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 9 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x50af6ae6
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 3e+08]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   8.820740e+02   0.000000e+00      0s
+       9    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 9 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x4fcc405f
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 7e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   2.235680e+02   0.000000e+00      0s
+       7    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x8c35c642
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 2e+08]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   6.234162e+02   0.000000e+00      0s
+       7    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0xf6548fe1
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 1e+08]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   4.156351e+02   0.000000e+00      0s
+       8    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x5168bd0e
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 2e+08]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.736965e+02   0.000000e+00      0s
+       7    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0xdf2b4ba6
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 1e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.433498e+01   0.000000e+00      0s
+       8    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x4de5aba1
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       4    4.9078229e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  4.907822863e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x32e93368
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       5    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x37ef8bcf
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x97dd3571
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xb09aaf0b
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x3bf014e7
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x661917ef
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       7    5.3369448e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  5.336944780e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xac81aff8
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       5    1.5829144e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.582914414e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x18199e56
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       5    5.3889332e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  5.388933214e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x496c477d
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       6    2.9926992e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.992699234e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x324400f1
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xe865baf2
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.371072e+00   0.000000e+00      0s
+       2    5.5964286e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  5.596428621e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xa7583e26
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x9230af02
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       5    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x45d1c81b
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       5    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf6cc1e96
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xd38df354
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.136939e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x663afa84
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       5    5.6842520e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  5.684252032e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf2939c07
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.136939e+00   0.000000e+00      0s
+       5    1.7587938e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.758793793e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x67350329
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.136939e+00   0.000000e+00      0s
+       5    5.9877036e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  5.987703571e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc3d14864
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.136939e+00   0.000000e+00      0s
+       6    2.4681860e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.468185975e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xbc963bca
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       7    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x02b2a9de
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       7    2.8791316e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  2.879131568e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf620b544
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x69dc30d6
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x48b547cb
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x6f6d7992
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xd0ec51f8
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.404056e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x1f0504a5
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       5    6.0799084e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  6.079908417e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x519ffbe5
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       2    2.2828174e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.282817377e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf6f147e5
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       4    2.5324393e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.532439277e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x4bab0add
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       6    2.1001115e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.100111464e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xbc41fbd0
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       8    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xec0f9936
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       7    3.2904361e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  3.290436077e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x4c519689
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xa67bfe67
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x051714fc
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x43731b50
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xdc977140
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.494985e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xdb31dd10
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       5    6.5347654e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  6.534765387e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x782a5c4a
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       2    2.6089341e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.608934145e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x83e18a45
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       4    2.8942163e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.894216317e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xa4a5e058
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.494985e+00   0.000000e+00      0s
+       6    1.8275704e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.827570382e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xab18770b
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       8    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xcdca55f7
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.577483e+00   0.000000e+00      0s
+       8    8.1797048e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  8.179704771e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x0ddd1222
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x87abe691
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.281631e+00   0.000000e+00      0s
+       7    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x8f2785b1
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.577483e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xa4d1c24a
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x9c282a3a
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x5ccdbb42
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       5    7.0631843e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  7.063184301e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xd7c7b1ca
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       5    2.6381907e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  2.638190690e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x7b88d889
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       5    8.9815554e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  8.981555357e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x60ac16f8
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       4    2.1690473e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.169047336e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x251ea9ed
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.082181e+00   0.000000e+00      0s
+       9    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 9 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x2a052070
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.692979e+00   0.000000e+00      0s
+       8    9.8156457e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  9.815645725e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf8047b8e
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   1.033200e+01   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xdf20e0d8
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.353047e+00   0.000000e+00      0s
+       7    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xbf8a72c7
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.692979e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x3ae44f2a
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.876938e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc291fb65
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.702770e-01   0.000000e+00      0s
+       1    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 1 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x0abc77c3
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   7.692979e+00   0.000000e+00      0s
+       5    7.6845804e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  7.684580386e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x1feddf61
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   7.692979e+00   0.000000e+00      0s
+       4    3.6525078e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  3.652507803e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x5341a99d
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   9.523841e+00   0.000000e+00      0s
+       5    1.0777866e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.077786643e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc967f861
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   7.692979e+00   0.000000e+00      0s
+       5    1.7352379e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.735237869e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xbdebe970
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.951439e+00   0.000000e+00      0s
+       9    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 9 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x31498209
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.445002e+00   0.000000e+00      0s
+       8    3.0682859e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  3.068285943e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xfd22d67e
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       6    1.7800246e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.780024595e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x7537c4da
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.445002e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xfc2f1eb0
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.445002e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf8f6666b
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x0ae342c3
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x9623c5ee
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       5    8.2499340e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  8.249934049e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xe6c73a62
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       7    2.3266178e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  2.326617753e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x7d73563b
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.445002e+00   0.000000e+00      0s
+       2    6.0357091e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  6.035709095e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x5b626253
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       3    1.7127331e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  1.712733073e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x07d2cc68
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.445002e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x5eb3ca69
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       8    2.6299594e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  2.629959379e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x981987f9
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       6    1.5257354e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.525735367e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xae25ddff
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x22ba8a40
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       8    2.0587300e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  2.058729971e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x4f4efed3
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc73746ab
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.381431e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x447156d0
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       4    7.0713720e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  7.071372042e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xd6d52262
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       2    2.4173485e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.417348528e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xe0a117c0
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       2    5.1734649e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  5.173464938e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc0856438
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.381431e+00   0.000000e+00      0s
+       4    1.2394556e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  1.239455620e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xff6780a5
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x1d26c221
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.421020e+00   0.000000e+00      0s
+       2    5.2967719e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  5.296771866e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x74eb412e
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       6    1.3350184e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.335018446e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x768a8211
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       5    1.2155081e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.215508103e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x98a32900
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       7    1.8013887e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.801388725e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x596a7ab6
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x5ea0315c
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.354376e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x1f8f221e
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       4    6.1874505e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  6.187450537e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x4358c3d8
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       2    2.1151800e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.115179962e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x1aeecf65
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       2    4.5267818e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  4.526781821e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x060e0eef
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       4    1.2845498e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  1.284549805e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x3990a126
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x65544564
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.152018e+00   0.000000e+00      0s
+       2    4.7082417e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  4.708241659e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xb15dd685
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       6    1.1866831e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.186683063e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc7cc85e7
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       5    1.0804516e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.080451647e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf64b0c2c
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       7    1.6012344e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.601234422e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc15c4c89
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x639e219d
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.092779e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x16555d3f
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       4    5.4999560e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  5.499956033e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x633456b2
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.092779e+00   0.000000e+00      0s
+       7    1.5510785e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.551078502e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xae24f1aa
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.092779e+00   0.000000e+00      0s
+       5    3.3741519e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  3.374151936e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x0ae5d213
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.092779e+00   0.000000e+00      0s
+       4    9.6402104e-10   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  9.640210382e-10
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xb7db80fd
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xb27f2623
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       6    1.8827461e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.882746083e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xbc34c3d4
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       7    1.0680148e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.068014757e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xab226462
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       4    9.7240648e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  9.724064824e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x11abcb0a
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       5    1.4411110e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.441110980e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xf080dce0
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xd62058e9
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x073dba0f
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       4    5.5126436e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  5.512643598e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xab712a3d
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       7    1.3959707e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.395970652e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x897e2676
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       5    3.0367367e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  3.036736742e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x288e1d5d
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       4    8.6761893e-10   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  8.676189343e-10
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x975c6918
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x22c338da
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 2e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.433498e+01   0.000000e+00      0s
+       7    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0xf37128f4
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 4e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   1.368205e+02   0.000000e+00      0s
+       7    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0xe982aa8c
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 1e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.433498e+01   0.000000e+00      0s
+       3    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x87ea3182
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 2e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.433498e+01   0.000000e+00      0s
+       3    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x1a5f34b3
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 7e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   2.278046e+02   0.000000e+00      0s
+       9    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 9 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x50af6ae6
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 3e+08]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   8.820740e+02   0.000000e+00      0s
+       9    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 9 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x4fcc405f
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 7e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   2.235680e+02   0.000000e+00      0s
+       7    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x8c35c642
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 2e+08]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   6.234162e+02   0.000000e+00      0s
+       7    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0xf6548fe1
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 1e+08]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   4.156351e+02   0.000000e+00      0s
+       8    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0x5168bd0e
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 2e+08]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.736965e+02   0.000000e+00      0s
+       7    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 5 rows, 12 columns and 57 nonzeros
+Model fingerprint: 0xdf2b4ba6
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+08]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e-12, 1e+00]
+  RHS range        [1e+00, 1e+07]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve time: 0.00s
+Presolved: 5 rows, 12 columns, 57 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.433498e+01   0.000000e+00      0s
+       8    1.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  1.000000000e+00
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x4de5aba1
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       4    4.9078229e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  4.907822863e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x32e93368
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       5    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x37ef8bcf
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x97dd3571
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xb09aaf0b
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x3bf014e7
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x661917ef
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       7    5.3369448e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  5.336944780e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xac81aff8
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       5    1.5829144e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.582914414e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x18199e56
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       5    5.3889332e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  5.388933214e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x496c477d
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       6    2.9926992e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.992699234e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x324400f1
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.846490e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xe865baf2
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.371072e+00   0.000000e+00      0s
+       2    5.5964286e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  5.596428621e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xa7583e26
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x9230af02
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       5    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x45d1c81b
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       5    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf6cc1e96
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xd38df354
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.136939e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x663afa84
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       5    5.6842520e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  5.684252032e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf2939c07
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.136939e+00   0.000000e+00      0s
+       5    1.7587938e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.758793793e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x67350329
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.136939e+00   0.000000e+00      0s
+       5    5.9877036e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  5.987703571e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc3d14864
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.136939e+00   0.000000e+00      0s
+       6    2.4681860e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.468185975e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xbc963bca
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.718322e+00   0.000000e+00      0s
+       7    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x02b2a9de
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       7    2.8791316e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  2.879131568e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf620b544
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x69dc30d6
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x48b547cb
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x6f6d7992
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xd0ec51f8
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.404056e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x1f0504a5
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       5    6.0799084e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  6.079908417e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x519ffbe5
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       2    2.2828174e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.282817377e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf6f147e5
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       4    2.5324393e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.532439277e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x4bab0add
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       6    2.1001115e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.100111464e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xbc41fbd0
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.183112e+00   0.000000e+00      0s
+       8    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xec0f9936
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       7    3.2904361e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  3.290436077e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x4c519689
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xa67bfe67
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x051714fc
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x43731b50
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xdc977140
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.494985e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xdb31dd10
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       5    6.5347654e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  6.534765387e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x782a5c4a
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       2    2.6089341e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.608934145e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x83e18a45
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       4    2.8942163e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.894216317e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xa4a5e058
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.494985e+00   0.000000e+00      0s
+       6    1.8275704e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.827570382e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xab18770b
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.780699e+00   0.000000e+00      0s
+       8    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xcdca55f7
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.577483e+00   0.000000e+00      0s
+       8    8.1797048e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  8.179704771e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x0ddd1222
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x87abe691
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.281631e+00   0.000000e+00      0s
+       7    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x8f2785b1
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.577483e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xa4d1c24a
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x9c282a3a
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x5ccdbb42
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       5    7.0631843e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  7.063184301e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xd7c7b1ca
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       5    2.6381907e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  2.638190690e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x7b88d889
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       5    8.9815554e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  8.981555357e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x60ac16f8
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.410816e+00   0.000000e+00      0s
+       4    2.1690473e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.169047336e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x251ea9ed
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.082181e+00   0.000000e+00      0s
+       9    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 9 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x2a052070
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.692979e+00   0.000000e+00      0s
+       8    9.8156457e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  9.815645725e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf8047b8e
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   1.033200e+01   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xdf20e0d8
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.353047e+00   0.000000e+00      0s
+       7    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xbf8a72c7
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.692979e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x3ae44f2a
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.876938e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc291fb65
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.702770e-01   0.000000e+00      0s
+       1    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 1 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x0abc77c3
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   7.692979e+00   0.000000e+00      0s
+       5    7.6845804e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  7.684580386e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x1feddf61
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   7.692979e+00   0.000000e+00      0s
+       4    3.6525078e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  3.652507803e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x5341a99d
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   9.523841e+00   0.000000e+00      0s
+       5    1.0777866e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.077786643e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc967f861
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   7.692979e+00   0.000000e+00      0s
+       5    1.7352379e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.735237869e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xbdebe970
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 43 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.951439e+00   0.000000e+00      0s
+       9    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 9 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x31498209
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.445002e+00   0.000000e+00      0s
+       8    3.0682859e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  3.068285943e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xfd22d67e
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       6    1.7800246e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.780024595e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x7537c4da
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.445002e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xfc2f1eb0
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.445002e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf8f6666b
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x0ae342c3
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x9623c5ee
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       5    8.2499340e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  8.249934049e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xe6c73a62
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       7    2.3266178e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  2.326617753e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x7d73563b
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.445002e+00   0.000000e+00      0s
+       2    6.0357091e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  6.035709095e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x5b626253
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   6.278336e+00   0.000000e+00      0s
+       3    1.7127331e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  1.712733073e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x07d2cc68
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.445002e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x5eb3ca69
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       8    2.6299594e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  2.629959379e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x981987f9
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       6    1.5257354e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.525735367e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xae25ddff
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       6    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x22ba8a40
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       8    2.0587300e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 8 iterations and 0.00 seconds
+Optimal objective  2.058729971e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x4f4efed3
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc73746ab
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.381431e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x447156d0
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       4    7.0713720e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  7.071372042e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xd6d52262
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       2    2.4173485e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.417348528e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xe0a117c0
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       2    5.1734649e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  5.173464938e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc0856438
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   5.381431e+00   0.000000e+00      0s
+       4    1.2394556e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  1.239455620e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xff6780a5
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.667145e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x1d26c221
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.421020e+00   0.000000e+00      0s
+       2    5.2967719e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  5.296771866e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x74eb412e
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       6    1.3350184e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.335018446e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x768a8211
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       5    1.2155081e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.215508103e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x98a32900
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       7    1.8013887e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.801388725e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x596a7ab6
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x5ea0315c
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.354376e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x1f8f221e
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       4    6.1874505e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  6.187450537e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x4358c3d8
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       2    2.1151800e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.115179962e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x1aeecf65
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       2    4.5267818e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  4.526781821e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x060e0eef
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       4    1.2845498e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  1.284549805e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x3990a126
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   4.083752e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x65544564
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.152018e+00   0.000000e+00      0s
+       2    4.7082417e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  4.708241659e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xb15dd685
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       6    1.1866831e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.186683063e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc7cc85e7
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       5    1.0804516e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.080451647e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xf64b0c2c
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       7    1.6012344e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.601234422e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xc15c4c89
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       4    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x639e219d
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.092779e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x16555d3f
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       4    5.4999560e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  5.499956033e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x633456b2
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.092779e+00   0.000000e+00      0s
+       7    1.5510785e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.551078502e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xae24f1aa
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.092779e+00   0.000000e+00      0s
+       5    3.3741519e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  3.374151936e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0x0ae5d213
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   2.092779e+00   0.000000e+00      0s
+       4    9.6402104e-10   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  9.640210382e-10
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 62 nonzeros
+Model fingerprint: 0xb7db80fd
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.630002e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xb27f2623
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       6    1.8827461e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.00 seconds
+Optimal objective  1.882746083e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xbc34c3d4
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       7    1.0680148e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.068014757e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xab226462
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       4    9.7240648e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  9.724064824e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x11abcb0a
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       5    1.4411110e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  1.441110980e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xf080dce0
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xd62058e9
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       2    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x073dba0f
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       4    5.5126436e-09   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  5.512643598e-09
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0xab712a3d
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       7    1.3959707e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.00 seconds
+Optimal objective  1.395970652e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x897e2676
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       5    3.0367367e-08   0.000000e+00   0.000000e+00      0s
+
+Solved in 5 iterations and 0.00 seconds
+Optimal objective  3.036736742e-08
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x288e1d5d
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       4    8.6761893e-10   0.000000e+00   0.000000e+00      0s
+
+Solved in 4 iterations and 0.00 seconds
+Optimal objective  8.676189343e-10
+Gurobi Optimizer version 9.0.3 build v9.0.3rc0 (win64)
+Optimize a model with 13 rows, 5 columns and 61 nonzeros
+Model fingerprint: 0x975c6918
+Coefficient statistics:
+  Matrix range     [1e-02, 1e+00]
+  Objective range  [3e-08, 3e-08]
+  Bounds range     [1e-12, 1e-12]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 11 rows, 4 columns, 44 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.9833897e-20   3.767001e+00   0.000000e+00      0s
+       3    2.9833897e-20   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.00 seconds
+Optimal objective  2.983389680e-20

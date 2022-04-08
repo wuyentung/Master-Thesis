@@ -156,13 +156,13 @@ sys_smrts(success_smrts_df, i_star=0)
 ## 結果還是都是 0 ，想改成從 x 或 y 的 scale 出發分群
 #%%
 ## 列印結果
-path = 'success_smrts.txt'
-f = open(path, 'w')
-for key, value in success_smrts.items():
-    print(key, file=f)
-    print(value, file=f)
-    print("\n", file=f)
-f.close()
+# path = 'success_smrts.txt'
+# f = open(path, 'w')
+# for key, value in success_smrts.items():
+#     print(key, file=f)
+#     print(value, file=f)
+#     print("\n", file=f)
+# f.close()
 #%%
 plt.figure(figsize=(8, 6))
 plt.scatter(denoise_LIFE["underwriting_profit"], denoise_LIFE["investment_profit"], c="blue")
@@ -174,79 +174,25 @@ plt.scatter(denoise_LIFE[ATTRIBUTES[0]], denoise_LIFE[ATTRIBUTES[0]], c="blue")
 # plt.scatter(LIFE[ATTRIBUTES[0]], LIFE[ATTRIBUTES[0]], c="green")
 plt.show()
 #%%
+from sklearn.cluster import DBSCAN
 from sklearn.cluster import KMeans
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import AgglomerativeClustering
 #%%
-# transformed18 = denoise_nonpositive(LIFE2018, min_value=.1)
-# transformed19 = denoise_nonpositive(LIFE2019.T[combs[0]].T, min_value=.1)
-# transformed20 = denoise_nonpositive(LIFE2020, min_value=.1)
-# #%%
-# # transformedALL = denoise_nonpositive(LIFE, min_value=.1)
-# #%%
-# transformedALL2 = denoise_nonpositive(pd.concat([transformed18, transformed19, transformed20]), min_value=.1)
-# #%%
-# eff_anual_combs = []
-# combs_anual = []
-# for comb in combinations(transformedALL2.index.tolist(), 63):
-#     # n_comb_i+=1
-#     try:
-#         eff_anual_comb = find_eff_dmu(transformedALL2.T[list(comb)].T)
-#         # sys_smrts(transformedALL2.T[list(comb)].T)
-#         eff_anual_combs.append(eff_anual_comb)
-#         combs_anual.append(list(comb))
-#         # print(i, comb, "\n")
-#         # break
-#     except:
-#         continue
-# #%%
-# eff_anual_dmu = find_eff_dmu(transformedALL2)
-# #%%
-# ## 轉換後找各年度有效率的公司
-# eff_anual_dmu = find_eff_dmu(pd.concat([transformed18, transformed19, transformed20]).T[eff_dmu18+eff_dmu19+eff_dmu20].T)
-# #%%
-# ## 還是無法
-# '''
-# exp_anualALL = sys_smrts(pd.concat([transformed18, transformed19, transformed20]).T[eff_anual_dmu].T)
-# '''
-# ## 只能一個一個拿掉來看了
-# #%%
-# anual_dmu_df = pd.concat([transformed18, transformed19, transformed20]).T[eff_anual_dmu].T
-# #%%
-# # valid_comb = []
-# # for i in range(17, 0, -1):
-# #     valid_comb_i = []
-# #     n_comb_i = 0
-# comb_expALLs = []
-# for comb in combinations(eff_anual_dmu, 16):
-#     # n_comb_i+=1
-#     try:
-#         comb_expALL = sys_smrts(anual_dmu_df.T[list(comb)].T)
-#         comb_expALLs.append(comb_expALL)
-#         # print(i, comb, "\n")
-#         # break
-#     except:
-#         continue
-#     # if len(valid_comb_i) < n_comb_i:
-#     #     print(i, len(valid_comb_i))
-#     #     valid_comb.append(valid_comb_i)
-#     # else:
-#     #     print(f"all combination of {i} is validable")
-#     #     break
-# #%%
-# for r in eff_anual_dmu:
-#     v = []
-#     for comb in comb_expALLs:
-#         v.append(np.sum([1 if r in c else 0 for c in comb.keys()]))
-#     print(f"{r}: {v}")
-# #%%
-# abanded_eff = ["First-Aviva Life 18", "First-Aviva Life 19", "Bank Taiwan Life 20", "First-Aviva Life 20"]
-# abanded_df = anual_dmu_df.T[abanded_eff].T
-# #%%
-# for key, value in comb_expALLs[1].items():
-#     print(key)
-#     print(value)
-#     print()
-# #%%
-
+clustering = DBSCAN(eps=100, min_samples=2).fit(denoise_LIFE[["underwriting_profit", "investment_profit"]])
+clustering.labels_
+#%%
+Z = linkage(denoise_LIFE[ATTRIBUTES[:2]], method='ward')
+plt.figure(figsize=(12, 8))
+dn = dendrogram(Z, above_threshold_color='#bcbddc', orientation='right', labels=denoise_LIFE.index.to_list(),)
+plt.title("HAC for input", fontsize=25)
+plt.xlabel("cluster distance", fontsize=20)
+plt.ylabel("Life Insurance companies 18-20", fontsize=20)
+plt.savefig("HAC for input in Life Insurance companies 18-20", dpi=1600)
+plt.show()
+#%%
+K_cluster = 2
+hac = AgglomerativeClustering(n_clusters=K_cluster, affinity='euclidean', linkage='ward').fit_predict(denoise_LIFE[ATTRIBUTES[:2]])
+#%%
+hac_life = pd.concat([denoise_LIFE, pd.DataFrame(hac, columns=["HAC cluster"], index=LIFE.index)], axis=1)
 #%%
