@@ -16,29 +16,29 @@ from load_data import LIFE, LIFE2019, denoise_nonpositive, ATTRIBUTES, LIFE2018,
 from itertools import combinations
 import matplotlib.pyplot as plt
 #%%
-#### 測試 #####
-'''life_transformed = denoise_nonpositive(LIFE)
-eff_dict, lambdas_dict = solver.dea_dual(dmu=life_transformed.index, x=np.array(life_transformed[['insurance_exp', 'operation_exp']].T), y=np.array(life_transformed[['underwriting_profit', 'investment_profit']].T))
-#%%
-eff_dict
-#%%
-eff_dmu_name = []
-for key, value in eff_dict.items():
-    if round(value, 5) == 1:
-        eff_dmu_name.append(key)
-eff_dmu_name
-#%%
-# life_transformed.T[eff_dmu_name].T
-eff_dict2, lambdas_dict2 = solver.dea_dual(dmu=eff_dmu_name, x=np.array(life_transformed.T[eff_dmu_name].T[['insurance_exp', 'operation_exp']].T), y=np.array(life_transformed.T[eff_dmu_name].T[['underwriting_profit', 'investment_profit']].T))
-#%%
-df = life_transformed.T[eff_dmu_name].T
-exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, dmu_wanted=None)
-#%%
-px_19, py_19, lambdas_19 = solver.project_frontier(x=np.array(life_transformed[['insurance_exp', 'operation_exp']].T), y=np.array(life_transformed[['underwriting_profit', 'investment_profit']].T), rs="vrs", orient="IO")
-#%%
-peff_dict, plambdas_dict = solver.dea_dual(dmu=life_transformed.index, x=px_19, y=py_19)
-#%%
-peff_dict'''
+# #### 測試 #####
+# life_transformed = denoise_nonpositive(LIFE)
+# eff_dict, lambdas_dict = solver.dea_dual(dmu=life_transformed.index, x=np.array(life_transformed[['insurance_exp', 'operation_exp']].T), y=np.array(life_transformed[['underwriting_profit', 'investment_profit']].T))
+# #%%
+# eff_dict
+# #%%
+# eff_dmu_name = []
+# for key, value in eff_dict.items():
+#     if round(value, 5) == 1:
+#         eff_dmu_name.append(key)
+# eff_dmu_name
+# #%%
+# # life_transformed.T[eff_dmu_name].T
+# eff_dict2, lambdas_dict2 = solver.dea_dual(dmu=eff_dmu_name, x=np.array(life_transformed.T[eff_dmu_name].T[['insurance_exp', 'operation_exp']].T), y=np.array(life_transformed.T[eff_dmu_name].T[['underwriting_profit', 'investment_profit']].T))
+# #%%
+# df = life_transformed.T[eff_dmu_name].T
+# exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, dmu_wanted=None)
+# #%%
+# px_19, py_19, lambdas_19 = solver.project_frontier(x=np.array(life_transformed[['insurance_exp', 'operation_exp']].T), y=np.array(life_transformed[['underwriting_profit', 'investment_profit']].T), rs="vrs", orient="IO")
+# #%%
+# peff_dict, plambdas_dict = solver.dea_dual(dmu=life_transformed.index, x=px_19, y=py_19)
+# #%%
+# peff_dict
 #### 測試結束 #####
 #%%
 def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
@@ -111,6 +111,7 @@ def comb_fun(df:pd.DataFrame, fun, comb_n=None):
     if comb_n is None:
         comb_n = len(df.index.tolist())
     for comb in combinations(df.index.tolist(), comb_n):
+        print(list(comb))
         # n_comb_i+=1
         try:
             result = fun(df.T[list(comb)].T)
@@ -145,8 +146,8 @@ def comb_fun(df:pd.DataFrame, fun, comb_n=None):
 # #%%
 # eff_dmuALL = find_eff_dmu(LIFE)
 #%%
-## 結果在下一行找好了
 # combs_smrts, combs_comb = comb_fun(df=LIFE.T[eff_dmuALL].T, fun=sys_smrts)
+## 結果在下一行找好了
 denoise_LIFE = denoise_nonpositive(LIFE)
 success_smrts_dmu = ['Chunghwa Post 18', 'TransGlobe Life 18', 'Hontai Life 19', 'Bank Taiwan Life 20', 'Taiwan Life 20', 'Cathay Life 20', 'China Life 20', 'Nan Shan Life 20', 'Shin Kong Life 20', 'Fubon Life 20', 'Hontai Life 20']
 success_smrts_df = denoise_LIFE.T[success_smrts_dmu].T
@@ -179,20 +180,24 @@ from sklearn.cluster import KMeans
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import AgglomerativeClustering
 #%%
-clustering = DBSCAN(eps=100, min_samples=2).fit(denoise_LIFE[["underwriting_profit", "investment_profit"]])
-clustering.labels_
-#%%
-Z = linkage(denoise_LIFE[ATTRIBUTES[:2]], method='ward')
+Z = linkage(LIFE[ATTRIBUTES[:2]], method='ward')
 plt.figure(figsize=(12, 8))
-dn = dendrogram(Z, above_threshold_color='#bcbddc', orientation='right', labels=denoise_LIFE.index.to_list(),)
+dn = dendrogram(Z, above_threshold_color='#bcbddc', orientation='right', labels=LIFE.index.to_list(),)
 plt.title("HAC for input", fontsize=25)
 plt.xlabel("cluster distance", fontsize=20)
 plt.ylabel("Life Insurance companies 18-20", fontsize=20)
-plt.savefig("HAC for input in Life Insurance companies 18-20", dpi=1600)
+# plt.savefig("HAC for input in Life Insurance companies 18-20", dpi=1600)
 plt.show()
 #%%
 K_cluster = 2
-hac = AgglomerativeClustering(n_clusters=K_cluster, affinity='euclidean', linkage='ward').fit_predict(denoise_LIFE[ATTRIBUTES[:2]])
+hac = AgglomerativeClustering(n_clusters=K_cluster, affinity='euclidean', linkage='ward').fit_predict(LIFE[ATTRIBUTES[:2]])
 #%%
-hac_life = pd.concat([denoise_LIFE, pd.DataFrame(hac, columns=["HAC cluster"], index=LIFE.index)], axis=1)
+hac_life = pd.concat([LIFE, pd.DataFrame(hac, columns=["HAC cluster"], index=LIFE.index)], axis=1)
+#%%
+combs_hac0_smrts, combs_hac0_comb = comb_fun(df=hac_life[hac_life["HAC cluster"] == 0], fun=sys_smrts)
+#%%
+combs_hac1_eff, combs_hac1_effcomb = comb_fun(df=hac_life[hac_life["HAC cluster"] == 1], fun=find_eff_dmu)
+#%%
+hac1_dmu = ['Hontai Life 18', 'Chunghwa Post 18', 'First-Aviva Life 18', 'TransGlobe Life 18', 'First-Aviva Life 19', 'Bank Taiwan Life 20', 'Taiwan Life 20', 'China Life 20', 'Hontai Life 20', 'Chunghwa Post 20', 'First-Aviva Life 20']
+combs_hac1_smrts, combs_hac1_comb = comb_fun(df=hac_life.T[hac1_dmu].T, fun=sys_smrts)
 #%%
