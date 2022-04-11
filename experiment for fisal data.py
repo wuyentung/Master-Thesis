@@ -211,3 +211,5 @@ hac1_comb = ['Hontai Life 18', 'Chunghwa Post 18',  'TransGlobe Life 18', 'Bank 
 hac1_smrts0 = sys_smrts(df=hac_life.T[hac1_comb].T, i_star=0)
 hac1_smrts1 = sys_smrts(df=hac_life.T[hac1_comb].T, i_star=1)
 #%%
+## 試試看 2003 資料踢掉富邦，再計算 s-MRTS
+## 改成用兩個險種的核保收益計算 s-MRTS
