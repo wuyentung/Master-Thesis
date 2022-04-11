@@ -37,6 +37,9 @@ verify_df = pd.read_csv("./verify data/24 non-life 2003.csv", index_col=0).dropn
 #%%
 exp001 = sys_smrts(verify_df, i_star=1)
 #%%
+## 老師覺得拿掉富邦會讓整個 frontier 變比較平緩
+exp010 = sys_smrts(verify_df.drop(["Fubon"]), i_star=1)
+#%%
 ## 結果也是一樣計算不出 alpha
 ## 列印結果
 # path = '24 non-life 2003 s-MRTS.txt'
@@ -46,4 +49,13 @@ exp001 = sys_smrts(verify_df, i_star=1)
 #     print(value, file=f)
 #     print("\n", file=f)
 # f.close()
+#%%
+path = '24 non-life 2003 s-MRTS without Fubon.txt'
+f = open(path, 'w')
+for key, value in exp010.items():
+    print(key, file=f)
+    print(value, file=f)
+    print("\n", file=f)
+f.close()
+
 #%%
