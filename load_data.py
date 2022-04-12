@@ -3,11 +3,11 @@ import os
 import pandas as pd
 import numpy as np
 #%%
-files = os.listdir("./data")
+files = os.listdir("./fisal data")
 #%%
-life2018_raw_df = pd.read_excel("./data/%s" %files[0], header=3, index_col=0)
-life2019_raw_df = pd.read_excel("./data/%s" %files[1], header=3, index_col=0)
-life2020_raw_df = pd.read_excel("./data/%s" %files[2], header=3, index_col=0)
+life2018_raw_df = pd.read_excel("./fisal data/%s" %files[0], header=3, index_col=0)
+life2019_raw_df = pd.read_excel("./fisal data/%s" %files[1], header=3, index_col=0)
+life2020_raw_df = pd.read_excel("./fisal data/%s" %files[2], header=3, index_col=0)
 #%%
 ENG_NAMES = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life',  'Mercuries Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'Chubb Tempest Life']
 CHI_NAMES = ['臺銀人壽', '台灣人壽', '保誠人壽', '國泰人壽', '中國人壽', '南山人壽', '新光人壽', '富邦人壽', '三商美邦人壽' '遠雄人壽', '宏泰人壽', '安聯人壽', '中華郵政', '第一金人壽', '合作金庫人壽', '保德信國際人壽', '康健人壽', '元大人壽', '全球人壽', '友邦人壽', '法國巴黎人壽', '安達人壽',]

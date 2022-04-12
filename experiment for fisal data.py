@@ -167,7 +167,9 @@ sys_smrts(success_smrts_df, i_star=0)
 #%%
 plt.figure(figsize=(8, 6))
 plt.scatter(denoise_LIFE["underwriting_profit"], denoise_LIFE["investment_profit"], c="blue")
-plt.scatter(LIFE["underwriting_profit"], LIFE["investment_profit"], c="green")
+# plt.scatter(LIFE["underwriting_profit"], LIFE["investment_profit"], c="green")
+plt.xlabel("underwriting_profit after transform", fontsize=20)
+plt.ylabel("investment_profit", fontsize=20)
 plt.show()
 #%%
 plt.figure(figsize=(8, 6))
