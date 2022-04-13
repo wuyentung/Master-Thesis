@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 import solver
 import solver_r
-from load_data import LIFE, LIFE2019, denoise_nonpositive, ATTRIBUTES, LIFE2018, LIFE2020
+from load_data import LIFE, FISAL_LIFE2019, denoise_nonpositive, FISAL_ATTRIBUTES, FISAL_LIFE2018, FISAL_LIFE2020
 from itertools import combinations
 import matplotlib.pyplot as plt
 #%%
@@ -173,7 +173,7 @@ plt.ylabel("investment_profit", fontsize=20)
 plt.show()
 #%%
 plt.figure(figsize=(8, 6))
-plt.scatter(denoise_LIFE[ATTRIBUTES[0]], denoise_LIFE[ATTRIBUTES[0]], c="blue")
+plt.scatter(denoise_LIFE[FISAL_ATTRIBUTES[0]], denoise_LIFE[FISAL_ATTRIBUTES[0]], c="blue")
 # plt.scatter(LIFE[ATTRIBUTES[0]], LIFE[ATTRIBUTES[0]], c="green")
 plt.show()
 #%%
@@ -182,7 +182,7 @@ from sklearn.cluster import KMeans
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import AgglomerativeClustering
 #%%
-Z = linkage(LIFE[ATTRIBUTES[:2]], method='ward')
+Z = linkage(LIFE[FISAL_ATTRIBUTES[:2]], method='ward')
 plt.figure(figsize=(12, 8))
 dn = dendrogram(Z, above_threshold_color='#bcbddc', orientation='right', labels=LIFE.index.to_list(),)
 plt.title("HAC for input", fontsize=25)
@@ -192,7 +192,7 @@ plt.ylabel("Life Insurance companies 18-20", fontsize=20)
 plt.show()
 #%%
 K_cluster = 2
-hac = AgglomerativeClustering(n_clusters=K_cluster, affinity='euclidean', linkage='ward').fit_predict(LIFE[ATTRIBUTES[:2]])
+hac = AgglomerativeClustering(n_clusters=K_cluster, affinity='euclidean', linkage='ward').fit_predict(LIFE[FISAL_ATTRIBUTES[:2]])
 #%%
 hac_life = pd.concat([LIFE, pd.DataFrame(hac, columns=["HAC cluster"], index=LIFE.index)], axis=1)
 #%%
