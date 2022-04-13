@@ -56,3 +56,5 @@ def denoise_nonpositive(df:pd.DataFrame, min_value=.1):
             #         # print(df[col][index])
     return df
 #%%
+# LIFE.to_excel("sales data.xlsx")
+#%%
