@@ -33,7 +33,7 @@ def preprocessing(df:pd.DataFrame, year:str):
                 df = df.drop(k)
     return df
 #%%
-ATTRIBUTE = ['insurance_exp', 'operation_exp', '健康保險核保利潤', '年金保險核保利潤']
+ATTRIBUTES = ['insurance_exp', 'operation_exp', '健康保險核保利潤', '年金保險核保利潤']
 LIFE2018 = preprocessing(life2018_raw_df, "18")
 LIFE2019 = preprocessing(life2019_raw_df, "19")
 LIFE2020 = preprocessing(life2020_raw_df, "20")
