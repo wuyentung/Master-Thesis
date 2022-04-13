@@ -16,21 +16,16 @@ from load_sales_data import LIFE, LIFE2019, denoise_nonpositive, ATTRIBUTES, LIF
 from itertools import combinations
 import matplotlib.pyplot as plt
 #%%
-def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
+def sys_smrts(df:pd.DataFrame, project=False, i_star=0, xcol:list=None, ycol:list=None):
+    if xcol is None:
+        xcol = df.columns.tolist()[i_star]
+    if ycol is None:
+        ycol = df.columns.tolist()[-2:]
     ## transform data
     ## s-MRTS for  whole system
     transformed_df = denoise_nonpositive(df)
-            
-    ## project all dmu to VRS frontier in IO
-    if project:
-        px, py, lambdas = solver.project_frontier(x=np.array(transformed_df[ATTRIBUTES[:2]].T), y=np.array(transformed_df[ATTRIBUTES[-2:]].T), rs="vrs", orient="IO")
-        exp = dmp.get_smrts_dfs(dmu=[i for i in range(px.shape[1])], x=px, y=py, trace=False, round_to=5, dmu_wanted=None)
-        old_keys = list(exp.keys())
-        for old_key in old_keys:
-            exp[df.index.tolist()[old_key]] = exp.pop(old_key)
-        return exp
     
-    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[ATTRIBUTES[:2]].T), y=np.array(transformed_df[ATTRIBUTES[-2:]].T))
+    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array([transformed_df[xcol].T]), y=np.array(transformed_df[ycol].T))
 
     eff_dmu_name = []
     for key, value in eff_dict.items():
@@ -38,7 +33,9 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
             eff_dmu_name.append(key)
     
     df = transformed_df.T[eff_dmu_name].T
-    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[ATTRIBUTES[:2]].T), y=np.array(df[ATTRIBUTES[-2:]].T), trace=False, round_to=5, dmu_wanted=None, i_star=i_star)
+    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array([df[xcol].T]), y=np.array(df[ycol].T), trace=False, round_to=5, dmu_wanted=None, 
+                            # i_star=i_star
+                            )
     old_keys = list(exp.keys())
     for old_key in old_keys:
         exp[eff_dmu_name[old_key]] = exp.pop(old_key)
@@ -86,11 +83,15 @@ combs_smrts20, combs_comb20 = comb_fun(df=LIFE2020, fun=sys_smrts)
 life_eff = ['Nan Shan Life 18', 'Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Nan Shan Life 19', 'Farglory Life 19', 'First-Aviva Life 19', 'Cardif 19', 'Taiwan Life 20', 'Cathay Life 20', 'Nan Shan Life 20', 'Mercuries Life 20', 'Farglory Life 20', 'Hontai Life 20', 'First-Aviva Life 20']
 #%%
 # combs_smrts, combs_comb = comb_fun(df=LIFE.T[life_eff].T, fun=sys_smrts)
-expLIFE = sys_smrts(df=LIFE.T[['Nan Shan Life 18', 'Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Nan Shan Life 19', 'Farglory Life 19', 'Cardif 19', 'Taiwan Life 20', 'Cathay Life 20', 'Nan Shan Life 20', 'Mercuries Life 20', 'Farglory Life 20']].T)
+expLIFE = sys_smrts(df=LIFE.T[['Nan Shan Life 18', 'Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Nan Shan Life 19', 'Farglory Life 19', 'Cardif 19', 'Taiwan Life 20', 'Cathay Life 20', 'Nan Shan Life 20', 'Mercuries Life 20', 'Farglory Life 20']].T, i_star=1)
 #%%
 ## 取小於 30000000 的資料
-plt.scatter(LIFE[ATTRIBUTES[-1]], LIFE[ATTRIBUTES[-2]])
+# plt.scatter(LIFE[ATTRIBUTES[-1]], LIFE[ATTRIBUTES[-2]])
 # combs_life_small_eff, combs_life_small_eff_comb = comb_fun(df=LIFE[LIFE["健康保險核保利潤"] < 30000000], fun=find_eff_dmu)
 # combs_small_smrts, combs_small_comb = comb_fun(df=LIFE.T[['Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Farglory Life 19', 'First-Aviva Life 19', 'BNP Paribas Cardif TCB 19', 'Cardif 19', 'Taiwan Life 20', 'Mercuries Life 20', 'Farglory Life 20', 'Hontai Life 20', 'First-Aviva Life 20']].T, fun=sys_smrts)
-expLIFE_small = sys_smrts(LIFE.T[['Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Farglory Life 19', 'BNP Paribas Cardif TCB 19', 'Cardif 19', 'Taiwan Life 20', 'Mercuries Life 20', 'Farglory Life 20']].T)
+expLIFE_small = sys_smrts(LIFE.T[['Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Farglory Life 19', 'BNP Paribas Cardif TCB 19', 'Cardif 19', 'Taiwan Life 20', 'Mercuries Life 20', 'Farglory Life 20']].T, i_star=1)
+#%%
+## C eff 取 3
+
+sys_smrts(LIFE.T[['Nan Shan Life 18', 'Mercuries Life 18', 'Farglory Life 18',]].T, i_star=0)
 #%%

@@ -43,12 +43,12 @@ def cal_alpha(dmu:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, T
 
         for i in range(I):
             v[i]=m.addVar(vtype=gp.GRB.CONTINUOUS,name=f"v_{i}", 
-                lb=THRESHOLD
+                # lb=THRESHOLD
                 )
 
         for j in range(J):
             u[j]=m.addVar(vtype=gp.GRB.CONTINUOUS,name=f"u_{j}", 
-                lb=THRESHOLD 
+                # lb=THRESHOLD 
                 )
         
         u0_plus = m.addVar(vtype=gp.GRB.CONTINUOUS,name="u0+", )
