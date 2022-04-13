@@ -88,3 +88,9 @@ life_eff = ['Nan Shan Life 18', 'Mercuries Life 18', 'Farglory Life 18', 'First-
 # combs_smrts, combs_comb = comb_fun(df=LIFE.T[life_eff].T, fun=sys_smrts)
 expLIFE = sys_smrts(df=LIFE.T[['Nan Shan Life 18', 'Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Nan Shan Life 19', 'Farglory Life 19', 'Cardif 19', 'Taiwan Life 20', 'Cathay Life 20', 'Nan Shan Life 20', 'Mercuries Life 20', 'Farglory Life 20']].T)
 #%%
+## 取小於 30000000 的資料
+plt.scatter(LIFE[ATTRIBUTES[-1]], LIFE[ATTRIBUTES[-2]])
+# combs_life_small_eff, combs_life_small_eff_comb = comb_fun(df=LIFE[LIFE["健康保險核保利潤"] < 30000000], fun=find_eff_dmu)
+# combs_small_smrts, combs_small_comb = comb_fun(df=LIFE.T[['Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Farglory Life 19', 'First-Aviva Life 19', 'BNP Paribas Cardif TCB 19', 'Cardif 19', 'Taiwan Life 20', 'Mercuries Life 20', 'Farglory Life 20', 'Hontai Life 20', 'First-Aviva Life 20']].T, fun=sys_smrts)
+expLIFE_small = sys_smrts(LIFE.T[['Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Farglory Life 19', 'BNP Paribas Cardif TCB 19', 'Cardif 19', 'Taiwan Life 20', 'Mercuries Life 20', 'Farglory Life 20']].T)
+#%%

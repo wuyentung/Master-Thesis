@@ -37,7 +37,7 @@ def cal_alpha(dmu:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, T
     for r in dmu_wanted:
         v = {}
         u = {}
-        u0 = {}
+        u0_plus = {}
         
         m = gp.Model(f"dmp_{r}")
 
@@ -51,7 +51,8 @@ def cal_alpha(dmu:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, T
                 lb=THRESHOLD 
                 )
         
-        u0 = m.addVar(vtype=gp.GRB.CONTINUOUS,name="u0", )
+        u0_plus = m.addVar(vtype=gp.GRB.CONTINUOUS,name="u0+", )
+        u0_minus = m.addVar(vtype=gp.GRB.CONTINUOUS,name="u0-", )
         
         m.update()
 
@@ -59,9 +60,9 @@ def cal_alpha(dmu:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, T
         m.setObjective(v[i_star] / np.max(x[i_star]), gp.GRB.MINIMIZE)
 
         ## s.t.
-        m.addConstr(gp.quicksum(v[i] * x[i, dmu.index(r)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu.index(r)] / np.max(y[j]) for j in range(J)) + u0 == 0)
+        m.addConstr(gp.quicksum(v[i] * x[i, dmu.index(r)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu.index(r)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus == 0)
         for k in dmu:
-            m.addConstr(gp.quicksum(v[i] * x[i, dmu.index(k)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu.index(k)] / np.max(y[j]) for j in range(J)) + u0 >= 0)
+            m.addConstr(gp.quicksum(v[i] * x[i, dmu.index(k)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu.index(k)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus >= 0)
         m.addConstr(gp.quicksum(u[j] * gy[j] for j in range(J)) == 1)
             
         m.optimize()
