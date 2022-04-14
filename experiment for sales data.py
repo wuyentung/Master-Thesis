@@ -96,3 +96,44 @@ c3 = []
 for c in combinations(['Nan Shan Life 18', 'Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Nan Shan Life 19', 'Farglory Life 19', 'Cardif 19', 'Taiwan Life 20', 'Cathay Life 20', 'Nan Shan Life 20', 'Mercuries Life 20', 'Farglory Life 20'], 3):
     c3.append(sys_smrts(LIFE.T[list(c)].T, i_star=0))
 #%%
+def show_smrts(smrts_dict:dict, path:str=None):
+    if path is None:
+        f = None
+    else:
+        f = open(path, "w")
+    
+    for key, value in smrts_dict.items():
+        print(key, file=f)
+        print(value, file=f)
+        print("\n", file=f)
+    
+    if path is None:
+        return
+    else:
+        f.close()
+    return
+#%%
+c3[0]
+#%%
+#%%
+has_alpha = []
+for i in range(len(c3)):
+    for key, value in c3[i].items():
+        # print(sum(value["alpha"]))
+        if sum(value["alpha"]):
+            print(i)
+            print(key, file=None)
+            print(value, file=None)
+            has_alpha.append(i)
+            break
+    if i // 20:
+        print(i)
+        print("\n", file=None)
+#%%
+import pickle
+filename = "sales_data_smrts.pickle"
+with open(filename, 'wb') as handle:
+    pickle.dump(c3, handle, protocol=pickle.HIGHEST_PROTOCOL)
+with open(filename, 'rb') as handle:
+    b = pickle.load(handle)
+#%%

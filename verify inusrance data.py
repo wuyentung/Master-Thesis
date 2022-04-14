@@ -67,3 +67,25 @@ c3 = []
 for c in combinations(verify_df.index.tolist(), 3):
     c3.append(sys_smrts(verify_df.T[list(c)].T, i_star=0))
 #%%
+has_alpha = []
+for i in range(len(c3)):
+    for key, value in c3[i].items():
+        # print(sum(value["alpha"]))
+        if sum(value["alpha"]):
+            print(i)
+            print(key, file=None)
+            print(value, file=None)
+            print("\n", file=None)
+            has_alpha.append(i)
+            break
+    if i // 20:
+        print(i)
+
+#%%
+import pickle
+filename = "verify_insurance.pickle"
+with open(filename, 'wb') as handle:
+    pickle.dump(c3, handle, protocol=pickle.HIGHEST_PROTOCOL)
+with open(filename, 'rb') as handle:
+    b = pickle.load(handle)
+#%%
