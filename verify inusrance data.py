@@ -61,3 +61,9 @@ for key, value in exp010.items():
 f.close()
 
 #%%
+
+## C eff 取 3
+c3 = []
+for c in combinations(verify_df.index.tolist(), 3):
+    c3.append(sys_smrts(verify_df.T[list(c)].T, i_star=0))
+#%%

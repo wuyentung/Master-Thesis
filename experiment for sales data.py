@@ -92,6 +92,7 @@ expLIFE = sys_smrts(df=LIFE.T[['Nan Shan Life 18', 'Mercuries Life 18', 'Farglor
 expLIFE_small = sys_smrts(LIFE.T[['Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Farglory Life 19', 'BNP Paribas Cardif TCB 19', 'Cardif 19', 'Taiwan Life 20', 'Mercuries Life 20', 'Farglory Life 20']].T, i_star=1)
 #%%
 ## C eff 取 3
-
-sys_smrts(LIFE.T[['Nan Shan Life 18', 'Mercuries Life 18', 'Farglory Life 18',]].T, i_star=0)
+c3 = []
+for c in combinations(['Nan Shan Life 18', 'Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Nan Shan Life 19', 'Farglory Life 19', 'Cardif 19', 'Taiwan Life 20', 'Cathay Life 20', 'Nan Shan Life 20', 'Mercuries Life 20', 'Farglory Life 20'], 3):
+    c3.append(sys_smrts(LIFE.T[list(c)].T, i_star=0))
 #%%
