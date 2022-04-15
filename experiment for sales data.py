@@ -15,6 +15,8 @@ import solver_r
 from load_sales_data import LIFE, LIFE2019, denoise_nonpositive, ATTRIBUTES, LIFE2018, LIFE2020
 from itertools import combinations
 import matplotlib.pyplot as plt
+import pickle
+import pickle5 as p
 #%%
 def sys_smrts(df:pd.DataFrame, project=False, i_star=0, xcol:list=None, ycol:list=None):
     if xcol is None:
@@ -96,23 +98,6 @@ c3 = []
 for c in combinations(['Nan Shan Life 18', 'Mercuries Life 18', 'Farglory Life 18', 'First-Aviva Life 18', 'Prudential of Taiwan 18', 'Nan Shan Life 19', 'Farglory Life 19', 'Cardif 19', 'Taiwan Life 20', 'Cathay Life 20', 'Nan Shan Life 20', 'Mercuries Life 20', 'Farglory Life 20'], 3):
     c3.append(sys_smrts(LIFE.T[list(c)].T, i_star=0))
 #%%
-def show_smrts(smrts_dict:dict, path:str=None):
-    if path is None:
-        f = None
-    else:
-        f = open(path, "w")
-    
-    for key, value in smrts_dict.items():
-        print(key, file=f)
-        print(value, file=f)
-        print("\n", file=f)
-    
-    if path is None:
-        return
-    else:
-        f.close()
-    return
-#%%
 c3[0]
 #%%
 #%%
@@ -130,10 +115,81 @@ for i in range(len(c3)):
         print(i)
         print("\n", file=None)
 #%%
-import pickle
 filename = "sales_data_smrts.pickle"
 with open(filename, 'wb') as handle:
     pickle.dump(c3, handle, protocol=pickle.HIGHEST_PROTOCOL)
 with open(filename, 'rb') as handle:
     b = pickle.load(handle)
+#%%
+filename = "sales_data_smrts.pickle"
+with open(filename, 'rb') as handle:
+    c3 = p.load(handle)
+#%%
+has_alpha = []
+for i in range(len(c3)):
+    for key, value in c3[i].items():
+        # print(sum(value["alpha"]))
+        if sum(value["alpha"]):
+        # if round(sum(value["alpha"]), 5):
+            print("\n", file=None)
+            print(i)
+            print(key, file=None)
+            print(value, file=None)
+            has_alpha.append(i) 
+            print("\n", file=None)
+            break
+    if i % 30 == 0:
+        print(i)
+#%%
+
+def plot_3D(dmu:list, stitle:str, i_star=0, df:pd.DataFrame=LIFE):
+    label_size = 20
+    title_size = 30
+    
+    fig, ax = plt.subplots(subplot_kw=dict(projection='3d'), figsize=(10, 10))
+    
+    # ax.stem(data.y1, data.y2, data.x1) // can be implemented as follows
+    # lines = []
+    for k in (dmu):
+        color = "blue"
+        
+        x = df[ATTRIBUTES[-2]][k]
+        y = df[ATTRIBUTES[-1]][k]
+        z = df[ATTRIBUTES[i_star]][k]
+        ax.plot3D([x, x], [y, y], [z, min(df[ATTRIBUTES[i_star]][dmu])], color=color, zorder=1, linestyle="--")
+        ax.scatter(x, y, z, marker="o", s=30, color=color, zorder=2)
+        ax.text(x, y, z, '%s' % (k), size=20, zorder=10, color="black", horizontalalignment='center', verticalalignment='top',)
+        
+    # plt.legend(handles=lines, loc='lower right')
+    ax.view_init(30, -80)
+    ax.set_xlabel(ATTRIBUTES[-2], fontsize=label_size)
+    ax.set_ylabel(ATTRIBUTES[-1], fontsize=label_size)
+    ax.set_zlabel(ATTRIBUTES[i_star], fontsize=label_size)
+    ax.set_title(stitle, fontsize=title_size)
+    plt.tight_layout()
+
+# plot_3D(list(c3[594].keys()))
+#%%
+def good_result(smrts_dict:dict, i_star=0, save=False):
+    
+    stitle = "2018-20 life insurance "
+    dmu = list(smrts_dict.keys())
+    plot_3D(dmu, stitle+"\n"+str(dmu), i_star)
+
+    if save:
+        stitle+=str(dmu)
+        dmp.show_smrts(smrts_dict, path=stitle+".txt")
+        plt.savefig(stitle+".png", dpi=400)
+    else:
+        dmp.show_smrts(smrts_dict)
+    
+    plt.show()
+    
+    return
+#%%
+good_result(smrts_dict=c3[28], save=True)
+#%%
+good_result(smrts_dict=c3[187], save=True)
+#%%
+good_result(smrts_dict=c3[190], save=True)
 #%%
