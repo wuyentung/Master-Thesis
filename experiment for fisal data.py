@@ -44,7 +44,7 @@ import matplotlib.pyplot as plt
 def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
     ## transform data
     ## s-MRTS for  whole system
-    transformed_df = denoise_nonpositive(df)
+    transformed_df = denoise_nonpositive(df)/1000/1000
             
     ## project all dmu to VRS frontier in IO
     if project:
@@ -69,7 +69,7 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
         exp[eff_dmu_name[old_key]] = exp.pop(old_key)
     return exp
 # #%%
-# expALL = sys_smrts(df=LIFE)
+expALL = sys_smrts(df=LIFE)
 #%%
 # exp18 = sys_smrts(df=LIFE2018)
 # #%%

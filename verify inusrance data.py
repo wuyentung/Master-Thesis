@@ -17,9 +17,9 @@ def sys_smrts(df:pd.DataFrame, i_star=0, xcol:list=None, ycol:list=None):
         ycol = df.columns.tolist()[-2:]
     ## transform data
     ## s-MRTS for  whole system
-    transformed_df = denoise_nonpositive(df)
+    transformed_df = denoise_nonpositive(df)/1000/1000
     # print(np.array([transformed_df[xcol].T]))
-    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array([transformed_df[xcol].T]), y=np.array(transformed_df[ycol].T))
+    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array([transformed_df[xcol].T]), y=np.array(transformed_df[ycol].T), orient="OO")
 
     eff_dmu_name = []
     for key, value in eff_dict.items():
@@ -38,7 +38,10 @@ def sys_smrts(df:pd.DataFrame, i_star=0, xcol:list=None, ycol:list=None):
 # verify_df = pd.read_csv("./verify data/24 non-life 2003.csv", index_col=0)
 verify_df = pd.read_csv("./verify data/24 non-life 2003.csv", index_col=0).dropna().astype('float')
 #%%
-# exp001 = sys_smrts(verify_df, i_star=0)
+exp001 = sys_smrts(verify_df, i_star=0)
+#%%
+for i in range(2):
+    dmp.show_smrts(sys_smrts(verify_df, i_star=i), path="2003 non-life million %s.txt" %i)
 #%%
 ## 老師覺得拿掉富邦會讓整個 frontier 變比較平緩
 exp010 = sys_smrts(verify_df.drop(["Fubon"]), i_star=0)
