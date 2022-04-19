@@ -169,6 +169,23 @@ def get_smrts_dfs(dmu, x, y, trace=False, round_to:int=2, dmu_wanted:list=None, 
     # dfs["A"]
     return dfs
 #%%
+def show_smrts(smrts_dict:dict, path:str=None):
+    if path is None:
+        f = None
+    else:
+        f = open(path, "w")
+    
+    for key, value in smrts_dict.items():
+        print(key, file=f)
+        print(value, file=f)
+        print("\n", file=f)
+    
+    if path is None:
+        return
+    else:
+        f.close()
+    return
+#%%
 ## unit test
 if __name__ == "__main__":
     dmu = ["A", "B", "C"]

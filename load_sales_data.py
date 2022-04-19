@@ -25,15 +25,16 @@ def preprocessing(df:pd.DataFrame, year:str):
     df["operation_exp"] = fisal_df["operation_exp"]
     
     ## 計算各險種的核保利潤
-    for i in ["健康", "年金"]:
-        df["%s保險核保利潤" %i] = df["%s保險保費收入" %i] - df["%s保險給付" %i]
+    for i in ["Health", "Annuity"]:
+        chi = "健康" if i=="Health" else "年金"
+        df["%s insrance underwriting profit" %i] = df["%s保險保費收入" %chi] - df["%s保險給付" %chi]
         ## 拿掉核保利潤等於零的 DMU_k
         for k, row in df.iterrows():
-            if 0 == row["%s保險核保利潤" %i]:
+            if 0 == row["%s insrance underwriting profit" %i]:
                 df = df.drop(k)
     return df
 #%%
-ATTRIBUTES = ['insurance_exp', 'operation_exp', '健康保險核保利潤', '年金保險核保利潤']
+ATTRIBUTES = ['insurance_exp', 'operation_exp', 'Health insrance underwriting profit', 'Annuity insrance underwriting profit']
 LIFE2018 = preprocessing(life2018_raw_df, "18")
 LIFE2019 = preprocessing(life2019_raw_df, "19")
 LIFE2020 = preprocessing(life2020_raw_df, "20")
