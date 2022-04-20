@@ -9,17 +9,19 @@ from load_data import denoise_nonpositive
 from itertools import combinations
 import matplotlib.pyplot as plt
 import pickle5 as p
+from textwrap import wrap
+CMAP = plt.get_cmap('plasma')
 #%%
 def sys_smrts(df:pd.DataFrame, i_star=0, xcol:list=None, ycol:list=None):
     if xcol is None:
-        xcol = df.columns.tolist()[i_star]
+        xcol = df.columns.tolist()[:2]
     if ycol is None:
         ycol = df.columns.tolist()[-2:]
     ## transform data
     ## s-MRTS for  whole system
     transformed_df = denoise_nonpositive(df)/1000/1000
     # print(np.array([transformed_df[xcol].T]))
-    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array([transformed_df[xcol].T]), y=np.array(transformed_df[ycol].T), orient="OO")
+    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[xcol].T), y=np.array(transformed_df[ycol].T), orient="OO")
 
     eff_dmu_name = []
     for key, value in eff_dict.items():
@@ -27,8 +29,8 @@ def sys_smrts(df:pd.DataFrame, i_star=0, xcol:list=None, ycol:list=None):
             eff_dmu_name.append(key)
     
     df = transformed_df.T[eff_dmu_name].T
-    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array([df[xcol].T]), y=np.array(df[ycol].T), trace=False, round_to=5, dmu_wanted=None, 
-                            # i_star=i_star
+    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[xcol].T), y=np.array(df[ycol].T), trace=False, round_to=5, dmu_wanted=None, 
+                            i_star=i_star
                             )
     old_keys = list(exp.keys())
     for old_key in old_keys:
@@ -113,32 +115,39 @@ for i in range(len(c3)):
     if i % 30 == 0:
         print(i)
 #%%
-def plot_3D(dmu:list, stitle:str, i_star=0, df:pd.DataFrame=verify_df):
+def plot_3D(dmu:list, stitle:str, i_star=0, df:pd.DataFrame=verify_df, exp_dict:dict=None):
     label_size = 20
-    title_size = 30
+    title_size = 20
     
     fig, ax = plt.subplots(subplot_kw=dict(projection='3d'), figsize=(10, 10))
     # ax.stem(data.y1, data.y2, data.x1) // can be implemented as follows
-    # lines = []
+    lines = []
     for k in (dmu):
-        color = "blue"
+        color = CMAP(dmu.index(k)/len(dmu))
+        # color = "blue"
         
         x = df[df.columns.to_list()[-2]][k]
         y = df[df.columns.to_list()[-1]][k]
         z = df[df.columns.to_list()[i_star]][k]
         ax.plot3D([x, x], [y, y], [z, min(df[df.columns.to_list()[i_star]][dmu])], color=color, zorder=1, linestyle="--")
         ax.scatter(x, y, z, marker="o", s=30, color=color, zorder=2)
-        ax.text(x, y, z, '%s' % (k), size=20, zorder=10, color="black", horizontalalignment='center', verticalalignment='top',)
-        
-    # plt.legend(handles=lines, loc='lower right')
+        # ax.text(x, y, z, '%s' % (k), size=15, zorder=10, color="black", horizontalalignment='center', verticalalignment='top',)
+        ## s-MRTS plot
+        if exp_dict is not None:
+            smrts_df = exp_dict[k]
+            line, = ax.plot3D(np.array([smrts_df["DMP"][i][0] for i in range(11)]) + x, np.array([smrts_df["DMP"][i][1] for i in range(11)]) + y, [z]*11, label='%s'%k, color=color)
+            lines.append(line)
+    plt.legend(handles=lines, loc='lower left')
     ax.view_init(30, -80)
     ax.set_xlabel(df.columns.to_list()[-2], fontsize=label_size)
     ax.set_ylabel(df.columns.to_list()[-1], fontsize=label_size)
     ax.set_zlabel(df.columns.to_list()[i_star], fontsize=label_size)
-    ax.set_title(stitle, fontsize=title_size)
+    ax.set_title("\n".join(wrap(stitle, 50)), fontsize=title_size)
     plt.tight_layout()
 
 # plot_3D(list(c3[594].keys()))
+# plot_3D(list(exp001.keys()), "", exp_dict=exp001, df=denoise_nonpositive(verify_df)/1000/1000)
+# plt.show()
 #%%
 def good_result(smrts_dict:dict, i_star=0, save=False):
     
@@ -165,4 +174,12 @@ good_result(c3[2011], save=True)
 good_result(c3[2017], save=True)
 #%%
 good_result(c3[2022], save=True)
+#%%
+good_result(sys_smrts(verify_df, i_star=1), i_star=1, save=True)
+#%%
+i = 0
+s = "2003 nonlife million %s"%(verify_df.columns[i])
+plot_3D(list(exp001.keys()), s, exp_dict=sys_smrts(verify_df, i_star=i), i_star=i, df=denoise_nonpositive(verify_df)/1000/1000)
+plt.savefig(s+".png", dpi=400)
+plt.show()
 #%%

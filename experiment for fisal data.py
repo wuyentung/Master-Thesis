@@ -55,7 +55,7 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
             exp[df.index.tolist()[old_key]] = exp.pop(old_key)
         return exp
     
-    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[['insurance_exp', 'operation_exp']].T), y=np.array(transformed_df[['underwriting_profit', 'investment_profit']].T))
+    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[['insurance_exp', 'operation_exp']].T), y=np.array(transformed_df[['underwriting_profit', 'investment_profit']].T), orient="OO")
 
     eff_dmu_name = []
     for key, value in eff_dict.items():
@@ -69,7 +69,10 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
         exp[eff_dmu_name[old_key]] = exp.pop(old_key)
     return exp
 # #%%
-expALL = sys_smrts(df=LIFE)
+expALL = sys_smrts(df=LIFE, i_star=0)
+#%%
+for i in range(2):
+    dmp.show_smrts(sys_smrts(df=LIFE, i_star=i), path="life million %s.txt" %i)
 #%%
 # exp18 = sys_smrts(df=LIFE2018)
 # #%%
