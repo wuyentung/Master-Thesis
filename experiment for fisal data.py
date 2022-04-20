@@ -15,6 +15,8 @@ import solver_r
 from load_data import LIFE, FISAL_LIFE2019, denoise_nonpositive, FISAL_ATTRIBUTES, FISAL_LIFE2018, FISAL_LIFE2020
 from itertools import combinations
 import matplotlib.pyplot as plt
+from textwrap import wrap
+CMAP = plt.get_cmap('plasma')
 #%%
 # #### 測試 #####
 # life_transformed = denoise_nonpositive(LIFE)
@@ -80,6 +82,71 @@ for i in range(2):
 # #%%
 # exp20 = sys_smrts(df=LIFE2020)
 ## 好奇怪，個別年的算得出來，綜合在一起卻算不出來，不知道會不會是 transform 的問題
+#%%
+## 成功計算出 s-MRTS 後視覺化資料
+def plot_3D(dmu:list, stitle:str, i_star=0, df:pd.DataFrame=LIFE, exp_dict:dict=None):
+    label_size = 20
+    title_size = 20
+    
+    fig, ax = plt.subplots(subplot_kw=dict(projection='3d'), figsize=(10, 10))
+    # ax.stem(data.y1, data.y2, data.x1) // can be implemented as follows
+    lines = []
+    for k in (dmu):
+        color = CMAP(dmu.index(k)/len(dmu))
+        # color = "blue"
+        
+        x = df[df.columns.to_list()[-2]][k]
+        y = df[df.columns.to_list()[-1]][k]
+        z = df[df.columns.to_list()[i_star]][k]
+        ax.plot3D([x, x], [y, y], [z, min(df[df.columns.to_list()[i_star]][dmu])], color=color, zorder=1, linestyle="--")
+        ax.scatter(x, y, z, marker="o", s=30, color=color, zorder=2)
+        # ax.text(x, y, z, '%s' % (k), size=15, zorder=10, color="black", horizontalalignment='center', verticalalignment='top',)
+        ## s-MRTS plot
+        if exp_dict is not None:
+            smrts_df = exp_dict[k]
+            line, = ax.plot3D(np.array([smrts_df["DMP"][i][0] for i in range(11)]) + x, np.array([smrts_df["DMP"][i][1] for i in range(11)]) + y, [z]*11, label='%s'%k, color=color)
+            lines.append(line)
+    plt.legend(handles=lines, loc='lower left', ncol=2)
+    ax.view_init(60, -80)
+    ax.set_xlabel(df.columns.to_list()[-2], fontsize=label_size)
+    ax.set_ylabel(df.columns.to_list()[-1], fontsize=label_size)
+    ax.set_zlabel(df.columns.to_list()[i_star], fontsize=label_size)
+    ax.set_title("\n".join(wrap(stitle, 50)), fontsize=title_size)
+    plt.tight_layout()
+#%%
+i = 0
+s = "2018-20 life million %s"%(LIFE.columns[i])
+plot_3D(list(expALL.keys()), s, exp_dict=sys_smrts(LIFE, i_star=i), i_star=i, df=denoise_nonpositive(LIFE)/1000/1000)
+plt.savefig(s+".png", dpi=400)
+plt.show()
+#%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#%%
+#%%
+#%%
 #%%
 '''
 ## 儲存了
