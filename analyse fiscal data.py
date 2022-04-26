@@ -12,7 +12,7 @@ import numpy as np
 import solver
 import solver_r
 from load_data import LIFE, FISAL_LIFE2019, denoise_nonpositive, FISAL_ATTRIBUTES, FISAL_LIFE2018, FISAL_LIFE2020
-from exp_fisal_data import OPERATION_SMRTS, INSURANCE_SMRTS
+from exp_fiscal_data import OPERATION_SMRTS, INSURANCE_SMRTS
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
@@ -55,19 +55,18 @@ class Arrow3D(FancyArrowPatch):
         self.set_positions((xs[0],ys[0]),(xs[1],ys[1]))
         FancyArrowPatch.draw(self, renderer)
 #%%
-def cal_distance(mdp:list):
-    return distance
-#%%
-def cal_max_mdp(smrts_df:pd.DataFrame):
-    max_mdp_dis = 0
-    max_dir_mdp = [0, 0]
-    for idx in smrts_df.T:
+def find_max_dir_mp(smrts_df:pd.DataFrame):
+    max_dmp_dis = 0
+    max_dir_mp = "[0, 0]"
+    for idx, row in smrts_df.iterrows():
         dmp = row["DMP"]
-        mdp_dis = np.square(dmp[0]**2 + dmp[1]**2)
-        if mdp_dis > max_mdp_dis:
-            max_dir_mdp = mdp_dis
-            max_dir_mdp = idx
-    return max_dir_mdp
+        dmp_dis = np.square(dmp[0]**2 + dmp[1]**2)
+        # print(mdp_dis)
+        if dmp_dis > max_dmp_dis:
+            max_dmp_dis = dmp_dis
+            max_dir_mp = idx
+    return max_dir_mp
+# cal_max_mdp(OPERATION_SMRTS["Hontai Life 18"])
 #%%
 ## 成功計算出 s-MRTS 後視覺化資料
 def plot_3D(dmu:list, stitle:str, target_input="insurance_exp", df:pd.DataFrame=df):

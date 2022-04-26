@@ -112,10 +112,7 @@ class Dmu_Direction(object):
     # def round_to(self, x, f):
     #     return np.round(x, f)
 #%%
-DIRECTIONS = [
-    ## 0314 exp
-    # [.55, .45], 
-    # [.45, .55],  
+DIRECTIONS = [ 
     [1, 0], 
     [.9, .1], 
     [.8, .2], 
@@ -163,7 +160,7 @@ def get_smrts_dfs(dmu, x, y, trace=False, round_to:int=2, dmu_wanted:list=None, 
         df = pd.DataFrame(columns=col_names)
         for res in results:
             if res.dmu == r:
-                df = df.append(pd.DataFrame([[res.direction, res.alpha, res.dmp, res.smrts]], columns=col_names))
+                df = df.append(pd.DataFrame([[str(res.direction), res.alpha, res.dmp, res.smrts]], columns=col_names))
                 # print(res.direction, res.alpha, res.dmp)
         dfs[r] = df.set_index("direction")
     # dfs["A"]
