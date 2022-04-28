@@ -85,40 +85,39 @@ def plot_3D(dmu:list, stitle:str, target_input="insurance_exp", df:pd.DataFrame=
         x_start = df["underwriting_profit"][dmu[i]]
         y_start = df["investment_profit"][dmu[i]]
         z_start = df[target_input][dmu[i]]
+        z_min =  min(df[target_input][dmu])
         
-        ax.plot3D([x_start, x_start], [y_start, y_start], [z_start, min(df[target_input][dmu])], color=color, zorder=1, linestyle="--")
+        ax.plot3D([x_start, x_start], [y_start, y_start], [z_start, z_min], color=color, zorder=1, linestyle="--")
         ax.scatter(x_start, y_start, z_start, marker="o", s=30, color=color, zorder=2)
         ax.text(x_start, y_start, z_start, '%s' % (dmu[i]), size=15, zorder=10, color="black", horizontalalignment='center', verticalalignment='bottom',)
-        ## s-MRTS plot
+        
+        ## max direction of MP
         if dmu[i] in smrts_dict:
             smrts_df = smrts_dict[dmu[i]]
             max_dir_mp_str = find_max_dir_mp(smrts_df)
             # print(max_dir_mp_str)
             max_dir_mp = float_direction(max_dir_mp_str)
             # print(max_dir_mp)
-            
-            # line, = ax.plot3D(np.array([smrts_df["DMP"][i][0] for i in range(11)]) + x, np.array([smrts_df["DMP"][i][1] for i in range(11)]) + y, [z]*11, label='%s'%k, color=color)
-            # lines.append(line)
 
-            a = Arrow3D([x_start, x_start+max_dir_mp[0]*min_range/3], [y_start, y_start+max_dir_mp[1]*min_range/3], [z_start, z_start], mutation_scale=20, lw=2, arrowstyle="->", color="red")
+            a = Arrow3D([x_start, x_start+max_dir_mp[0]*min_range/3], [y_start, y_start+max_dir_mp[1]*min_range/3], [ z_min,  z_min], mutation_scale=20, lw=2, arrowstyle="->", color="red")
             ax.add_artist(a)
-            ax.text(x_start+max_dir_mp[0]*min_range/3, y_start+max_dir_mp[1]*min_range/3, z_start, '%s' % (max_dir_mp_str), size=15, zorder=10, color="black", horizontalalignment='left', verticalalignment='center',)
+            ax.text(x_start+max_dir_mp[0]*min_range/3, y_start+max_dir_mp[1]*min_range/3,  z_min, '%s' % (max_dir_mp_str), size=15, zorder=10, color="red", horizontalalignment='left', verticalalignment='top',)
         
-        ## 最後一個，不用秀前進方向紀錄
+        ## 前進方向紀錄
         if len(dmu)-1 == i:
             continue
         x_end = df["underwriting_profit"][dmu[i+1]]
         y_end = df["investment_profit"][dmu[i+1]]
         z_end = df[target_input][dmu[i+1]]
         
-        a = Arrow3D([x_start, x_end], [y_start, y_end], [z_start, z_end], mutation_scale=20, lw=2, arrowstyle="->", color="gray")
+        a = Arrow3D([x_start, x_end], [y_start, y_end], [ z_min,  z_min], mutation_scale=20, lw=2, arrowstyle="->", color="gray")
         ax.add_artist(a)
         
-        ax.text(x_start, y_start, z_start, "%.2f : %.2f" %(((x_end-x_start)/2)/(((x_end-x_start)/2) + ((y_end-y_start)/2)), ((y_end-y_start)/2)/(((x_end-x_start)/2) + ((y_end-y_start)/2))), horizontalalignment='left', verticalalignment='center', size=15,)
+        ax.text(x_start, y_start,  z_min, "%.2f : %.2f" %(((x_end-x_start)/2)/(((x_end-x_start)/2) + ((y_end-y_start)/2)), ((y_end-y_start)/2)/(((x_end-x_start)/2) + ((y_end-y_start)/2))), horizontalalignment='left', verticalalignment='center', size=15,)
             
     plt.legend(handles=lines, loc='lower left', ncol=2)
     
-    ax.view_init(60, -80)
+    ax.view_init(45, -80)
     ax.set_xlabel(df.columns.to_list()[-2], fontsize=label_size)
     ax.set_ylabel(df.columns.to_list()[-1], fontsize=label_size)
     ax.set_zlabel(target_input, fontsize=label_size)
