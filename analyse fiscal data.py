@@ -147,3 +147,36 @@ plot_3D(dmu=['Hontai Life 18', 'Hontai Life 19', 'Hontai Life 20'], stitle="Hont
 plt.draw()
 plt.show()
 #%%
+dmus = ['Bank Taiwan Life ', 'Taiwan Life ', 'PCA Life ', 'Cathay Life ', 'China Life ', 'Nan Shan Life ', 'Shin Kong Life ', 'Fubon Life ', 'Mercuries Life ', 'Farglory Life ', 'Hontai Life ', 'Allianz Taiwan Life ', 'Chunghwa Post ', 'First-Aviva Life ', 'BNP Paribas Cardif TCB ', 'Prudential of Taiwan ', 'CIGNA ', 'Yuanta Life ', 'TransGlobe Life ', 'AIA Taiwan ', 'Cardif ', 'Chubb Tempest Life ']
+#%%
+## visualize_progress
+for k in dmus:
+    for target_input in ["insurance_exp", "operation_exp"]:
+        plot_3D(dmu=[k+n for n in ['18', '19', '20']], stitle=k, target_input=target_input, df=denoise_nonpositive(LIFE)/1000/1000)
+        plt.draw()
+        plt.savefig("%s %s.png" %(k, target_input), dpi=400)
+        plt.show()
+#%%
+df.plot.scatter("insurance_exp", "operation_exp")
+#%%
+df18 = denoise_nonpositive(FISAL_LIFE2018)/1000/1000
+df18.plot.scatter("insurance_exp", "operation_exp")
+#%%
+plt.figure(figsize=(16, 9))
+plt.scatter(df18["insurance_exp"], df18["operation_exp"])
+for k, row in df18.iterrows():
+    plt.annotate(k, (row["insurance_exp"], row["operation_exp"]), fontsize=10)
+plt.xlabel("insurance_exp")
+plt.ylabel("operation_exp")
+plt.show()
+#%%
+plt.figure(figsize=(20, 15))
+plt.scatter(df["insurance_exp"], df["operation_exp"])
+for k, row in df.iterrows():
+    plt.annotate(k, (row["insurance_exp"], row["operation_exp"]), fontsize=10)
+plt.xlabel("insurance_exp")
+plt.ylabel("operation_exp")
+plt.show()
+#%%
+df20 = denoise_nonpositive(FISAL_LIFE2020)/1000/1000
+#%%
