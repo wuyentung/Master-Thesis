@@ -12,7 +12,7 @@ import numpy as np
 import dmp
 import solver
 import solver_r
-from load_data import LIFE, FISAL_LIFE2019, denoise_nonpositive, FISAL_ATTRIBUTES, FISAL_LIFE2018, FISAL_LIFE2020
+from load_data import LIFE, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
 from exp_fiscal_data import OPERATION_SMRTS, INSURANCE_SMRTS
 from itertools import combinations
 import matplotlib.pyplot as plt
@@ -159,7 +159,7 @@ for k in dmus:
 #%%
 df.plot.scatter("insurance_exp", "operation_exp")
 #%%
-df18 = denoise_nonpositive(FISAL_LIFE2018)/1000/1000
+df18 = denoise_nonpositive(FISCAL_LIFE2018)/1000/1000
 df18.plot.scatter("insurance_exp", "operation_exp")
 #%%
 plt.figure(figsize=(16, 9))
@@ -178,5 +178,5 @@ plt.xlabel("insurance_exp")
 plt.ylabel("operation_exp")
 plt.show()
 #%%
-df20 = denoise_nonpositive(FISAL_LIFE2020)/1000/1000
+df20 = denoise_nonpositive(FISCAL_LIFE2020)/1000/1000
 #%%

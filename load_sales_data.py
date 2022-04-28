@@ -2,7 +2,7 @@
 import os
 import pandas as pd
 import numpy as np
-from load_data import LIFE, FISAL_LIFE2019, FISAL_ATTRIBUTES, FISAL_LIFE2018, FISAL_LIFE2020
+from load_data import LIFE, FISCAL_LIFE2019, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
 #%%
 ENG_NAMES = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life',  'Mercuries Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'Chubb Tempest Life']
 life2018_raw_df = pd.read_excel("./sales data/2018.xlsx", header=0, index_col=0).replace({'－': "1"}).astype("int32")
@@ -16,11 +16,11 @@ def preprocessing(df:pd.DataFrame, year:str):
     
     ## 新增 input 欄位
     if "18" == year:
-        fisal_df = FISAL_LIFE2018
+        fisal_df = FISCAL_LIFE2018
     elif  "19" == year:
-        fisal_df = FISAL_LIFE2019
+        fisal_df = FISCAL_LIFE2019
     else:
-        fisal_df = FISAL_LIFE2020     
+        fisal_df = FISCAL_LIFE2020     
     df["insurance_exp"] = fisal_df["insurance_exp"]
     df["operation_exp"] = fisal_df["operation_exp"]
     
