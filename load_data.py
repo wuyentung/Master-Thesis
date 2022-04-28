@@ -99,7 +99,7 @@ def denoise_nonpositive(df:pd.DataFrame, min_value=.1):
             # print(col)
             # print(df[col])
             # print()
-            df[col] = df[col].max() - df[col]
+            df[col] = df[col] + np.abs(df[col].min()) +1
             # print(df[col])
             for index, value in df[col].items():
                 if value-min_value < 0:

@@ -19,22 +19,7 @@ import matplotlib.pyplot as plt
 from textwrap import wrap
 CMAP = plt.get_cmap('plasma')
 #%%
-eff_dmu = ['Hontai Life 18',
- 'Chunghwa Post 18',
- 'First-Aviva Life 18',
- 'TransGlobe Life 18',
- 'Hontai Life 19',
- 'First-Aviva Life 19',
- 'Bank Taiwan Life 20',
- 'Taiwan Life 20',
- 'Cathay Life 20',
- 'China Life 20',
- 'Nan Shan Life 20',
- 'Shin Kong Life 20',
- 'Fubon Life 20',
- 'Hontai Life 20',
- 'Chunghwa Post 20',
- 'First-Aviva Life 20']
+eff_dmu = ['Hontai Life 18', 'Chunghwa Post 18', 'First-Aviva Life 18', 'Hontai Life 19', 'First-Aviva Life 19', 'Bank Taiwan Life 20', 'Taiwan Life 20', 'Cathay Life 20', 'China Life 20', 'Nan Shan Life 20', 'Shin Kong Life 20', 'Fubon Life 20', 'Hontai Life 20', 'Chunghwa Post 20', 'First-Aviva Life 20', 'BNP Paribas Cardif TCB 20', 'CIGNA 20', 'Cardif 20']
 #%%
 df = denoise_nonpositive(LIFE)/1000/1000
 #%%
@@ -61,7 +46,9 @@ def find_max_dir_mp(smrts_df:pd.DataFrame):
     max_dir_mp = "[0, 0]"
     for idx, row in smrts_df.iterrows():
         dmp = row["DMP"]
-        dmp_dis = np.square(dmp[0]**2 + dmp[1]**2)
+        ## 相加後會是總獲利
+        dmp_dis = dmp[0] + dmp[1]
+        # dmp_dis = np.square(dmp[0]**2 + dmp[1]**2)
         # print(mdp_dis)
         if dmp_dis > max_dmp_dis:
             max_dmp_dis = dmp_dis
@@ -87,11 +74,11 @@ def plot_3D(dmu:list, stitle:str, target_input="insurance_exp", df:pd.DataFrame=
     else:
         smrts_dict = OPERATION_SMRTS
     fig, ax = plt.subplots(subplot_kw=dict(projection='3d'), figsize=(10, 10))
-    # ax.stem(data.y1, data.y2, data.x1) // can be implemented as follows
     lines = []
     x_range = df["underwriting_profit"].max() - df["underwriting_profit"].min()
     y_range = df["investment_profit"].max() - df["investment_profit"].min()
     min_range = np.min([x_range, y_range])
+    # ax.stem(data.y1, data.y2, data.x1) // can be implemented as follows
     for k in (dmu):
         color = CMAP(dmu.index(k)/len(dmu))
         # color = "blue"
@@ -101,7 +88,7 @@ def plot_3D(dmu:list, stitle:str, target_input="insurance_exp", df:pd.DataFrame=
         z = df[target_input][k]
         ax.plot3D([x, x], [y, y], [z, min(df[target_input][dmu])], color=color, zorder=1, linestyle="--")
         ax.scatter(x, y, z, marker="o", s=30, color=color, zorder=2)
-        ax.text(x, y, z, '%s' % (k), size=15, zorder=10, color="black", horizontalalignment='center', verticalalignment='top',)
+        ax.text(x, y, z, '%s' % (k), size=15, zorder=10, color="black", horizontalalignment='center', verticalalignment='bottom',)
         ## s-MRTS plot
         if k in smrts_dict:
             smrts_df = smrts_dict[k]
