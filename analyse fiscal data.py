@@ -165,6 +165,8 @@ df20 = denoise_nonpositive(FISCAL_LIFE2020)/1000/1000
 #%%
 ## 針對每個公司弄出一個表格來
 ana_dmu_cols = ["insurance_exp", "operation_exp", "underwriting_profit", "investment_profit", "output progress direction", "insurance_exp max direction of MP", "insurance_exp cosine similarity", "operation_exp max direction of MP", "operation_exp cosine similarity",]
+dmu_dfs = {}
+round_to = 2
 for k in dmus:
     dmu_ks = [k+n for n in ['18', '19', '20']]
     insurance_exps = df["insurance_exp"][dmu_ks]
@@ -202,6 +204,20 @@ for k in dmus:
             max_dirs.append(float_direction(max_dir_mp_str))
             # max_dir_mp = float_direction(max_dir_mp_str)
             cos_sims.append(cal_cosine_similarity(out_dirs[n], max_dirs[n]))
+    dmu_df = pd.DataFrame(
+        {
+            "insurance_exp": np.round(insurance_exps, round_to).tolist(), 
+            "operation_exp": np.round(operation_exps, round_to).tolist(), 
+            "underwriting_profit": np.round(underwriting_profits, round_to).tolist(), 
+            "investment_profit": np.round(investment_profits, round_to).tolist(), 
+            "output progress direction": np.round(out_dirs, round_to).tolist(), 
+            "insurance_exp max direction of MP": np.round(insurance_max_dirs, round_to).tolist(), 
+            "insurance_exp cosine similarity": np.round(insurance_cos_sims, round_to).tolist(), 
+            "operation_exp max direction of MP": np.round(operation_max_dirs, round_to).tolist(), 
+            "operation_exp cosine similarity": np.round(operation_cos_sims, round_to).tolist(), 
+        }, index=dmu_ks
+        )
+    dmu_dfs[k] = dmu_df
     break
 #%%
 plot_3D(dmu=['Bank Taiwan Life 18', 'Bank Taiwan Life 19', 'Bank Taiwan Life 20'], stitle="Bank Taiwan Life", target_input="insurance_exp")
