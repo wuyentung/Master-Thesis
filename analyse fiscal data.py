@@ -23,8 +23,6 @@ eff_dmu = ['Hontai Life 18', 'Chunghwa Post 18', 'First-Aviva Life 18', 'Hontai 
 #%%
 df = denoise_nonpositive(LIFE)/1000/1000
 #%%
-df.T[['Hontai Life 18', 'Hontai Life 19', 'Hontai Life 20']].T
-#%%
 from numpy import *
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.patches import FancyArrowPatch
@@ -62,6 +60,16 @@ def float_direction(str_direction:str):
             return direction
     return [0, 0]
 #%%
+def cal_cosine_similarity(vec_a, vec_b):
+    # Dot and norm
+    dot = sum(a*b for a, b in zip(vec_a, vec_b))
+    norm_a = sum(a*a for a in vec_a) ** 0.5
+    norm_b = sum(b*b for b in vec_b) ** 0.5
+
+    # Cosine similarity
+    cos_sim = dot / (norm_a*norm_b)
+    return cos_sim
+#%%
 ## 成功計算出 s-MRTS 後視覺化資料
 def plot_3D(dmu:list, stitle:str, target_input="insurance_exp", df:pd.DataFrame=df):
     
@@ -87,7 +95,7 @@ def plot_3D(dmu:list, stitle:str, target_input="insurance_exp", df:pd.DataFrame=
         z_start = df[target_input][dmu[i]]
         z_min =  min(df[target_input][dmu])
         
-        ax.plot3D([x_start, x_start], [y_start, y_start], [z_start, z_min], color=color, zorder=1, linestyle="--")
+        ax.plot3D([x_start, x_start], [y_start, y_start], [z_start, z_min], color=color, zorder=1, linestyle="--", alpha=.9)
         ax.scatter(x_start, y_start, z_start, marker="o", s=30, color=color, zorder=2)
         ax.text(x_start, y_start, z_start, '%s' % (dmu[i]), size=15, zorder=10, color="black", horizontalalignment='center', verticalalignment='bottom',)
         
@@ -96,12 +104,17 @@ def plot_3D(dmu:list, stitle:str, target_input="insurance_exp", df:pd.DataFrame=
             smrts_df = smrts_dict[dmu[i]]
             max_dir_mp_str = find_max_dir_mp(smrts_df)
             # print(max_dir_mp_str)
-            max_dir_mp = float_direction(max_dir_mp_str)
-            # print(max_dir_mp)
-
-            a = Arrow3D([x_start, x_start+max_dir_mp[0]*min_range/3], [y_start, y_start+max_dir_mp[1]*min_range/3], [ z_min,  z_min], mutation_scale=20, lw=2, arrowstyle="->", color="red")
-            ax.add_artist(a)
-            ax.text(x_start+max_dir_mp[0]*min_range/3, y_start+max_dir_mp[1]*min_range/3,  z_min, '%s' % (max_dir_mp_str), size=15, zorder=10, color="red", horizontalalignment='left', verticalalignment='top',)
+            smrts_color = "red"
+        else:
+            max_dir_mp_str = "[0.5, 0.5]"
+            smrts_color = "orangered"
+            
+        max_dir_mp = float_direction(max_dir_mp_str)
+        # print(max_dir_mp)
+            
+        a = Arrow3D([x_start, x_start+max_dir_mp[0]*min_range/3], [y_start, y_start+max_dir_mp[1]*min_range/3], [ z_min,  z_min], mutation_scale=20, lw=2, arrowstyle="->", color=smrts_color)
+        ax.add_artist(a)
+        ax.text((x_start+max_dir_mp[0]*min_range/3+x_start)/2, (y_start+max_dir_mp[1]*min_range/3+y_start)/2,  z_min, '%s' % (max_dir_mp_str), size=15, zorder=10, color=smrts_color, horizontalalignment='center', verticalalignment='top', bbox=dict(boxstyle='round4', facecolor='white', alpha=0.3))
         
         ## 前進方向紀錄
         if len(dmu)-1 == i:
@@ -110,10 +123,10 @@ def plot_3D(dmu:list, stitle:str, target_input="insurance_exp", df:pd.DataFrame=
         y_end = df["investment_profit"][dmu[i+1]]
         z_end = df[target_input][dmu[i+1]]
         
-        a = Arrow3D([x_start, x_end], [y_start, y_end], [ z_min,  z_min], mutation_scale=20, lw=2, arrowstyle="->", color="gray")
+        a = Arrow3D([x_start, x_end], [y_start, y_end], [ z_min,  z_min], mutation_scale=20, lw=2, arrowstyle="->", color=color, alpha=.7)
         ax.add_artist(a)
         
-        ax.text(x_start, y_start,  z_min, "%.2f : %.2f" %(((x_end-x_start)/2)/(((x_end-x_start)/2) + ((y_end-y_start)/2)), ((y_end-y_start)/2)/(((x_end-x_start)/2) + ((y_end-y_start)/2))), horizontalalignment='left', verticalalignment='center', size=15,)
+        ax.text((x_end+x_start)/2, (y_end+y_start)/2,  z_min, "%.2f : %.2f" %(((x_end-x_start)/2)/(((x_end-x_start)/2) + ((y_end-y_start)/2)), ((y_end-y_start)/2)/(((x_end-x_start)/2) + ((y_end-y_start)/2))), horizontalalignment='left', verticalalignment='center', size=15, color=color)
             
     plt.legend(handles=lines, loc='lower left', ncol=2)
     
@@ -128,10 +141,6 @@ plot_3D(dmu=['Hontai Life 18', 'Hontai Life 19', 'Hontai Life 20'], stitle="Hont
 plt.draw()
 plt.show()
 #%%
-plot_3D(dmu=['Hontai Life 18', 'Hontai Life 19', 'Hontai Life 20'], stitle="Hontai Life", target_input="operation_exp", df=df.T[['Hontai Life 18', 'Hontai Life 19', 'Hontai Life 20']].T)
-plt.draw()
-plt.show()
-#%%
 dmus = ['Bank Taiwan Life ', 'Taiwan Life ', 'PCA Life ', 'Cathay Life ', 'China Life ', 'Nan Shan Life ', 'Shin Kong Life ', 'Fubon Life ', 'Mercuries Life ', 'Farglory Life ', 'Hontai Life ', 'Allianz Taiwan Life ', 'Chunghwa Post ', 'First-Aviva Life ', 'BNP Paribas Cardif TCB ', 'Prudential of Taiwan ', 'CIGNA ', 'Yuanta Life ', 'TransGlobe Life ', 'AIA Taiwan ', 'Cardif ', 'Chubb Tempest Life ']
 #%%
 ## visualize_progress
@@ -139,29 +148,18 @@ for k in dmus:
     for target_input in ["insurance_exp", "operation_exp"]:
         plot_3D(dmu=[k+n for n in ['18', '19', '20']], stitle=k, target_input=target_input, df=denoise_nonpositive(LIFE)/1000/1000)
         plt.draw()
-        plt.savefig("%s %s.png" %(k, target_input), dpi=400)
+        # plt.savefig("%s %s.png" %(k, target_input), dpi=400)
         plt.show()
 #%%
-df.plot.scatter("insurance_exp", "operation_exp")
-#%%
 df18 = denoise_nonpositive(FISCAL_LIFE2018)/1000/1000
-df18.plot.scatter("insurance_exp", "operation_exp")
-#%%
-plt.figure(figsize=(16, 9))
-plt.scatter(df18["insurance_exp"], df18["operation_exp"])
-for k, row in df18.iterrows():
-    plt.annotate(k, (row["insurance_exp"], row["operation_exp"]), fontsize=10)
-plt.xlabel("insurance_exp")
-plt.ylabel("operation_exp")
-plt.show()
-#%%
-plt.figure(figsize=(20, 15))
-plt.scatter(df["insurance_exp"], df["operation_exp"])
-for k, row in df.iterrows():
-    plt.annotate(k, (row["insurance_exp"], row["operation_exp"]), fontsize=10)
-plt.xlabel("insurance_exp")
-plt.ylabel("operation_exp")
-plt.show()
-#%%
+# plt.figure(figsize=(16, 9))
+# plt.scatter(df18["insurance_exp"], df18["operation_exp"])
+# for k, row in df18.iterrows():
+#     plt.annotate(k, (row["insurance_exp"], row["operation_exp"]), fontsize=10)
+# plt.xlabel("insurance_exp")
+# plt.ylabel("operation_exp")
+# plt.show()
 df20 = denoise_nonpositive(FISCAL_LIFE2020)/1000/1000
 #%%
+## 針對每個公司弄出一個表格來
+ana_dmu_cols = ["insurance_exp", "operation_exp", "underwriting_profit", "investment_profit", "output progress direction", "insurance_exp max direction of MP", "insurance_exp cosine similarity", "operation_exp max direction of MP", "operation_exp cosine similarity",]
