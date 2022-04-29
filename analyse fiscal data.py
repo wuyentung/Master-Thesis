@@ -67,6 +67,8 @@ def cal_cosine_similarity(vec_a, vec_b):
     norm_b = sum(b*b for b in vec_b) ** 0.5
 
     # Cosine similarity
+    if norm_b==0 or norm_a==0:
+        return 0
     cos_sim = dot / (norm_a*norm_b)
     return cos_sim
 #%%
@@ -126,7 +128,7 @@ def plot_3D(dmu:list, stitle:str, target_input="insurance_exp", df:pd.DataFrame=
         a = Arrow3D([x_start, x_end], [y_start, y_end], [ z_min,  z_min], mutation_scale=20, lw=2, arrowstyle="->", color=color, alpha=.7)
         ax.add_artist(a)
         
-        ax.text((x_end+x_start)/2, (y_end+y_start)/2,  z_min, "%.2f : %.2f" %(((x_end-x_start)/2)/(((x_end-x_start)/2) + ((y_end-y_start)/2)), ((y_end-y_start)/2)/(((x_end-x_start)/2) + ((y_end-y_start)/2))), horizontalalignment='left', verticalalignment='center', size=15, color=color)
+        ax.text((x_end+x_start)/2, (y_end+y_start)/2,  z_min, "%.2f : %.2f" %(((x_end-x_start)/2)/np.abs(((x_end-x_start)/2) + ((y_end-y_start)/2)), ((y_end-y_start)/2)/np.abs(((x_end-x_start)/2) + ((y_end-y_start)/2))), horizontalalignment='left', verticalalignment='center', size=15, color=color)
             
     plt.legend(handles=lines, loc='lower left', ncol=2)
     
@@ -163,3 +165,46 @@ df20 = denoise_nonpositive(FISCAL_LIFE2020)/1000/1000
 #%%
 ## 針對每個公司弄出一個表格來
 ana_dmu_cols = ["insurance_exp", "operation_exp", "underwriting_profit", "investment_profit", "output progress direction", "insurance_exp max direction of MP", "insurance_exp cosine similarity", "operation_exp max direction of MP", "operation_exp cosine similarity",]
+for k in dmus:
+    dmu_ks = [k+n for n in ['18', '19', '20']]
+    insurance_exps = df["insurance_exp"][dmu_ks]
+    operation_exps = df["operation_exp"][dmu_ks]
+    underwriting_profits = df["underwriting_profit"][dmu_ks]
+    investment_profits = df["investment_profit"][dmu_ks]
+    out_dirs = [
+        [((underwriting_profits[1]-underwriting_profits[0])/2)/np.abs(((underwriting_profits[1]-underwriting_profits[0])/2) + ((investment_profits[1]-investment_profits[0])/2)), ((investment_profits[1]-investment_profits[0])/2)/np.abs(((underwriting_profits[1]-underwriting_profits[0])/2) + ((investment_profits[1]-investment_profits[0])/2))], 
+        [((underwriting_profits[2]-underwriting_profits[1])/2)/np.abs(((underwriting_profits[2]-underwriting_profits[1])/2) + ((investment_profits[2]-investment_profits[1])/2)), ((investment_profits[2]-investment_profits[1])/2)/np.abs(((underwriting_profits[2]-underwriting_profits[1])/2) + ((investment_profits[2]-investment_profits[1])/2))], 
+        [np.nan, np.nan]
+               ]
+    ## insurance_exp max direction of MP
+    ## investment_profit max direction of MP
+    insurance_max_dirs = []
+    insurance_cos_sims = []
+    operation_max_dirs = []
+    operation_cos_sims = []
+    for target_input in ["insurance_exp", "operation_exp"]:
+        if "insurance_exp" == target_input:
+            smrts_dict = INSURANCE_SMRTS
+            max_dirs = insurance_max_dirs
+            cos_sims = insurance_cos_sims
+        else:
+            smrts_dict = OPERATION_SMRTS
+            max_dirs = operation_max_dirs
+            cos_sims = operation_cos_sims
+        
+        for n in range(3):
+            ## max direction of MP
+            if dmu_ks[n] in smrts_dict:
+                smrts_df = smrts_dict[dmu_ks[n]]
+                max_dir_mp_str = find_max_dir_mp(smrts_df)
+            else:
+                max_dir_mp_str = "[0.5, 0.5]"
+            max_dirs.append(float_direction(max_dir_mp_str))
+            # max_dir_mp = float_direction(max_dir_mp_str)
+            cos_sims.append(cal_cosine_similarity(out_dirs[n], max_dirs[n]))
+    break
+#%%
+plot_3D(dmu=['Bank Taiwan Life 18', 'Bank Taiwan Life 19', 'Bank Taiwan Life 20'], stitle="Bank Taiwan Life", target_input="insurance_exp")
+plt.draw()
+plt.show()
+#%%
