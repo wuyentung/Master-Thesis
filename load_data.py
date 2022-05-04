@@ -76,15 +76,21 @@ IDX = [
     '本期綜合損益總額',
     ]
 #%%
-cal_insurance_exp = lambda df, col: df[col]['  承保費用支出'] + df[col]['  佣金費用']
-cal_operation_exp = lambda df, col: df[col]['  其他營業成本'] + df[col]['  財務成本'] + df[col]['營業費用']
+def find_index(df:pd.DataFrame, target:str):
+    for idx in df.index:
+        if isinstance(idx, str) and target in idx:
+            return idx
+    raise ValueError(f"{target} is not in df.index")
+#%%
+cal_insurance_exp = lambda df, col: df[col][find_index(df, '承保費用支出')] + df[col][find_index(df, '佣金費用')]
+cal_operation_exp = lambda df, col: df[col][find_index(df, '其他營業成本')] + df[col][find_index(df, '財務成本')] + df[col][find_index(df, '營業費用')]
 
-cal_insurance_income = lambda df, col: df[col]['\u3000簽單保費收入'] - df[col]['\u3000\u3000\u3000未滿期保費準備淨變動'] + df[col]['\u3000手續費收入']
-cal_reinsurance_exp = lambda df, col: df[col]['\u3000減：再保費支出']
-cal_reinsurance_income = lambda df, col: df[col]['\u3000再保費收入']
+cal_insurance_income = lambda df, col: df[col][find_index(df, '簽單保費收入')] - df[col][find_index(df, '\u3000\u3000\u3000未滿期保費準備淨變動')] + df[col][find_index(df, '\u3000手續費收入')]
+cal_reinsurance_exp = lambda df, col: df[col][find_index(df, '\u3000減：再保費支出')]
+cal_reinsurance_income = lambda df, col: df[col][find_index(df, '\u3000再保費收入')]
 
-cal_underwriting_profit = lambda df, col: df[col]['營業收入'] - df[col]['營業成本'] - df[col]['營業費用'] - df[col]['\u3000淨投資損益']
-cal_investment_profit = lambda df, col: df[col]['\u3000淨投資損益']
+cal_underwriting_profit = lambda df, col: df[col][find_index(df, '營業收入')] - df[col][find_index(df, '營業成本')] - df[col][find_index(df, '營業費用')] - df[col][find_index(df, '\u3000淨投資損益')]
+cal_investment_profit = lambda df, col: df[col][find_index(df, '\u3000淨投資損益')]
 #%%
 def single_insurer(df, name):
     try:
@@ -109,4 +115,21 @@ FISCAL_LIFE2019 = pd.DataFrame([single_insurer(df=life2019_raw_df, name=name) fo
 FISCAL_LIFE2020 = pd.DataFrame([single_insurer(df=life2020_raw_df, name=name) for name in ENG_NAMES_18], index=[name+" 20" for name in ENG_NAMES_18], columns=FISCAL_ATTRIBUTES).astype("float")
 LIFE181920 = pd.concat([FISCAL_LIFE2018, FISCAL_LIFE2019, FISCAL_LIFE2020])
 # denoise_nonpositive(df=LIFE)["reinsurance_income"].to_list()
+#%%
+files141516 = os.listdir("./fisal data 14-16")
+#%%
+life2014_raw_df = pd.read_excel("./fisal data 14-16/%s" %files141516[0], header=3, index_col=0)
+life2015_raw_df = pd.read_excel("./fisal data 14-16/%s" %files141516[1], header=3, index_col=0)
+life2016_raw_df = pd.read_excel("./fisal data 14-16/%s" %files141516[2], header=3, index_col=0)
+#%%
+ENG_NAMES_14 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Global Life', 'Mercuries Life', 'Chaoyang Life', 'Singfor Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'CTBC Life', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'ACE Tempest Life', 'Zurich']
+
+ENG_NAMES_15 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Mercuries Life', 'Chaoyang Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'CTBC Life', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'ACE Tempest Life', 'Zurich']
+
+ENG_NAMES_16 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Mercuries Life', 'Chaoyang Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'Chubb Tempest Life', 'Zurich']
+FISCAL_LIFE2014 = pd.DataFrame([single_insurer(df=life2014_raw_df, name=name) for name in ENG_NAMES_14], index=[name+" 14" for name in ENG_NAMES_14], columns=FISCAL_ATTRIBUTES)
+FISCAL_LIFE2015 = pd.DataFrame([single_insurer(df=life2015_raw_df, name=name) for name in ENG_NAMES_15], index=[name+" 15" for name in ENG_NAMES_15], columns=FISCAL_ATTRIBUTES)
+FISCAL_LIFE2016 = pd.DataFrame([single_insurer(df=life2016_raw_df, name=name) for name in ENG_NAMES_16], index=[name+" 16" for name in ENG_NAMES_16], columns=FISCAL_ATTRIBUTES)
+#%%
+LIFE141516 = pd.concat([FISCAL_LIFE2014, FISCAL_LIFE2015, FISCAL_LIFE2016])
 #%%
