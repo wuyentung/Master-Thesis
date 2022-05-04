@@ -26,3 +26,6 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
 #%%
 INSURANCE_SMRTS181920 = sys_smrts(df=LIFE181920, i_star=0)
 OPERATION_SMRTS181920 = sys_smrts(df=LIFE181920, i_star=1)
+#%%
+INSURANCE_SMRTS141516 = sys_smrts(df=LIFE141516, i_star=0)
+OPERATION_SMRTS141516 = sys_smrts(df=LIFE141516, i_star=1)
