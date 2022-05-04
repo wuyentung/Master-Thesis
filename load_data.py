@@ -108,6 +108,6 @@ def denoise_nonpositive(df:pd.DataFrame, min_value=.1):
                     # print(df[col][index])
     return df
 #%%
-LIFE = pd.concat([FISCAL_LIFE2018, FISCAL_LIFE2019, FISCAL_LIFE2020])
+LIFE181920 = pd.concat([FISCAL_LIFE2018, FISCAL_LIFE2019, FISCAL_LIFE2020])
 # denoise_nonpositive(df=LIFE)["reinsurance_income"].to_list()
 #%%

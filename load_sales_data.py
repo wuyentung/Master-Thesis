@@ -2,7 +2,7 @@
 import os
 import pandas as pd
 import numpy as np
-from load_data import LIFE, FISCAL_LIFE2019, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
+from load_data import LIFE181920, FISCAL_LIFE2019, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
 #%%
 ENG_NAMES = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life',  'Mercuries Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'Chubb Tempest Life']
 life2018_raw_df = pd.read_excel("./sales data/2018.xlsx", header=0, index_col=0).replace({'－': "1"}).astype("int32")
@@ -38,7 +38,7 @@ ATTRIBUTES = ['insurance_exp', 'operation_exp', 'Health insrance underwriting pr
 LIFE2018 = preprocessing(life2018_raw_df, "18")
 LIFE2019 = preprocessing(life2019_raw_df, "19")
 LIFE2020 = preprocessing(life2020_raw_df, "20")
-LIFE = pd.concat([LIFE2018, LIFE2019, LIFE2020])
+LIFE181920 = pd.concat([LIFE2018, LIFE2019, LIFE2020])
 #%%
 def denoise_nonpositive(df:pd.DataFrame, min_value=.1):
     ## correct df to at least .1 if there is value <= 0

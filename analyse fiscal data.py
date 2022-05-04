@@ -12,7 +12,7 @@ import numpy as np
 import dmp
 import solver
 import solver_r
-from load_data import LIFE, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
+from load_data import LIFE181920, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
 from exp_fiscal_data import OPERATION_SMRTS, INSURANCE_SMRTS
 from itertools import combinations
 import matplotlib.pyplot as plt
@@ -21,7 +21,7 @@ CMAP = plt.get_cmap('plasma')
 #%%
 eff_dmu = ['Hontai Life 18', 'Chunghwa Post 18', 'First-Aviva Life 18', 'Hontai Life 19', 'First-Aviva Life 19', 'Bank Taiwan Life 20', 'Taiwan Life 20', 'Cathay Life 20', 'China Life 20', 'Nan Shan Life 20', 'Shin Kong Life 20', 'Fubon Life 20', 'Hontai Life 20', 'Chunghwa Post 20', 'First-Aviva Life 20', 'BNP Paribas Cardif TCB 20', 'CIGNA 20', 'Cardif 20']
 #%%
-df = denoise_nonpositive(LIFE)/1000/1000
+df = denoise_nonpositive(LIFE181920)/1000/1000
 
 #%%
 import fiscal_analyzing_utils as utils
@@ -37,7 +37,7 @@ for k in dmus:
             smrts_dict=INSURANCE_SMRTS
         else:
             smrts_dict=OPERATION_SMRTS
-        utils.plot_3D(dmu=[k+n for n in ['18', '19', '20']], stitle=k, target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE)/1000/1000)
+        utils.plot_3D(dmu=[k+n for n in ['18', '19', '20']], stitle=k, target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE181920)/1000/1000)
         # plt.savefig("%s %s.png" %(k, target_input), dpi=400)
         plt.show()
 #%%

@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 import solver
 import solver_r
-from load_data import LIFE, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
+from load_data import LIFE181920, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
@@ -71,10 +71,10 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
         exp[eff_dmu_name[old_key]] = exp.pop(old_key)
     return exp
 # #%%
-expALL = sys_smrts(df=LIFE, i_star=0)
+expALL = sys_smrts(df=LIFE181920, i_star=0)
 #%%
 for i in range(2):
-    dmp.show_smrts(sys_smrts(df=LIFE, i_star=i), path="life million %s.txt" %i)
+    dmp.show_smrts(sys_smrts(df=LIFE181920, i_star=i), path="life million %s.txt" %i)
 #%%
 # exp18 = sys_smrts(df=LIFE2018)
 # #%%
@@ -84,7 +84,7 @@ for i in range(2):
 ## 好奇怪，個別年的算得出來，綜合在一起卻算不出來，不知道會不會是 transform 的問題
 #%%
 ## 成功計算出 s-MRTS 後視覺化資料
-def plot_3D(dmu:list, stitle:str, i_star=0, df:pd.DataFrame=LIFE, exp_dict:dict=None):
+def plot_3D(dmu:list, stitle:str, i_star=0, df:pd.DataFrame=LIFE181920, exp_dict:dict=None):
     label_size = 20
     title_size = 20
     
@@ -115,8 +115,8 @@ def plot_3D(dmu:list, stitle:str, i_star=0, df:pd.DataFrame=LIFE, exp_dict:dict=
     plt.tight_layout()
 #%%
 i = 0
-s = "2018-20 life million %s"%(LIFE.columns[i])
-plot_3D(list(expALL.keys()), s, exp_dict=sys_smrts(LIFE, i_star=i), i_star=i, df=denoise_nonpositive(LIFE)/1000/1000)
+s = "2018-20 life million %s"%(LIFE181920.columns[i])
+plot_3D(list(expALL.keys()), s, exp_dict=sys_smrts(LIFE181920, i_star=i), i_star=i, df=denoise_nonpositive(LIFE181920)/1000/1000)
 plt.savefig(s+".png", dpi=400)
 plt.show()
 #%%
@@ -218,7 +218,7 @@ def comb_fun(df:pd.DataFrame, fun, comb_n=None):
 #%%
 # combs_smrts, combs_comb = comb_fun(df=LIFE.T[eff_dmuALL].T, fun=sys_smrts)
 ## 結果在下一行找好了
-denoise_LIFE = denoise_nonpositive(LIFE)
+denoise_LIFE = denoise_nonpositive(LIFE181920)
 success_smrts_dmu = ['Chunghwa Post 18', 'TransGlobe Life 18', 'Hontai Life 19', 'Bank Taiwan Life 20', 'Taiwan Life 20', 'Cathay Life 20', 'China Life 20', 'Nan Shan Life 20', 'Shin Kong Life 20', 'Fubon Life 20', 'Hontai Life 20']
 success_smrts_df = denoise_LIFE.T[success_smrts_dmu].T
 success_smrts = sys_smrts(success_smrts_df)
@@ -252,9 +252,9 @@ from sklearn.cluster import KMeans
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import AgglomerativeClustering
 #%%
-Z = linkage(LIFE[FISCAL_ATTRIBUTES[:2]], method='ward')
+Z = linkage(LIFE181920[FISCAL_ATTRIBUTES[:2]], method='ward')
 plt.figure(figsize=(12, 8))
-dn = dendrogram(Z, above_threshold_color='#bcbddc', orientation='right', labels=LIFE.index.to_list(),)
+dn = dendrogram(Z, above_threshold_color='#bcbddc', orientation='right', labels=LIFE181920.index.to_list(),)
 plt.title("HAC for input", fontsize=25)
 plt.xlabel("cluster distance", fontsize=20)
 plt.ylabel("Life Insurance companies 18-20", fontsize=20)
@@ -262,9 +262,9 @@ plt.ylabel("Life Insurance companies 18-20", fontsize=20)
 plt.show()
 #%%
 K_cluster = 2
-hac = AgglomerativeClustering(n_clusters=K_cluster, affinity='euclidean', linkage='ward').fit_predict(LIFE[FISCAL_ATTRIBUTES[:2]])
+hac = AgglomerativeClustering(n_clusters=K_cluster, affinity='euclidean', linkage='ward').fit_predict(LIFE181920[FISCAL_ATTRIBUTES[:2]])
 #%%
-hac_life = pd.concat([LIFE, pd.DataFrame(hac, columns=["HAC cluster"], index=LIFE.index)], axis=1)
+hac_life = pd.concat([LIFE181920, pd.DataFrame(hac, columns=["HAC cluster"], index=LIFE181920.index)], axis=1)
 #%%
 combs_hac0_smrts, combs_hac0_comb = comb_fun(df=hac_life[hac_life["HAC cluster"] == 0], fun=sys_smrts)
 # print(combs_hac0_comb[0])
