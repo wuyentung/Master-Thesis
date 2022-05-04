@@ -3,11 +3,28 @@ import os
 import pandas as pd
 import numpy as np
 #%%
-files = os.listdir("./fisal data")
+def denoise_nonpositive(df:pd.DataFrame, min_value=.1):
+    ## correct df to at least .1 if there is value <= 0
+    df = df.copy()
+    for col in df.columns:
+        if df[col].min()-min_value < 0:
+            # print(col)
+            # print(df[col])
+            # print()
+            df[col] = df[col] + np.abs(df[col].min()) +1
+            # print(df[col])
+            for index, value in df[col].items():
+                if value-min_value < 0:
+                # if value == df[col].min():
+                    df[col][index]+=min_value
+                    # print(df[col][index])
+    return df
 #%%
-life2018_raw_df = pd.read_excel("./fisal data/%s" %files[0], header=3, index_col=0)
-life2019_raw_df = pd.read_excel("./fisal data/%s" %files[1], header=3, index_col=0)
-life2020_raw_df = pd.read_excel("./fisal data/%s" %files[2], header=3, index_col=0)
+files = os.listdir("./fisal data 18-20")
+#%%
+life2018_raw_df = pd.read_excel("./fisal data 18-20/%s" %files[0], header=3, index_col=0)
+life2019_raw_df = pd.read_excel("./fisal data 18-20/%s" %files[1], header=3, index_col=0)
+life2020_raw_df = pd.read_excel("./fisal data 18-20/%s" %files[2], header=3, index_col=0)
 #%%
 ENG_NAMES_18 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life',  'Mercuries Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'Chubb Tempest Life']
 CHI_NAMES_18 = ['臺銀人壽', '台灣人壽', '保誠人壽', '國泰人壽', '中國人壽', '南山人壽', '新光人壽', '富邦人壽', '三商美邦人壽' '遠雄人壽', '宏泰人壽', '安聯人壽', '中華郵政', '第一金人壽', '合作金庫人壽', '保德信國際人壽', '康健人壽', '元大人壽', '全球人壽', '友邦人壽', '法國巴黎人壽', '安達人壽',]
@@ -90,24 +107,6 @@ FISCAL_ATTRIBUTES = ["insurance_exp", "operation_exp", "insurance_income", "rein
 FISCAL_LIFE2018 = pd.DataFrame([single_insurer(df=life2018_raw_df, name=name) for name in ENG_NAMES_18], index=[name+" 18" for name in ENG_NAMES_18], columns=["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"])
 FISCAL_LIFE2019 = pd.DataFrame([single_insurer(df=life2019_raw_df, name=name) for name in ENG_NAMES_18], index=[name+" 19" for name in ENG_NAMES_18], columns=["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"])
 FISCAL_LIFE2020 = pd.DataFrame([single_insurer(df=life2020_raw_df, name=name) for name in ENG_NAMES_18], index=[name+" 20" for name in ENG_NAMES_18], columns=["insurance_exp", "operation_exp", "insurance_income", "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"]).astype("float")
-#%%
-def denoise_nonpositive(df:pd.DataFrame, min_value=.1):
-    ## correct df to at least .1 if there is value <= 0
-    df = df.copy()
-    for col in df.columns:
-        if df[col].min()-min_value < 0:
-            # print(col)
-            # print(df[col])
-            # print()
-            df[col] = df[col] + np.abs(df[col].min()) +1
-            # print(df[col])
-            for index, value in df[col].items():
-                if value-min_value < 0:
-                # if value == df[col].min():
-                    df[col][index]+=min_value
-                    # print(df[col][index])
-    return df
-#%%
 LIFE181920 = pd.concat([FISCAL_LIFE2018, FISCAL_LIFE2019, FISCAL_LIFE2020])
 # denoise_nonpositive(df=LIFE)["reinsurance_income"].to_list()
 #%%
