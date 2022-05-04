@@ -22,10 +22,10 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
     old_keys = list(exp.keys())
     for old_key in old_keys:
         exp[eff_dmu_name[old_key]] = exp.pop(old_key)
-    return exp
+    return exp, eff_dict
 #%%
-INSURANCE_SMRTS181920 = sys_smrts(df=LIFE181920, i_star=0)
-OPERATION_SMRTS181920 = sys_smrts(df=LIFE181920, i_star=1)
+INSURANCE_SMRTS181920, EFF_DICT181920 = sys_smrts(df=LIFE181920, i_star=0)
+OPERATION_SMRTS181920, EFF_DICT181920 = sys_smrts(df=LIFE181920, i_star=1)
 #%%
-INSURANCE_SMRTS141516 = sys_smrts(df=LIFE141516, i_star=0)
-OPERATION_SMRTS141516 = sys_smrts(df=LIFE141516, i_star=1)
+INSURANCE_SMRTS141516, EFF_DICT141516 = sys_smrts(df=LIFE141516, i_star=0)
+OPERATION_SMRTS141516, EFF_DICT141516 = sys_smrts(df=LIFE141516, i_star=1)
