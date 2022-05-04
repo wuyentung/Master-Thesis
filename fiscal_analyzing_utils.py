@@ -5,7 +5,7 @@ import dmp
 import solver
 import solver_r
 from load_data import LIFE181920, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
-from exp_fiscal_data import OPERATION_SMRTS, INSURANCE_SMRTS
+from exp_fiscal_data import OPERATION_SMRTS181920, INSURANCE_SMRTS181920
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
@@ -143,11 +143,11 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame, round_to=2):
     operation_cos_sims = []
     for target_input in ["insurance_exp", "operation_exp"]:
         if "insurance_exp" == target_input:
-            smrts_dict = INSURANCE_SMRTS
+            smrts_dict = INSURANCE_SMRTS181920
             max_dirs = insurance_max_dirs
             cos_sims = insurance_cos_sims
         else:
-            smrts_dict = OPERATION_SMRTS
+            smrts_dict = OPERATION_SMRTS181920
             max_dirs = operation_max_dirs
             cos_sims = operation_cos_sims
         

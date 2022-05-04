@@ -3,7 +3,7 @@ import dmp
 import pandas as pd
 import numpy as np
 import solver
-from load_data import LIFE181920, denoise_nonpositive
+from load_data import LIFE181920, denoise_nonpositive, LIFE141516
 #%%
 def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
     ## transform data
@@ -24,5 +24,5 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
         exp[eff_dmu_name[old_key]] = exp.pop(old_key)
     return exp
 #%%
-INSURANCE_SMRTS = sys_smrts(df=LIFE181920, i_star=0)
-OPERATION_SMRTS = sys_smrts(df=LIFE181920, i_star=1)
+INSURANCE_SMRTS181920 = sys_smrts(df=LIFE181920, i_star=0)
+OPERATION_SMRTS181920 = sys_smrts(df=LIFE181920, i_star=1)

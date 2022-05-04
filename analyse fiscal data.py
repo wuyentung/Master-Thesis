@@ -13,7 +13,7 @@ import dmp
 import solver
 import solver_r
 from load_data import LIFE181920, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
-from exp_fiscal_data import OPERATION_SMRTS, INSURANCE_SMRTS
+from exp_fiscal_data import OPERATION_SMRTS181920, INSURANCE_SMRTS181920
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
@@ -25,7 +25,7 @@ df = denoise_nonpositive(LIFE181920)/1000/1000
 
 #%%
 import fiscal_analyzing_utils as utils
-utils.plot_3D(dmu=['Hontai Life 18', 'Hontai Life 19', 'Hontai Life 20'], stitle="Hontai Life", target_input="insurance_exp", smrts_dict=INSURANCE_SMRTS, df=df)
+utils.plot_3D(dmu=['Hontai Life 18', 'Hontai Life 19', 'Hontai Life 20'], stitle="Hontai Life", target_input="insurance_exp", smrts_dict=INSURANCE_SMRTS181920, df=df)
 plt.show()
 #%%
 dmus = ['Bank Taiwan Life ', 'Taiwan Life ', 'PCA Life ', 'Cathay Life ', 'China Life ', 'Nan Shan Life ', 'Shin Kong Life ', 'Fubon Life ', 'Mercuries Life ', 'Farglory Life ', 'Hontai Life ', 'Allianz Taiwan Life ', 'Chunghwa Post ', 'First-Aviva Life ', 'BNP Paribas Cardif TCB ', 'Prudential of Taiwan ', 'CIGNA ', 'Yuanta Life ', 'TransGlobe Life ', 'AIA Taiwan ', 'Cardif ', 'Chubb Tempest Life ']
@@ -34,9 +34,9 @@ dmus = ['Bank Taiwan Life ', 'Taiwan Life ', 'PCA Life ', 'Cathay Life ', 'China
 for k in dmus:
     for target_input in ["insurance_exp", "operation_exp"]:
         if "insurance_exp" == target_input:
-            smrts_dict=INSURANCE_SMRTS
+            smrts_dict=INSURANCE_SMRTS181920
         else:
-            smrts_dict=OPERATION_SMRTS
+            smrts_dict=OPERATION_SMRTS181920
         utils.plot_3D(dmu=[k+n for n in ['18', '19', '20']], stitle=k, target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE181920)/1000/1000)
         # plt.savefig("%s %s.png" %(k, target_input), dpi=400)
         plt.show()
