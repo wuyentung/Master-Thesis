@@ -133,3 +133,7 @@ FISCAL_LIFE2016 = pd.DataFrame([single_insurer(df=life2016_raw_df, name=name) fo
 #%%
 LIFE141516 = pd.concat([FISCAL_LIFE2014, FISCAL_LIFE2015, FISCAL_LIFE2016])
 #%%
+LIFE_DUMMY141516 = LIFE141516.copy()
+LIFE_DUMMY141516.loc["DUMMY Cathay 15"] = LIFE141516.loc["Global Life 14"] + LIFE141516.loc["Cathay Life 14"] + LIFE141516.loc["Singfor Life 14"]
+LIFE_DUMMY141516.loc["DUMMY Taiwan 16"] = LIFE141516.loc["Taiwan Life 15"] + LIFE141516.loc["CTBC Life 15"]
+#%%
