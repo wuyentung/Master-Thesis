@@ -158,11 +158,11 @@ LIFE181920 = pd.concat([FISCAL_LIFE2018, FISCAL_LIFE2019, FISCAL_LIFE2020])
 files141516 = os.listdir("./fisal data 14-16")
 # %%
 life2014_raw_df = pd.read_excel(
-    "./fisal data 14-16/%s" % files141516[0], header=3, index_col=0)
+    "./fisal data 14-16/PDF2060_2014.xls", header=3, index_col=0)
 life2015_raw_df = pd.read_excel(
-    "./fisal data 14-16/%s" % files141516[1], header=3, index_col=0)
+    "./fisal data 14-16/PDF2060_2015.xls", header=3, index_col=0)
 life2016_raw_df = pd.read_excel(
-    "./fisal data 14-16/%s" % files141516[2], header=3, index_col=0)
+    "./fisal data 14-16/PDF2060_2016.xls", header=3, index_col=0)
 # %%
 ENG_NAMES_14 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Global Life', 'Mercuries Life', 'Chaoyang Life', 'Singfor Life', 'Farglory Life',
                 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'CTBC Life', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'ACE Tempest Life', 'Zurich']
@@ -172,12 +172,17 @@ ENG_NAMES_15 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'C
 
 ENG_NAMES_16 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Mercuries Life', 'Chaoyang Life', 'Farglory Life', 'Hontai Life',
                 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'Chubb Tempest Life', 'Zurich']
-FISCAL_LIFE2014 = pd.DataFrame([single_insurer(df=life2014_raw_df, name=name) for name in ENG_NAMES_14], index=[
-                               name+" 14" for name in ENG_NAMES_14], columns=FISCAL_ATTRIBUTES)
-FISCAL_LIFE2015 = pd.DataFrame([single_insurer(df=life2015_raw_df, name=name) for name in ENG_NAMES_15], index=[
-                               name+" 15" for name in ENG_NAMES_15], columns=FISCAL_ATTRIBUTES)
-FISCAL_LIFE2016 = pd.DataFrame([single_insurer(df=life2016_raw_df, name=name) for name in ENG_NAMES_16], index=[
-                               name+" 16" for name in ENG_NAMES_16], columns=FISCAL_ATTRIBUTES)
+try:
+    FISCAL_LIFE2014 = pd.DataFrame([single_insurer(df=life2014_raw_df, name=name) for name in ENG_NAMES_14], index=[
+        name+" 14" for name in ENG_NAMES_14], columns=FISCAL_ATTRIBUTES)
+    FISCAL_LIFE2015 = pd.DataFrame([single_insurer(df=life2015_raw_df, name=name) for name in ENG_NAMES_15], index=[
+        name+" 15" for name in ENG_NAMES_15], columns=FISCAL_ATTRIBUTES)
+    FISCAL_LIFE2016 = pd.DataFrame([single_insurer(df=life2016_raw_df, name=name) for name in ENG_NAMES_16], index=[
+        name+" 16" for name in ENG_NAMES_16], columns=FISCAL_ATTRIBUTES)
+except:
+    FISCAL_LIFE2014 = pd.read_csv("./fisal data 14-16/2014.csv", index_col=0)
+    FISCAL_LIFE2015 = pd.read_csv("./fisal data 14-16/2015.csv", index_col=0)
+    FISCAL_LIFE2016 = pd.read_csv("./fisal data 14-16/2016.csv", index_col=0)
 # %%
 LIFE141516 = pd.concat([FISCAL_LIFE2014, FISCAL_LIFE2015, FISCAL_LIFE2016])
 # %%
