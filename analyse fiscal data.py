@@ -123,3 +123,34 @@ utils.get_analyze_df(dmu_ks=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16
 #%%
 utils.get_analyze_df(dmu_ks=["Global Life 14", "Singfor Life 14", 'Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', "DUMMY Cathay 15", 'CTBC Life 14', 'CTBC Life 15', 'Taiwan Life 14','Taiwan Life 15', 'Taiwan Life 16', 'DUMMY Taiwan 16', ], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000, round_to=4).to_excel("14-16 merged_dmu analysis.xlsx")
 #%%
+utils.get_analyze_df(
+    dmu_ks=[
+        'AIA Taiwan 14', 'AIA Taiwan 15', 'AIA Taiwan 16', 
+        'Allianz Taiwan Life 14', 'Allianz Taiwan Life 15', 'Allianz Taiwan Life 16', 
+        'Bank Taiwan Life 14', 'Bank Taiwan Life 15', 'Bank Taiwan Life 16', 
+        'BNP Paribas Cardif TCB 14', 'BNP Paribas Cardif TCB 15', 'BNP Paribas Cardif TCB 16', 
+        'Cardif 14', 'Cardif 15', 'Cardif 16', 
+        'Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', "DUMMY Cathay 15", 
+        'Chaoyang Life 14', 'Chaoyang Life 15', 'Chaoyang Life 16', 
+        'China Life 14', 'China Life 15', 'China Life 16', 
+        "ACE Tempest Life 14", "ACE Tempest Life 15", 'Chubb Tempest Life 16', 
+        'Chunghwa Post 14', 'Chunghwa Post 15', 'Chunghwa Post 16', 
+        'CIGNA 14', 'CIGNA 15', 'CIGNA 16', 
+        "CTBC Life 14", "CTBC Life 15", 
+        'Farglory Life 14', 'Farglory Life 15', 'Farglory Life 16', 
+        'First-Aviva Life 14', 'First-Aviva Life 15', 'First-Aviva Life 16', 
+        'Fubon Life 14', 'Fubon Life 15', 'Fubon Life 16',
+        "Global Life 14", 
+        'Hontai Life 14', 'Hontai Life 15', 'Hontai Life 16', 
+        'Mercuries Life 14', 'Mercuries Life 15', 'Mercuries Life 16', 
+        'Nan Shan Life 14', 'Nan Shan Life 15', 'Nan Shan Life 16', 
+        'PCA Life 14', 'PCA Life 15', 'PCA Life 16', 
+        'Prudential of Taiwan 14', 'Prudential of Taiwan 15', 'Prudential of Taiwan 16', 
+        "Singfor Life 14", 
+        'Shin Kong Life 14', 'Shin Kong Life 15', 'Shin Kong Life 16', 
+        'Taiwan Life 14', 'Taiwan Life 15', 'Taiwan Life 16', "DUMMY Taiwan 16", 
+        'TransGlobe Life 14', 'TransGlobe Life 15', 'TransGlobe Life 16', 
+        'Yuanta Life 14', 'Yuanta Life 15', 'Yuanta Life 16', 
+        'Zurich 14', 'Zurich 15', 'Zurich 16', 
+            ], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000, round_to=4).to_excel("14-16 all_dmu analysis.xlsx")
+#%%
