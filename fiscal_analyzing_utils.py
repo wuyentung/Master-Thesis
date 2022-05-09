@@ -6,7 +6,7 @@ import dmp
 import solver
 import solver_r
 from load_data import LIFE181920, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
-from exp_fiscal_data import OPERATION_SMRTS181920, INSURANCE_SMRTS181920
+from exp_fiscal_data import OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
@@ -128,16 +128,18 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
     ax.set_title("\n".join(wrap(stitle, 50)), fontsize=title_size)
     plt.tight_layout()
 #%%
+#%%
 def get_analyze_df(dmu_ks:list, df:pd.DataFrame, round_to=2):
+    
     insurance_exps = df["insurance_exp"][dmu_ks]
     operation_exps = df["operation_exp"][dmu_ks]
     underwriting_profits = df["underwriting_profit"][dmu_ks]
     investment_profits = df["investment_profit"][dmu_ks]
-    out_dirs = [
-        [((underwriting_profits[1]-underwriting_profits[0])/2)/np.abs(((underwriting_profits[1]-underwriting_profits[0])/2) + ((investment_profits[1]-investment_profits[0])/2)), ((investment_profits[1]-investment_profits[0])/2)/np.abs(((underwriting_profits[1]-underwriting_profits[0])/2) + ((investment_profits[1]-investment_profits[0])/2))], 
-        [((underwriting_profits[2]-underwriting_profits[1])/2)/np.abs(((underwriting_profits[2]-underwriting_profits[1])/2) + ((investment_profits[2]-investment_profits[1])/2)), ((investment_profits[2]-investment_profits[1])/2)/np.abs(((underwriting_profits[2]-underwriting_profits[1])/2) + ((investment_profits[2]-investment_profits[1])/2))], 
-        [np.nan, np.nan]
-               ]
+    
+    def _out_dir(start_idx, end_idx):
+        return [((underwriting_profits[end_idx]-underwriting_profits[0])/2)/np.abs(((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + ((investment_profits[end_idx]-investment_profits[start_idx])/2)), ((investment_profits[end_idx]-investment_profits[start_idx])/2)/np.abs(((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + ((investment_profits[end_idx]-investment_profits[start_idx])/2))]
+    out_dirs = [_out_dir(i, i+1) for i in range(len(dmu_ks)-1)]
+    out_dirs.append([np.nan, np.nan])
     ## insurance_exp max direction of MP
     ## investment_profit max direction of MP
     insurance_max_dirs = []
@@ -146,15 +148,15 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame, round_to=2):
     operation_cos_sims = []
     for target_input in ["insurance_exp", "operation_exp"]:
         if "insurance_exp" == target_input:
-            smrts_dict = INSURANCE_SMRTS181920
+            smrts_dict = INSURANCE_SMRTS_DUMMY141516
             max_dirs = insurance_max_dirs
             cos_sims = insurance_cos_sims
         else:
-            smrts_dict = OPERATION_SMRTS181920
+            smrts_dict = OPERATION_SMRTS_DUMMY141516
             max_dirs = operation_max_dirs
             cos_sims = operation_cos_sims
         
-        for n in range(3):
+        for n in range(len(dmu_ks)):
             ## max direction of MP
             if dmu_ks[n] in smrts_dict:
                 smrts_df = smrts_dict[dmu_ks[n]]
