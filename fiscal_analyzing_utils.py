@@ -1,4 +1,5 @@
 import os
+from matplotlib.axes import Axes
 import pandas as pd
 import numpy as np
 import dmp
@@ -59,12 +60,14 @@ def _cal_cosine_similarity(vec_a, vec_b):
     cos_sim = dot / (norm_a*norm_b)
     return cos_sim
 ## 成功計算出 s-MRTS 後視覺化資料
-def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input="insurance_exp", view_v=45, view_h=-80):
+def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input="insurance_exp", view_v=45, view_h=-80, dummy_dmu:list=None):
     
     if "insurance_exp" != target_input and "operation_exp" != target_input:
         raise ValueError("target_input should be 'insurance_exp' or 'operation_exp'.")
-    
-    df = df.T[dmu].T
+    if dummy_dmu is None:
+        dummy_dmu = []
+    all_dmu = dmu+dummy_dmu
+    df = df.T[all_dmu].T
     
     label_size = 20
     title_size = 20
@@ -75,21 +78,21 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
     y_range = df["investment_profit"].max() - df["investment_profit"].min()
     min_range = np.min([x_range, y_range])
     # ax.stem(data.y1, data.y2, data.x1) // can be implemented as follows
-    for i in range(len(dmu)):
-        color = CMAP(i/len(dmu))
+    for i in range(len(all_dmu)):
+        color = CMAP(i/len(all_dmu))
         
-        x_start = df["underwriting_profit"][dmu[i]]
-        y_start = df["investment_profit"][dmu[i]]
-        z_start = df[target_input][dmu[i]]
-        z_min =  min(df[target_input][dmu])
+        x_start = df["underwriting_profit"][all_dmu[i]]
+        y_start = df["investment_profit"][all_dmu[i]]
+        z_start = df[target_input][all_dmu[i]]
+        z_min =  min(df[target_input])
         
         ax.plot3D([x_start, x_start], [y_start, y_start], [z_start, z_min], color=color, zorder=1, linestyle="--", alpha=.9)
         ax.scatter(x_start, y_start, z_start, marker="o", s=30, color=color, zorder=2)
-        ax.text(x_start, y_start, z_start, '%s' % (dmu[i]), size=15, zorder=10, color="black", horizontalalignment='center', verticalalignment='bottom',)
+        ax.text(x_start, y_start, z_start, '%s' % (all_dmu[i]), size=15, zorder=10, color="black", horizontalalignment='center', verticalalignment='bottom',)
         
         ## max direction of MP
-        if dmu[i] in smrts_dict:
-            smrts_df = smrts_dict[dmu[i]]
+        if all_dmu[i] in smrts_dict:
+            smrts_df = smrts_dict[all_dmu[i]]
             max_dir_mp_str = _find_max_dir_mp(smrts_df)
             # print(max_dir_mp_str)
             smrts_color = "red"
@@ -105,7 +108,7 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
         ax.text((x_start+max_dir_mp[0]*min_range/3+x_start)/2, (y_start+max_dir_mp[1]*min_range/3+y_start)/2,  z_min, '%s' % (max_dir_mp_str), size=15, zorder=10, color=smrts_color, horizontalalignment='center', verticalalignment='top', bbox=dict(boxstyle='round4', facecolor='white', alpha=0.3))
         
         ## 前進方向紀錄
-        if len(dmu)-1 == i:
+        if len(dmu)-1 <= i:
             continue
         x_end = df["underwriting_profit"][dmu[i+1]]
         y_end = df["investment_profit"][dmu[i+1]]

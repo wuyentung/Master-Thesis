@@ -164,14 +164,11 @@ life2015_raw_df = pd.read_excel(
 life2016_raw_df = pd.read_excel(
     "./fisal data 14-16/PDF2060_2016.xls", header=3, index_col=0)
 # %%
-ENG_NAMES_14 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Global Life', 'Mercuries Life', 'Chaoyang Life', 'Singfor Life', 'Farglory Life',
-                'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'CTBC Life', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'ACE Tempest Life', 'Zurich']
+ENG_NAMES_14 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Global Life', 'Mercuries Life', 'Chaoyang Life', 'Singfor Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'CTBC Life', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'ACE Tempest Life', 'Zurich']
 
-ENG_NAMES_15 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Mercuries Life', 'Chaoyang Life', 'Farglory Life', 'Hontai Life',
-                'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'CTBC Life', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'ACE Tempest Life', 'Zurich']
+ENG_NAMES_15 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Mercuries Life', 'Chaoyang Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'CTBC Life', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'ACE Tempest Life', 'Zurich']
 
-ENG_NAMES_16 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Mercuries Life', 'Chaoyang Life', 'Farglory Life', 'Hontai Life',
-                'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'Chubb Tempest Life', 'Zurich']
+ENG_NAMES_16 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Mercuries Life', 'Chaoyang Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'Chubb Tempest Life', 'Zurich']
 try:
     FISCAL_LIFE2014 = pd.DataFrame([single_insurer(df=life2014_raw_df, name=name) for name in ENG_NAMES_14], index=[
         name+" 14" for name in ENG_NAMES_14], columns=FISCAL_ATTRIBUTES)
