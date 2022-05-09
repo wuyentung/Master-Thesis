@@ -137,7 +137,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame, round_to=2):
     investment_profits = df["investment_profit"][dmu_ks]
     
     def _out_dir(start_idx, end_idx):
-        return [((underwriting_profits[end_idx]-underwriting_profits[0])/2)/np.abs(((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + ((investment_profits[end_idx]-investment_profits[start_idx])/2)), ((investment_profits[end_idx]-investment_profits[start_idx])/2)/np.abs(((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + ((investment_profits[end_idx]-investment_profits[start_idx])/2))]
+        return [((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2)/np.abs(((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + ((investment_profits[end_idx]-investment_profits[start_idx])/2)), ((investment_profits[end_idx]-investment_profits[start_idx])/2)/np.abs(((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + ((investment_profits[end_idx]-investment_profits[start_idx])/2))]
     out_dirs = [_out_dir(i, i+1) for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
     ## insurance_exp max direction of MP

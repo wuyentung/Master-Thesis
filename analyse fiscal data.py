@@ -103,6 +103,9 @@ for target_input in ["insurance_exp", "operation_exp"]:
     plt.savefig("%s %s.png" %("Chubb Tempest Life", target_input), dpi=400)
     plt.show()
 #%%
-utils.get_analyze_df(dmu_ks=['Cathay Life 14', "ACE Tempest Life 14", "ACE Tempest Life 15", 'Cathay Life 14', "Chubb Tempest Life 16"], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
+dmus = ["ACE Tempest Life 14", "ACE Tempest Life 15", "Chubb Tempest Life 16"]
+utils.get_analyze_df(dmu_ks=dmus, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
+#%%
+utils.get_analyze_df(dmu_ks=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', 'Chunghwa Post 14', 'Chunghwa Post 15', 'Chunghwa Post 16', 'Shin Kong Life 14', 'Shin Kong Life 15', 'Chaoyang Life 14', 'Chaoyang Life 15', 'China Life 15', 'China Life 16', 'Fubon Life 15', 'Fubon Life 16', 'Hontai Life 15', 'Hontai Life 16', 'CIGNA 15', 'CIGNA 16'], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000).to_excel("14-16 EFF_dmu analysis.xlsx")
 # utils.get_analyze_df(dmu_ks=["ACE Tempest Life 14", "ACE Tempest Life 15", "Chubb Tempest Life 16"], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
 #%%
