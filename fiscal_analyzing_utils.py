@@ -6,7 +6,7 @@ import dmp
 import solver
 import solver_r
 from load_data import LIFE181920, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
-from exp_fiscal_data import OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516
+from exp_fiscal_data import OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
@@ -117,7 +117,7 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
         a = Arrow3D([x_start, x_end], [y_start, y_end], [ z_min,  z_min], mutation_scale=20, lw=2, arrowstyle="->", color=color, alpha=.7)
         ax.add_artist(a)
         
-        ax.text((x_end+x_start)/2, (y_end+y_start)/2,  z_min, "%.2f : %.2f" %(((x_end-x_start)/2)/np.abs(((x_end-x_start)/2) + ((y_end-y_start)/2)), ((y_end-y_start)/2)/np.abs(((x_end-x_start)/2) + ((y_end-y_start)/2))), horizontalalignment='left', verticalalignment='center', size=15, color=color)
+        ax.text((x_end+x_start)/2, (y_end+y_start)/2,  z_min, "%.2f : %.2f" %(((x_end-x_start)/2)/np.abs(np.abs((x_end-x_start)/2) + np.abs((y_end-y_start)/2)), ((y_end-y_start)/2)/np.abs(np.abs((x_end-x_start)/2) + np.abs((y_end-y_start)/2))), horizontalalignment='left', verticalalignment='center', size=15, color=color)
             
     plt.legend(handles=lines, loc='lower left', ncol=2)
     
@@ -137,7 +137,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame, round_to=2):
     investment_profits = df["investment_profit"][dmu_ks]
     
     def _out_dir(start_idx, end_idx):
-        return [((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2)/np.abs(((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + ((investment_profits[end_idx]-investment_profits[start_idx])/2)), ((investment_profits[end_idx]-investment_profits[start_idx])/2)/np.abs(((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + ((investment_profits[end_idx]-investment_profits[start_idx])/2))]
+        return [((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2)/np.abs(np.abs((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + np.abs((investment_profits[end_idx]-investment_profits[start_idx])/2)), ((investment_profits[end_idx]-investment_profits[start_idx])/2)/np.abs(np.abs((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + np.abs((investment_profits[end_idx]-investment_profits[start_idx])/2))]
     out_dirs = [_out_dir(i, i+1) for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
     ## insurance_exp max direction of MP
@@ -177,6 +177,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame, round_to=2):
             "insurance_exp cosine similarity": np.round(insurance_cos_sims, round_to).tolist(), 
             "operation_exp max direction of MP": np.round(operation_max_dirs, round_to).tolist(), 
             "operation_exp cosine similarity": np.round(operation_cos_sims, round_to).tolist(), 
+            "efficiency": np.round([EFF_DICT_DUMMY141516[k] for k in dmu_ks], round_to).tolist(), 
         }, index=dmu_ks
         )
     return dmu_df

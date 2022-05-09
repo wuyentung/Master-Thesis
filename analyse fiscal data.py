@@ -14,7 +14,7 @@ import dmp
 import solver
 import solver_r
 from load_data import LIFE181920, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020, LIFE_DUMMY141516, ENG_NAMES_16
-from exp_fiscal_data import OPERATION_SMRTS181920, INSURANCE_SMRTS181920, OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516
+from exp_fiscal_data import OPERATION_SMRTS181920, INSURANCE_SMRTS181920, OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516, EFF_DICT141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
@@ -99,13 +99,27 @@ for target_input in ["insurance_exp", "operation_exp"]:
     else:
         smrts_dict = OPERATION_SMRTS_DUMMY141516
         
-    utils.plot_3D(dmu=dmus, stitle=k, target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
+    utils.plot_3D(dmu=dmus, stitle="Chubb Tempest Life", target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
     plt.savefig("%s %s.png" %("Chubb Tempest Life", target_input), dpi=400)
+    plt.show()
+#%%
+dmus = ["CTBC Life 14", "CTBC Life 15",]
+for target_input in ["insurance_exp", "operation_exp"]:
+    
+    if "insurance_exp" == target_input:
+        smrts_dict = INSURANCE_SMRTS_DUMMY141516
+    else:
+        smrts_dict = OPERATION_SMRTS_DUMMY141516
+        
+    utils.plot_3D(dmu=dmus, stitle="CTBC Life", target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
+    plt.savefig("%s %s.png" %("CTBC Life", target_input), dpi=400)
     plt.show()
 #%%
 dmus = ["ACE Tempest Life 14", "ACE Tempest Life 15", "Chubb Tempest Life 16"]
 utils.get_analyze_df(dmu_ks=dmus, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
 #%%
-utils.get_analyze_df(dmu_ks=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', 'Chunghwa Post 14', 'Chunghwa Post 15', 'Chunghwa Post 16', 'Shin Kong Life 14', 'Shin Kong Life 15', 'Chaoyang Life 14', 'Chaoyang Life 15', 'China Life 15', 'China Life 16', 'Fubon Life 15', 'Fubon Life 16', 'Hontai Life 15', 'Hontai Life 16', 'CIGNA 15', 'CIGNA 16'], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000).to_excel("14-16 EFF_dmu analysis.xlsx")
+utils.get_analyze_df(dmu_ks=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', 'Chunghwa Post 14', 'Chunghwa Post 15', 'Chunghwa Post 16', 'Shin Kong Life 14', 'Shin Kong Life 15', 'Chaoyang Life 14', 'Chaoyang Life 15', 'China Life 15', 'China Life 16', 'Fubon Life 15', 'Fubon Life 16', 'Hontai Life 15', 'Hontai Life 16', 'CIGNA 15', 'CIGNA 16'], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000, round_to=4).to_excel("14-16 EFF_dmu analysis.xlsx")
 # utils.get_analyze_df(dmu_ks=["ACE Tempest Life 14", "ACE Tempest Life 15", "Chubb Tempest Life 16"], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
+#%%
+utils.get_analyze_df(dmu_ks=["Global Life 14", "Singfor Life 14", 'Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', "DUMMY Cathay 15", 'CTBC Life 14', 'CTBC Life 15', 'Taiwan Life 14','Taiwan Life 15', 'Taiwan Life 16', 'DUMMY Taiwan 16', ], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000, round_to=4).to_excel("14-16 merged_dmu analysis.xlsx")
 #%%
