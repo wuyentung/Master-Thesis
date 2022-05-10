@@ -128,8 +128,18 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
     ax.set_title("\n".join(wrap(stitle, 50)), fontsize=title_size)
     plt.tight_layout()
 #%%
+def round_analyze_df(analyze_df:pd.DataFrame, round_to:int=2):
+    for col in analyze_df.columns:
+        try:
+            analyze_df[col] = np.round(analyze_df[col], round_to)
+        except:
+            print(col)
+            for idx in analyze_df.index:
+                analyze_df.at[idx, col] = np.round(analyze_df.at[idx, col], round_to)
+            # "operation_exp cosine similarity": np.round(operation_cos_sims, round_to).tolist(), 
+    return analyze_df
 #%%
-def get_analyze_df(dmu_ks:list, df:pd.DataFrame, round_to=2):
+def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     
     insurance_exps = df["insurance_exp"][dmu_ks]
     operation_exps = df["operation_exp"][dmu_ks]
@@ -168,16 +178,16 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame, round_to=2):
             cos_sims.append(_cal_cosine_similarity(out_dirs[n], max_dirs[n]))
     dmu_df = pd.DataFrame(
         {
-            "insurance_exp": np.round(insurance_exps, round_to).tolist(), 
-            "operation_exp": np.round(operation_exps, round_to).tolist(), 
-            "underwriting_profit": np.round(underwriting_profits, round_to).tolist(), 
-            "investment_profit": np.round(investment_profits, round_to).tolist(), 
-            "output progress direction": np.round(out_dirs, round_to).tolist(), 
-            "insurance_exp max direction of MP": np.round(insurance_max_dirs, round_to).tolist(), 
-            "insurance_exp cosine similarity": np.round(insurance_cos_sims, round_to).tolist(), 
-            "operation_exp max direction of MP": np.round(operation_max_dirs, round_to).tolist(), 
-            "operation_exp cosine similarity": np.round(operation_cos_sims, round_to).tolist(), 
-            "efficiency": np.round([EFF_DICT_DUMMY141516[k] for k in dmu_ks], round_to).tolist(), 
+            "insurance_exp": insurance_exps, 
+            "operation_exp": operation_exps, 
+            "underwriting_profit": underwriting_profits, 
+            "investment_profit": investment_profits, 
+            "output progress direction": out_dirs, 
+            "insurance_exp max direction of MP": insurance_max_dirs, 
+            "insurance_exp cosine similarity": insurance_cos_sims, 
+            "operation_exp max direction of MP": operation_max_dirs, 
+            "operation_exp cosine similarity": operation_cos_sims, 
+            "efficiency": [EFF_DICT_DUMMY141516[k] for k in dmu_ks], 
         }, index=dmu_ks
         )
     return dmu_df

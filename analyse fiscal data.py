@@ -19,6 +19,8 @@ from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
 CMAP = plt.get_cmap('plasma')
+import seaborn as sns
+sns.set_theme(style="darkgrid")
 # %%
 # eff_dmu = ['Hontai Life 18', 'Chunghwa Post 18', 'First-Aviva Life 18', 'Hontai Life 19', 'First-Aviva Life 19', 'Bank Taiwan Life 20', 'Taiwan Life 20', 'Cathay Life 20', 'China Life 20', 'Nan Shan Life 20', 'Shin Kong Life 20', 'Fubon Life 20', 'Hontai Life 20', 'Chunghwa Post 20', 'First-Aviva Life 20', 'BNP Paribas Cardif TCB 20', 'CIGNA 20', 'Cardif 20']
 # # %%
@@ -123,7 +125,7 @@ utils.get_analyze_df(dmu_ks=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16
 #%%
 utils.get_analyze_df(dmu_ks=["Global Life 14", "Singfor Life 14", 'Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', "DUMMY Cathay 15", 'CTBC Life 14', 'CTBC Life 15', 'Taiwan Life 14','Taiwan Life 15', 'Taiwan Life 16', 'DUMMY Taiwan 16', ], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000, round_to=4).to_excel("14-16 merged_dmu analysis.xlsx")
 #%%
-utils.get_analyze_df(
+all_analysis = utils.get_analyze_df(
     dmu_ks=[
         'AIA Taiwan 14', 'AIA Taiwan 15', 'AIA Taiwan 16', 
         'Allianz Taiwan Life 14', 'Allianz Taiwan Life 15', 'Allianz Taiwan Life 16', 
@@ -152,5 +154,26 @@ utils.get_analyze_df(
         'TransGlobe Life 14', 'TransGlobe Life 15', 'TransGlobe Life 16', 
         'Yuanta Life 14', 'Yuanta Life 15', 'Yuanta Life 16', 
         'Zurich 14', 'Zurich 15', 'Zurich 16', 
-            ], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000, round_to=4).to_excel("14-16 all_dmu analysis.xlsx")
+            ], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000,)
+#%%
+all_analysis = utils.round_analyze_df(all_analysis)
+# all_analysis.to_excel("14-16 all_dmu analysis.xlsx")
+#%%
+fig, ax = plt.subplots(figsize=(12, 10))
+sns.scatterplot(x="insurance_exp", y="operation_exp", data=all_analysis, ax=ax)
+# zip joins x and y coordinates in pairs
+c = 0
+for x,y in zip(all_analysis["insurance_exp"], all_analysis["operation_exp"]):
+    # print(c)
+    label = f"{all_analysis.index[c]}"
+
+    plt.annotate(
+        label, # this is the text
+        (x,y), # these are the coordinates to position the label
+        textcoords="offset points", # how to position the text
+        xytext=(0,10), # distance from text to points (x,y)
+        ha='center', # horizontal alignment can be left, right or center
+        fontsize=5, 
+        ) 
+    c+=1
 #%%
