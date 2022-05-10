@@ -176,6 +176,14 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             max_dirs.append(_float_direction(max_dir_mp_str))
             # max_dir_mp = float_direction(max_dir_mp_str)
             cos_sims.append(_cal_cosine_similarity(out_dirs[n], max_dirs[n]))
+    ## overall cosine similarity
+    overall_cos_sims = [insurance_cos_sims[i] if insurance_cos_sims[i] else operation_cos_sims[i] for i in range(len(dmu_ks))]
+    
+    ## effiency and eff_change
+    effiencies = [EFF_DICT_DUMMY141516[k] for k in dmu_ks]
+    eff_changes = [(effiencies[i+1] - effiencies[i])/effiencies[i] for i in range(len(dmu_ks)-1)]
+    eff_changes.insert(0, np.nan)
+    
     dmu_df = pd.DataFrame(
         {
             "insurance_exp": insurance_exps, 
@@ -187,7 +195,9 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             "insurance_exp cosine similarity": insurance_cos_sims, 
             "operation_exp max direction of MP": operation_max_dirs, 
             "operation_exp cosine similarity": operation_cos_sims, 
-            "efficiency": [EFF_DICT_DUMMY141516[k] for k in dmu_ks], 
+            "overall cosine similarity": overall_cos_sims, 
+            "efficiency": effiencies, 
+            "efficiency change": eff_changes, 
         }, index=dmu_ks
         )
     return dmu_df

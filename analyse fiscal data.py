@@ -6,6 +6,7 @@
 最後有時間再來 scope property
 '''
 # %%
+from matplotlib.axes import Axes
 import fiscal_analyzing_utils as utils
 import os
 import pandas as pd
@@ -18,7 +19,7 @@ from exp_fiscal_data import OPERATION_SMRTS181920, INSURANCE_SMRTS181920, OPERAT
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
-CMAP = plt.get_cmap('plasma')
+CMAP = plt.get_cmap('seismic')
 import seaborn as sns
 sns.set_theme(style="darkgrid")
 # %%
@@ -155,25 +156,30 @@ all_analysis = utils.get_analyze_df(
         'Yuanta Life 14', 'Yuanta Life 15', 'Yuanta Life 16', 
         'Zurich 14', 'Zurich 15', 'Zurich 16', 
             ], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000,)
+utils.round_analyze_df(all_analysis, round_to=4)
+# utils.round_analyze_df(all_analysis, round_to=4).to_excel("14-16 all_dmu analysis.xlsx")
 #%%
-all_analysis = utils.round_analyze_df(all_analysis)
-# all_analysis.to_excel("14-16 all_dmu analysis.xlsx")
-#%%
-fig, ax = plt.subplots(figsize=(12, 10))
-sns.scatterplot(x="insurance_exp", y="operation_exp", data=all_analysis, ax=ax)
-# zip joins x and y coordinates in pairs
-c = 0
-for x,y in zip(all_analysis["insurance_exp"], all_analysis["operation_exp"]):
-    # print(c)
-    label = f"{all_analysis.index[c]}"
+def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = "efficiency change", y_col = "overall cosine similarity", according_col="efficiency"):
+    ax.hlines(y=df[y_col].mean(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
+    ax.vlines(x=df[x_col].mean(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
+    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, size=according_col, palette=CMAP)
+    # zip joins x and y coordinates in pairs
+    c = 0
+    for x,y in zip(df[x_col], df[y_col]):
+        label = f"{df.index[c]}"
 
-    plt.annotate(
-        label, # this is the text
-        (x,y), # these are the coordinates to position the label
-        textcoords="offset points", # how to position the text
-        xytext=(0,10), # distance from text to points (x,y)
-        ha='center', # horizontal alignment can be left, right or center
-        fontsize=5, 
-        ) 
-    c+=1
+        plt.annotate(
+            label, # this is the text
+            (x,y), # these are the coordinates to position the label
+            textcoords="offset points", # how to position the text
+            xytext=(0,10), # distance from text to points (x,y)
+            ha='center', # horizontal alignment can be left, right or center
+            fontsize=5, 
+            ) 
+        c+=1
+#%%
+fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
+analyze_plot(ax, all_analysis.loc[["14" not in idx for idx in all_analysis.index.tolist()]])
+plt.savefig("basic.png")
+plt.show()
 #%%
