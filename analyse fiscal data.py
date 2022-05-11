@@ -179,17 +179,19 @@ def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = "efficiency changing", y_col 
 #%%
 no16 = all_analysis.loc[["16" not in idx for idx in all_analysis.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
 #%%
-fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
-analyze_plot(ax, no16.loc[[1 == idx for idx in no16["efficiency"].tolist()]], according_col=None)
-ax.set_title("eff=1")
-# plt.savefig("eff1.png")
-plt.show()
+for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', None,]:
+    fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
+    analyze_plot(ax, no16.loc[[1 == idx for idx in no16["efficiency"].tolist()]], according_col=col)
+    ax.set_title(f"eff=1 {col}")
+    # plt.savefig(f"eff=1 {col}.png")
+    plt.show()
 #%%
-fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
-analyze_plot(ax, no16.loc[[1 != idx for idx in no16["efficiency"].tolist()]],)
-ax.set_title("eff>1")
-# plt.savefig("eff>1.png")
-plt.show()
+for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', "efficiency",]:
+    fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
+    analyze_plot(ax, no16.loc[[1 != idx for idx in no16["efficiency"].tolist()]],)
+    ax.set_title(f"eff>1 {col}")
+    # plt.savefig(f"eff>1 {col}.png")
+    plt.show()
 #%%
 for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', 'efficiency',]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
@@ -197,4 +199,16 @@ for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment
     ax.set_title(col)
     plt.savefig(f"basic {col}.png")
     plt.show()
+#%%
+fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
+sns.scatterplot(x='insurance_exp', y='operation_exp', data=all_analysis, ax=ax, )
+ax.set_title("inputs plot")
+# plt.savefig(f"inputs plot.png")
+plt.show()
+#%%
+fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
+sns.scatterplot(x='underwriting_profit', y='investment_profit', data=all_analysis, ax=ax, )
+ax.set_title("outputs plot")
+# plt.savefig(f"outputs plot.png")
+plt.show()
 #%%
