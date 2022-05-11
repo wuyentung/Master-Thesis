@@ -182,7 +182,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     ## effiency and eff_change
     effiencies = [EFF_DICT_DUMMY141516[k] for k in dmu_ks]
     eff_changes = [(effiencies[i+1] - effiencies[i])/effiencies[i] for i in range(len(dmu_ks)-1)]
-    eff_changes.insert(0, np.nan)
+    eff_changes.append(np.nan)
     
     dmu_df = pd.DataFrame(
         {
@@ -197,7 +197,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             "operation_exp cosine similarity": operation_cos_sims, 
             "overall cosine similarity": overall_cos_sims, 
             "efficiency": effiencies, 
-            "efficiency change": eff_changes, 
+            "efficiency changing": eff_changes, 
         }, index=dmu_ks
         )
     return dmu_df

@@ -19,7 +19,7 @@ from exp_fiscal_data import OPERATION_SMRTS181920, INSURANCE_SMRTS181920, OPERAT
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
-CMAP = plt.get_cmap('seismic')
+CMAP = plt.get_cmap('jet')
 import seaborn as sns
 sns.set_theme(style="darkgrid")
 # %%
@@ -159,10 +159,10 @@ all_analysis = utils.get_analyze_df(
 utils.round_analyze_df(all_analysis, round_to=4)
 # utils.round_analyze_df(all_analysis, round_to=4).to_excel("14-16 all_dmu analysis.xlsx")
 #%%
-def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = "efficiency change", y_col = "overall cosine similarity", according_col="efficiency"):
+def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = "efficiency changing", y_col = "overall cosine similarity", according_col="efficiency"):
     ax.hlines(y=df[y_col].mean(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
     ax.vlines(x=df[x_col].mean(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
-    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, size=according_col, palette=CMAP)
+    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
     # zip joins x and y coordinates in pairs
     c = 0
     for x,y in zip(df[x_col], df[y_col]):
@@ -172,14 +172,30 @@ def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = "efficiency change", y_col = 
             label, # this is the text
             (x,y), # these are the coordinates to position the label
             textcoords="offset points", # how to position the text
-            xytext=(0,10), # distance from text to points (x,y)
+            xytext=(0,5), # distance from text to points (x,y)
             ha='center', # horizontal alignment can be left, right or center
             fontsize=5, 
             ) 
         c+=1
 #%%
+no16 = all_analysis.loc[["16" not in idx for idx in all_analysis.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
+#%%
 fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
-analyze_plot(ax, all_analysis.loc[["14" not in idx for idx in all_analysis.index.tolist()]])
-plt.savefig("basic.png")
+analyze_plot(ax, no16.loc[[1 == idx for idx in no16["efficiency"].tolist()]], according_col=None)
+ax.set_title("eff=1")
+# plt.savefig("eff1.png")
 plt.show()
+#%%
+fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
+analyze_plot(ax, no16.loc[[1 != idx for idx in no16["efficiency"].tolist()]],)
+ax.set_title("eff>1")
+# plt.savefig("eff>1.png")
+plt.show()
+#%%
+for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', 'efficiency',]:
+    fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
+    analyze_plot(ax, no16, according_col=col)
+    ax.set_title(col)
+    plt.savefig(f"basic {col}.png")
+    plt.show()
 #%%
