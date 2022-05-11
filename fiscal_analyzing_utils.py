@@ -93,19 +93,19 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
         ## max direction of MP
         if all_dmu[i] in smrts_dict:
             smrts_df = smrts_dict[all_dmu[i]]
-            max_dir_mp_str = _find_max_dir_mp(smrts_df)
+            max_dir_mp = _float_direction(_find_max_dir_mp(smrts_df))
             # print(max_dir_mp_str)
             smrts_color = "red"
         else:
-            max_dir_mp_str = "[0.5, 0.5]"
+            # max_dir_mp = [0.5, 0.5]
+            max_dir_mp = [x_start/(x_start+y_start), y_start/(x_start+y_start)]
             smrts_color = "orangered"
             
-        max_dir_mp = _float_direction(max_dir_mp_str)
         # print(max_dir_mp)
             
         a = Arrow3D([x_start, x_start+max_dir_mp[0]*min_range/3], [y_start, y_start+max_dir_mp[1]*min_range/3], [ z_min,  z_min], mutation_scale=20, lw=2, arrowstyle="->", color=smrts_color)
         ax.add_artist(a)
-        ax.text((x_start+max_dir_mp[0]*min_range/3+x_start)/2, (y_start+max_dir_mp[1]*min_range/3+y_start)/2,  z_min, '%s' % (max_dir_mp_str), size=15, zorder=10, color=smrts_color, horizontalalignment='center', verticalalignment='top', bbox=dict(boxstyle='round4', facecolor='white', alpha=0.3))
+        ax.text((x_start+max_dir_mp[0]*min_range/3+x_start)/2, (y_start+max_dir_mp[1]*min_range/3+y_start)/2,  z_min, '%s' % (str(np.round(max_dir_mp, 2))), size=15, zorder=10, color=smrts_color, horizontalalignment='center', verticalalignment='top', bbox=dict(boxstyle='round4', facecolor='white', alpha=0.3))
         
         ## 前進方向紀錄
         if len(dmu)-1 <= i:
@@ -170,10 +170,12 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             ## max direction of MP
             if dmu_ks[n] in smrts_dict:
                 smrts_df = smrts_dict[dmu_ks[n]]
-                max_dir_mp_str = _find_max_dir_mp(smrts_df)
+                max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df))
             else:
-                max_dir_mp_str = "[0.5, 0.5]"
-            max_dirs.append(_float_direction(max_dir_mp_str))
+                ## not efficient dmu, then radio measure
+                # max_dir_mp_str = [0.5, 0.5] # non-radio measure
+                max_dir_mp_str = [underwriting_profits[n]/(underwriting_profits[n]+investment_profits[n]), investment_profits[n]/(underwriting_profits[n]+investment_profits[n])]
+            max_dirs.append(max_dir_mp_str)
             # max_dir_mp = float_direction(max_dir_mp_str)
             cos_sims.append(_cal_cosine_similarity(out_dirs[n], max_dirs[n]))
     ## overall cosine similarity

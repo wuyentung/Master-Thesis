@@ -156,8 +156,7 @@ all_analysis = utils.get_analyze_df(
         'Yuanta Life 14', 'Yuanta Life 15', 'Yuanta Life 16', 
         'Zurich 14', 'Zurich 15', 'Zurich 16', 
             ], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000,)
-utils.round_analyze_df(all_analysis, round_to=4)
-# utils.round_analyze_df(all_analysis, round_to=4).to_excel("14-16 all_dmu analysis.xlsx")
+utils.round_analyze_df(all_analysis, round_to=4)#.to_excel("14-16 all_dmu analysis.xlsx")
 #%%
 def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = "efficiency changing", y_col = "overall cosine similarity", according_col="efficiency"):
     ax.hlines(y=df[y_col].mean(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
