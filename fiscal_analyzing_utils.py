@@ -185,7 +185,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     
     ## effiency and eff_change
     effiencies = [EFF_DICT_DUMMY141516[k] for k in dmu_ks]
-    eff_changes = [(effiencies[i+1] - effiencies[i])/effiencies[i] for i in range(len(dmu_ks)-1)]
+    eff_changes = [effiencies[i]/effiencies[i+1] for i in range(len(dmu_ks)-1)]
     eff_changes.append(np.nan)
     
     dmu_df = pd.DataFrame(
