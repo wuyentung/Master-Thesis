@@ -178,34 +178,40 @@ def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = "efficiency changing", y_col 
         c+=1
 #%%
 no16 = all_analysis.loc[["16" not in idx for idx in all_analysis.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
+no16["scale"] = no16['insurance_exp'] + no16['operation_exp']
+no16["profit"] = no16['underwriting_profit'] + no16['investment_profit']
 #%%
-for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', None,]:
+# for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', None,]:
+for col in ['scale', 'profit',]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
     analyze_plot(ax, no16.loc[[1 == idx for idx in no16["efficiency"].tolist()]], according_col=col)
     ax.set_title(f"eff=1 {col}")
-    # plt.savefig(f"eff=1 {col}.png")
+    plt.savefig(f"eff=1 {col}.png")
     plt.show()
 #%%
-for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', "efficiency",]:
+# for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', "efficiency",]:
+for col in ['scale', 'profit', 'efficiency',]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
     analyze_plot(ax, no16.loc[[1 != idx for idx in no16["efficiency"].tolist()]],)
     ax.set_title(f"eff>1 {col}")
-    # plt.savefig(f"eff>1 {col}.png")
+    plt.savefig(f"eff>1 {col}.png")
     plt.show()
 #%%
-for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', 'efficiency',]:
+# for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', 'efficiency',]:
+for col in ['scale', 'profit', 'efficiency',]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
     analyze_plot(ax, no16, according_col=col)
     ax.set_title(col)
     plt.savefig(f"basic {col}.png")
     plt.show()
 #%%
+## input output correlation plot
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
 sns.scatterplot(x='insurance_exp', y='operation_exp', data=all_analysis, ax=ax, )
 ax.set_title("inputs plot")
 # plt.savefig(f"inputs plot.png")
 plt.show()
-#%%
+
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
 sns.scatterplot(x='underwriting_profit', y='investment_profit', data=all_analysis, ax=ax, )
 ax.set_title("outputs plot")
