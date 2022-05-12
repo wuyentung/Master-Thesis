@@ -5,21 +5,20 @@ import numpy as np
 # %%
 
 
-def denoise_nonpositive(df: pd.DataFrame, min_value=.1):
-    # correct df to at least .1 if there is value <= 0
+def denoise_nonpositive(df: pd.DataFrame, div_norm=6, round_to=6):
+    # correct df to at least min_value/(10**div_norm) if there is value <= 0
     df = df.copy()
+    df = df/(10**div_norm)
+    df = df.round(round_to)
+    
+    min_value = 1/(10 ** min(div_norm, round_to))
+    
     for col in df.columns:
         if df[col].min()-min_value < 0:
             # print(col)
             # print(df[col])
             # print()
-            df[col] = df[col] + np.abs(df[col].min()) + 1
-            # print(df[col])
-            for index, value in df[col].items():
-                if value-min_value < 0:
-                    # if value == df[col].min():
-                    df[col][index] += min_value
-                    # print(df[col][index])
+            df[col] = df[col] + np.abs(df[col].min()) + min_value
     return df
 
 
