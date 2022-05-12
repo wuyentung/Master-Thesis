@@ -21,17 +21,17 @@ y:array([
     ]) J outputs, K firms
 '''
 #%%
-def dea_dual(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, orient="IO", vrs="vrs"):
+def dea_dual(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, orient="IO", rs="vrs"):
     ## vrs dual dea solver using solver_r.io_vrs_dual() or solver_r.oo_vrs_dual()
     eff_dict = {}
     lambdas_dict = {}
     K = len(dmu)
     if "IO" == orient:
         for r in range(K):
-            eff_dict[dmu[r]], lambdas_dict[dmu[r]] = solver_r.io_dual(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD, rs=vrs)
+            eff_dict[dmu[r]], lambdas_dict[dmu[r]] = solver_r.io_dual(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD, rs=rs)
     elif "OO" == orient:
         for r in range(K):
-            eff_dict[dmu[r]], lambdas_dict[dmu[r]] = solver_r.oo_dual(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD, rs=vrs)
+            eff_dict[dmu[r]], lambdas_dict[dmu[r]] = solver_r.oo_dual(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD, rs=rs)
     else:
         raise ValueError("only 'IO' or 'OO' can ba calculated") 
     return eff_dict, lambdas_dict
