@@ -90,7 +90,7 @@ for k in ENG_NAMES_16:
         else:
             smrts_dict = OPERATION_SMRTS_DUMMY141516
             
-        utils.plot_3D(dmu=[k+n for n in [' 14', ' 15', ' 16']], stitle=k, target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
+        utils.plot_3D(dmu=[k+n for n in [' 14', ' 15', ' 16']], stitle=k, target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516))
         plt.savefig("%s %s.png" %(k, target_input), dpi=400)
         plt.show()
 #%%
@@ -102,7 +102,7 @@ for target_input in ["insurance_exp", "operation_exp"]:
     else:
         smrts_dict = OPERATION_SMRTS_DUMMY141516
         
-    utils.plot_3D(dmu=dmus, stitle="Chubb Tempest Life", target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
+    utils.plot_3D(dmu=dmus, stitle="Chubb Tempest Life", target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516))
     plt.savefig("%s %s.png" %("Chubb Tempest Life", target_input), dpi=400)
     plt.show()
 #%%
@@ -114,17 +114,17 @@ for target_input in ["insurance_exp", "operation_exp"]:
     else:
         smrts_dict = OPERATION_SMRTS_DUMMY141516
         
-    utils.plot_3D(dmu=dmus, stitle="CTBC Life", target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
+    utils.plot_3D(dmu=dmus, stitle="CTBC Life", target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516))
     plt.savefig("%s %s.png" %("CTBC Life", target_input), dpi=400)
     plt.show()
 #%%
 dmus = ["ACE Tempest Life 14", "ACE Tempest Life 15", "Chubb Tempest Life 16"]
-utils.get_analyze_df(dmu_ks=dmus, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
+utils.get_analyze_df(dmu_ks=dmus, df=denoise_nonpositive(LIFE_DUMMY141516))
 #%%
-utils.get_analyze_df(dmu_ks=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', 'Chunghwa Post 14', 'Chunghwa Post 15', 'Chunghwa Post 16', 'Shin Kong Life 14', 'Shin Kong Life 15', 'Chaoyang Life 14', 'Chaoyang Life 15', 'China Life 15', 'China Life 16', 'Fubon Life 15', 'Fubon Life 16', 'Hontai Life 15', 'Hontai Life 16', 'CIGNA 15', 'CIGNA 16'], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000, round_to=4).to_excel("14-16 EFF_dmu analysis.xlsx")
-# utils.get_analyze_df(dmu_ks=["ACE Tempest Life 14", "ACE Tempest Life 15", "Chubb Tempest Life 16"], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000)
+utils.get_analyze_df(dmu_ks=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', 'Chunghwa Post 14', 'Chunghwa Post 15', 'Chunghwa Post 16', 'Shin Kong Life 14', 'Shin Kong Life 15', 'Chaoyang Life 14', 'Chaoyang Life 15', 'China Life 15', 'China Life 16', 'Fubon Life 15', 'Fubon Life 16', 'Hontai Life 15', 'Hontai Life 16', 'CIGNA 15', 'CIGNA 16'], df=denoise_nonpositive(LIFE_DUMMY141516), round_to=4).to_excel("14-16 EFF_dmu analysis.xlsx")
+# utils.get_analyze_df(dmu_ks=["ACE Tempest Life 14", "ACE Tempest Life 15", "Chubb Tempest Life 16"], df=denoise_nonpositive(LIFE_DUMMY141516))
 #%%
-utils.get_analyze_df(dmu_ks=["Global Life 14", "Singfor Life 14", 'Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', "DUMMY Cathay 15", 'CTBC Life 14', 'CTBC Life 15', 'Taiwan Life 14','Taiwan Life 15', 'Taiwan Life 16', 'DUMMY Taiwan 16', ], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000, round_to=4).to_excel("14-16 merged_dmu analysis.xlsx")
+utils.get_analyze_df(dmu_ks=["Global Life 14", "Singfor Life 14", 'Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16', "DUMMY Cathay 15", 'CTBC Life 14', 'CTBC Life 15', 'Taiwan Life 14','Taiwan Life 15', 'Taiwan Life 16', 'DUMMY Taiwan 16', ], df=denoise_nonpositive(LIFE_DUMMY141516), round_to=4).to_excel("14-16 merged_dmu analysis.xlsx")
 #%%
 all_analysis = utils.get_analyze_df(
     dmu_ks=[
@@ -155,27 +155,8 @@ all_analysis = utils.get_analyze_df(
         'TransGlobe Life 14', 'TransGlobe Life 15', 'TransGlobe Life 16', 
         'Yuanta Life 14', 'Yuanta Life 15', 'Yuanta Life 16', 
         'Zurich 14', 'Zurich 15', 'Zurich 16', 
-            ], df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000,)
+            ], df=denoise_nonpositive(LIFE_DUMMY141516),)
 utils.round_analyze_df(all_analysis, round_to=4)#.to_excel("14-16 all_dmu analysis.xlsx")
-#%%
-def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = "efficiency changing", y_col = "overall cosine similarity", according_col="efficiency"):
-    ax.hlines(y=df[y_col].mean(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
-    ax.vlines(x=df[x_col].mean(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
-    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
-    # zip joins x and y coordinates in pairs
-    c = 0
-    for x,y in zip(df[x_col], df[y_col]):
-        label = f"{df.index[c]}"
-
-        plt.annotate(
-            label, # this is the text
-            (x,y), # these are the coordinates to position the label
-            textcoords="offset points", # how to position the text
-            xytext=(0,5), # distance from text to points (x,y)
-            ha='center', # horizontal alignment can be left, right or center
-            fontsize=5, 
-            ) 
-        c+=1
 #%%
 no16 = all_analysis.loc[["16" not in idx for idx in all_analysis.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
 no16["scale"] = no16['insurance_exp'] + no16['operation_exp']
@@ -184,25 +165,25 @@ no16["profit"] = no16['underwriting_profit'] + no16['investment_profit']
 # for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', None,]:
 for col in ['scale', 'profit',]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
-    analyze_plot(ax, no16.loc[[1 == idx for idx in no16["efficiency"].tolist()]], according_col=col)
+    utils.analyze_plot(ax, no16.loc[[1 == idx for idx in no16["efficiency"].tolist()]], according_col=col)
     ax.set_title(f"eff=1 {col}")
-    plt.savefig(f"eff=1 {col}.png")
+    # plt.savefig(f"eff=1 {col}.png")
     plt.show()
 #%%
 # for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', "efficiency",]:
 for col in ['scale', 'profit', 'efficiency',]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
-    analyze_plot(ax, no16.loc[[1 != idx for idx in no16["efficiency"].tolist()]],)
+    utils.analyze_plot(ax, no16.loc[[1 != idx for idx in no16["efficiency"].tolist()]],)
     ax.set_title(f"eff>1 {col}")
-    plt.savefig(f"eff>1 {col}.png")
+    # plt.savefig(f"eff>1 {col}.png")
     plt.show()
 #%%
 # for col in ['insurance_exp', 'operation_exp', 'underwriting_profit', 'investment_profit', 'efficiency',]:
 for col in ['scale', 'profit', 'efficiency',]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
-    analyze_plot(ax, no16, according_col=col)
+    utils.analyze_plot(ax, no16, according_col=col)
     ax.set_title(col)
-    plt.savefig(f"basic {col}.png")
+    # plt.savefig(f"basic {col}.png")
     plt.show()
 #%%
 ## input output correlation plot

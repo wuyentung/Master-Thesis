@@ -9,12 +9,14 @@ from load_data import LIFE181920, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_A
 from exp_fiscal_data import OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
+CMAP = plt.get_cmap('jet')
 from textwrap import wrap
-CMAP = plt.get_cmap('plasma')
 from numpy import *
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.patches import FancyArrowPatch
 from mpl_toolkits.mplot3d import proj3d
+import seaborn as sns
+sns.set_theme(style="darkgrid")
 
 class Arrow3D(FancyArrowPatch):
     def __init__(self, xs, ys, zs, *args, **kwargs):
@@ -203,3 +205,22 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
         }, index=dmu_ks
         )
     return dmu_df
+#%%
+def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = "efficiency changing", y_col = "overall cosine similarity", according_col="efficiency"):
+    ax.hlines(y=df[y_col].mean(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
+    ax.vlines(x=df[x_col].mean(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
+    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
+    # zip joins x and y coordinates in pairs
+    c = 0
+    for x,y in zip(df[x_col], df[y_col]):
+        label = f"{df.index[c]}"
+
+        plt.annotate(
+            label, # this is the text
+            (x,y), # these are the coordinates to position the label
+            textcoords="offset points", # how to position the text
+            xytext=(0,5), # distance from text to points (x,y)
+            ha='center', # horizontal alignment can be left, right or center
+            fontsize=5, 
+            ) 
+        c+=1
