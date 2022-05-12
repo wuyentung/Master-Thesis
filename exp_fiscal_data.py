@@ -19,11 +19,9 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
             eff_dmu_name.append(key)
     
     df = transformed_df.T[eff_dmu_name].T
-    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, dmu_wanted=None, i_star=i_star)
-    old_keys = list(exp.keys())
-    for old_key in old_keys:
-        exp[eff_dmu_name[old_key]] = exp.pop(old_key)
-    return exp, eff_dict
+    smrts_dfs = dmp.get_smrts_dfs(dmu=df.index, x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, wanted_idxs=None, i_star=i_star)
+    
+    return smrts_dfs, eff_dict
 #%%
 INSURANCE_SMRTS181920, EFF_DICT181920 = sys_smrts(df=LIFE181920, i_star=0)
 OPERATION_SMRTS181920, EFF_DICT181920 = sys_smrts(df=LIFE181920, i_star=1)

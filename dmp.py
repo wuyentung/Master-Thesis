@@ -27,14 +27,14 @@ gy: array([
     gy1, gy2, ..., gyJ
 ])
 '''
-def cal_alpha(dmu:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, THRESHOLD=0.000000000001, dmu_wanted:list=None):
+def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, THRESHOLD=0.000000000001, wanted_idxs:list=None):
     ## i_star: index of the change of single input Xi*, which is the target we want to investigate
     ## dmu_wanted: the dmu we want to investigate, defalt None
     
     I = x.shape[0]
     J = y.shape[0]
     alpha = {}
-    for r in dmu_wanted:
+    for r in wanted_idxs:
         v = {}
         u = {}
         u0_plus = {}
@@ -60,9 +60,9 @@ def cal_alpha(dmu:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, T
         m.setObjective(v[i_star] / np.max(x[i_star]), gp.GRB.MINIMIZE)
 
         ## s.t.
-        m.addConstr(gp.quicksum(v[i] * x[i, dmu.index(r)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu.index(r)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus == 0)
-        for k in dmu:
-            m.addConstr(gp.quicksum(v[i] * x[i, dmu.index(k)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu.index(k)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus >= 0)
+        m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(r)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(r)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus == 0)
+        for k in dmu_idxs:
+            m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(k)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(k)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus >= 0)
         m.addConstr(gp.quicksum(u[j] * gy[j] for j in range(J)) == 1)
             
         m.optimize()
@@ -71,17 +71,17 @@ def cal_alpha(dmu:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, T
     
     return alpha
 #%%
-def cal_dmp(dmu:list, alpha:dict, y:np.ndarray, gy:np.ndarray, dmu_wanted:list):
+def cal_dmp(dmu_idxs:list, alpha:dict, y:np.ndarray, gy:np.ndarray, wanted_idxs:list):
     ## dmu_wanted: the dmu we want to investigate
     J = y.shape[0]
     dmp = {}
-    for r in dmu_wanted:
+    for r in wanted_idxs:
         dmp[r] = [None] * J
         for j in range(J):
             dmp[r][j] = alpha[r] * gy[j] * np.max(y[j])
     return dmp
 #%%
-def cal_smrts(dmu:list, dmp1:dict, dmp2:dict, round_to:int, dmu_wanted:list):
+def cal_smrts(dmu_idxs:list, dmp1:dict, dmp2:dict, round_to:int, wanted_idxs:list):
     """return s-MRTS dictionary between two directions (dmp1, dmp2)
 
     Args:
@@ -93,7 +93,7 @@ def cal_smrts(dmu:list, dmp1:dict, dmp2:dict, round_to:int, dmu_wanted:list):
         dict: [description]
     """
     smrts = {}
-    for r in dmu_wanted:
+    for r in wanted_idxs:
         smrts[r] = (dmp1[r][0] - dmp2[r][0]) / (dmp1[r][1] - dmp2[r][1]) if round((dmp1[r][1] - dmp2[r][1]), round_to) else np.nan
     return smrts
 #%%
@@ -126,10 +126,11 @@ DIRECTIONS = [
     [0, 1], 
 ]
 #%%
-def get_smrts_dfs(dmu, x, y, trace=False, round_to:int=2, dmu_wanted:list=None, i_star:int=0):
-    ## dmu_wanted: the dmu we want to investigate
-    if dmu_wanted is None:
-        dmu_wanted = dmu
+def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, trace=False, round_to:int=2, wanted_idxs:list=None, i_star:int=0):
+    dmu_idxs = [i for i in range(len(dmu))]
+    ## wanted_idxs: the index of dmu we want to investigate
+    if wanted_idxs is None:
+        wanted_idxs = dmu_idxs
 
     results = []
     # alpha_directions = []
@@ -137,32 +138,32 @@ def get_smrts_dfs(dmu, x, y, trace=False, round_to:int=2, dmu_wanted:list=None, 
     # smrts_directions = []
     for i in range(len(DIRECTIONS)):
         direction = DIRECTIONS[i]
-        alpha = cal_alpha(dmu=dmu, x=x, y=y, gy=direction, dmu_wanted=dmu_wanted, i_star=i_star)
-        dmp = cal_dmp(dmu=dmu, alpha=alpha, y=y, gy=direction, dmu_wanted=dmu_wanted)
+        alpha = cal_alpha(dmu_idxs=dmu_idxs, x=x, y=y, gy=direction, wanted_idxs=wanted_idxs, i_star=i_star)
+        dmp = cal_dmp(dmu_idxs=dmu_idxs, alpha=alpha, y=y, gy=direction, wanted_idxs=wanted_idxs)
         # alpha_directions.append(alpha)
         dmp_directions.append(dmp)
         if not i:
-            smrts = {r:None for r in dmu_wanted}
+            smrts = {r:None for r in wanted_idxs}
         else:
-            smrts = cal_smrts(dmu=dmu, dmp1=dmp_directions[i-1], dmp2=dmp_directions[i], round_to=round_to, dmu_wanted=dmu_wanted)
+            smrts = cal_smrts(dmu_idxs=dmu_idxs, dmp1=dmp_directions[i-1], dmp2=dmp_directions[i], round_to=round_to, wanted_idxs=wanted_idxs)
         # smrts_directions.append(smrts)
         if trace:
             print(direction)
-            for r in dmu_wanted:
+            for r in wanted_idxs:
                 print(r, alpha[r], dmp[r], smrts[r])
             print()
-        for r in dmu_wanted:
-            results.append(Dmu_Direction(dmu=r, direction=direction, alpha=alpha[r], dmp=dmp[r], smrts=smrts[r], round_to=round_to))
+        for r in wanted_idxs:
+            results.append(Dmu_Direction(dmu=dmu[r], direction=direction, alpha=alpha[r], dmp=dmp[r], smrts=smrts[r], round_to=round_to))
 
     col_names = ["direction", "alpha", "DMP", "s-MRTS"]
     dfs = {}
-    for r in dmu_wanted:
+    for r in wanted_idxs:
         df = pd.DataFrame(columns=col_names)
         for res in results:
-            if res.dmu == r:
+            if res.dmu == dmu[r]:
                 df = df.append(pd.DataFrame([[str(res.direction), res.alpha, res.dmp, res.smrts]], columns=col_names))
                 # print(res.direction, res.alpha, res.dmp)
-        dfs[r] = df.set_index("direction")
+        dfs[dmu[r]] = df.set_index("direction")
     # dfs["A"]
     return dfs
 #%%

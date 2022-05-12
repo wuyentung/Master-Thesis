@@ -51,7 +51,7 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
     ## project all dmu to VRS frontier in IO
     if project:
         px, py, lambdas = solver.project_frontier(x=np.array(transformed_df[['insurance_exp', 'operation_exp']].T), y=np.array(transformed_df[['underwriting_profit', 'investment_profit']].T), rs="vrs", orient="IO")
-        exp = dmp.get_smrts_dfs(dmu=[i for i in range(px.shape[1])], x=px, y=py, trace=False, round_to=5, dmu_wanted=None)
+        exp = dmp.get_smrts_dfs(dmu_idxs=[i for i in range(px.shape[1])], x=px, y=py, trace=False, round_to=5, wanted_idxs=None)
         old_keys = list(exp.keys())
         for old_key in old_keys:
             exp[df.index.tolist()[old_key]] = exp.pop(old_key)
@@ -65,7 +65,7 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
             eff_dmu_name.append(key)
     
     df = transformed_df.T[eff_dmu_name].T
-    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, dmu_wanted=None, i_star=i_star)
+    exp = dmp.get_smrts_dfs(dmu_idxs=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, wanted_idxs=None, i_star=i_star)
     old_keys = list(exp.keys())
     for old_key in old_keys:
         exp[eff_dmu_name[old_key]] = exp.pop(old_key)

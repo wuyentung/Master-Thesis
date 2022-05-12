@@ -29,7 +29,7 @@ def sys_smrts(df:pd.DataFrame, i_star=0, xcol:list=None, ycol:list=None):
             eff_dmu_name.append(key)
     
     df = transformed_df.T[eff_dmu_name].T
-    exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[xcol].T), y=np.array(df[ycol].T), trace=False, round_to=5, dmu_wanted=None, 
+    exp = dmp.get_smrts_dfs(dmu_idxs=[i for i in range(df.shape[0])], x=np.array(df[xcol].T), y=np.array(df[ycol].T), trace=False, round_to=5, wanted_idxs=None, 
                             i_star=i_star
                             )
     old_keys = list(exp.keys())
