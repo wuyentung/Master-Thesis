@@ -5,7 +5,7 @@ import numpy as np
 import dmp
 import solver
 import solver_r
-from load_data import LIFE181920, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
+from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES
 from exp_fiscal_data import OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt

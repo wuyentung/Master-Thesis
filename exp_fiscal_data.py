@@ -3,7 +3,7 @@ import dmp
 import pandas as pd
 import numpy as np
 import solver
-from load_data import LIFE181920, denoise_nonpositive, LIFE141516, LIFE_DUMMY141516
+from load_data import denoise_nonpositive, LIFE141516, LIFE_DUMMY141516
 import time
 import fiscal_analyzing_utils as utils
 import matplotlib.pyplot as plt
@@ -39,8 +39,8 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0, div_norm=6, round_to=6):
         return smrts_dfs, eff_dict, lambdas_dict, df
     return smrts_dfs, eff_dict, lambdas_dict
 #%%
-INSURANCE_SMRTS181920, EFF_DICT181920, LAMBDA_DICT181920 = sys_smrts(df=LIFE181920, i_star=0)
-OPERATION_SMRTS181920, EFF_DICT181920, LAMBDA_DICT181920 = sys_smrts(df=LIFE181920, i_star=1)
+# INSURANCE_SMRTS181920, EFF_DICT181920, LAMBDA_DICT181920 = sys_smrts(df=LIFE181920, i_star=0)
+# OPERATION_SMRTS181920, EFF_DICT181920, LAMBDA_DICT181920 = sys_smrts(df=LIFE181920, i_star=1)
 #%%
 INSURANCE_SMRTS141516, EFF_DICT141516, LAMBDA_DICT141516 = sys_smrts(df=LIFE141516, i_star=0)
 OPERATION_SMRTS141516, EFF_DICT141516, LAMBDA_DICT141516 = sys_smrts(df=LIFE141516, i_star=1)
