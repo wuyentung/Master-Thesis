@@ -23,21 +23,23 @@ y:array([
 #%%
 def dea_dual(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, orient="IO", rs="vrs"):
     ## vrs dual dea solver using solver_r.io_vrs_dual() or solver_r.oo_vrs_dual()
+    if "IO" == orient:
+        solver_r_dual = solver_r.io_dual
+    elif "OO" == orient:
+        solver_r_dual = solver_r.oo_dual
+    else:
+        raise ValueError("only 'IO' or 'OO' can ba calculated") 
+    
     eff_dict = {}
     lambdas_dict = {}
     projected_x = x.copy()
     projected_y = y.copy()
     K = len(dmu)
-    if "IO" == orient:
-        for r in range(K):
-            eff_dict[dmu[r]], lambdas_dict[dmu[r]] = solver_r.io_dual(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD, rs=rs)
-            projected_x[:, r] *= eff_dict[dmu[r]]
-    elif "OO" == orient:
-        for r in range(K):
-            eff_dict[dmu[r]], lambdas_dict[dmu[r]] = solver_r.oo_dual(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD, rs=rs)
-            projected_y[:, r] *= eff_dict[dmu[r]]
-    else:
-        raise ValueError("only 'IO' or 'OO' can ba calculated") 
+    
+    for r in range(K):
+        eff_dict[dmu[r]], lambdas_dict[dmu[r]] = solver_r_dual(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD, rs=rs)
+        projected_x[:, r] *= eff_dict[dmu[r]]
+        
     return eff_dict, lambdas_dict, projected_x, projected_y
 #%%
 def dea_vrs(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, orient="OO"):
