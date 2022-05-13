@@ -2,6 +2,7 @@
 import os
 import pandas as pd
 import numpy as np
+import constant as const
 from load_data import LIFE181920, FISCAL_LIFE2019, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
 #%%
 ENG_NAMES = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life',  'Mercuries Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'Chubb Tempest Life']
@@ -21,8 +22,8 @@ def preprocessing(df:pd.DataFrame, year:str):
         fisal_df = FISCAL_LIFE2019
     else:
         fisal_df = FISCAL_LIFE2020     
-    df["insurance_exp"] = fisal_df["insurance_exp"]
-    df["operation_exp"] = fisal_df["operation_exp"]
+    df[const.INSURANCE_EXP] = fisal_df[const.INSURANCE_EXP]
+    df[const.OPERATION_EXP] = fisal_df[const.OPERATION_EXP]
     
     ## 計算各險種的核保利潤
     for i in ["Health", "Annuity"]:
@@ -34,7 +35,7 @@ def preprocessing(df:pd.DataFrame, year:str):
                 df = df.drop(k)
     return df
 #%%
-ATTRIBUTES = ['insurance_exp', 'operation_exp', 'Health insrance underwriting profit', 'Annuity insrance underwriting profit']
+ATTRIBUTES = [const.INSURANCE_EXP, const.OPERATION_EXP, 'Health insrance underwriting profit', 'Annuity insrance underwriting profit']
 LIFE2018 = preprocessing(life2018_raw_df, "18")
 LIFE2019 = preprocessing(life2019_raw_df, "19")
 LIFE2020 = preprocessing(life2020_raw_df, "20")

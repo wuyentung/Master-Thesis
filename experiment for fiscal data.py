@@ -10,6 +10,7 @@ import os
 import dmp
 import pandas as pd
 import numpy as np
+import constant as const
 import solver
 import solver_r
 from load_data import LIFE181920, FISCAL_LIFE2019, denoise_nonpositive, FISCAL_ATTRIBUTES, FISCAL_LIFE2018, FISCAL_LIFE2020
@@ -20,7 +21,7 @@ CMAP = plt.get_cmap('plasma')
 #%%
 # #### 測試 #####
 # life_transformed = denoise_nonpositive(LIFE)
-# eff_dict, lambdas_dict = solver.dea_dual(dmu=life_transformed.index, x=np.array(life_transformed[['insurance_exp', 'operation_exp']].T), y=np.array(life_transformed[['underwriting_profit', 'investment_profit']].T))
+# eff_dict, lambdas_dict = solver.dea_dual(dmu=life_transformed.index, x=np.array(life_transformed[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(life_transformed[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T))
 # #%%
 # eff_dict
 # #%%
@@ -31,12 +32,12 @@ CMAP = plt.get_cmap('plasma')
 # eff_dmu_name
 # #%%
 # # life_transformed.T[eff_dmu_name].T
-# eff_dict2, lambdas_dict2 = solver.dea_dual(dmu=eff_dmu_name, x=np.array(life_transformed.T[eff_dmu_name].T[['insurance_exp', 'operation_exp']].T), y=np.array(life_transformed.T[eff_dmu_name].T[['underwriting_profit', 'investment_profit']].T))
+# eff_dict2, lambdas_dict2 = solver.dea_dual(dmu=eff_dmu_name, x=np.array(life_transformed.T[eff_dmu_name].T[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(life_transformed.T[eff_dmu_name].T[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T))
 # #%%
 # df = life_transformed.T[eff_dmu_name].T
-# exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, dmu_wanted=None)
+# exp = dmp.get_smrts_dfs(dmu=[i for i in range(df.shape[0])], x=np.array(df[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(df[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T), trace=False, round_to=5, dmu_wanted=None)
 # #%%
-# px_19, py_19, lambdas_19 = solver.project_frontier(x=np.array(life_transformed[['insurance_exp', 'operation_exp']].T), y=np.array(life_transformed[['underwriting_profit', 'investment_profit']].T), rs="vrs", orient="IO")
+# px_19, py_19, lambdas_19 = solver.project_frontier(x=np.array(life_transformed[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(life_transformed[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T), rs=const.VRS, orient=const.INPUT_ORIENT)
 # #%%
 # peff_dict, plambdas_dict = solver.dea_dual(dmu=life_transformed.index, x=px_19, y=py_19)
 # #%%
@@ -50,14 +51,14 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
             
     ## project all dmu to VRS frontier in IO
     if project:
-        px, py, lambdas = solver.project_frontier(x=np.array(transformed_df[['insurance_exp', 'operation_exp']].T), y=np.array(transformed_df[['underwriting_profit', 'investment_profit']].T), rs="vrs", orient="IO")
+        px, py, lambdas = solver.project_frontier(x=np.array(transformed_df[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(transformed_df[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T), rs=const.VRS, orient=const.INPUT_ORIENT)
         exp = dmp.get_smrts_dfs(dmu_idxs=[i for i in range(px.shape[1])], x=px, y=py, trace=False, round_to=5, wanted_idxs=None)
         old_keys = list(exp.keys())
         for old_key in old_keys:
             exp[df.index.tolist()[old_key]] = exp.pop(old_key)
         return exp
     
-    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[['insurance_exp', 'operation_exp']].T), y=np.array(transformed_df[['underwriting_profit', 'investment_profit']].T), orient="OO")
+    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(transformed_df[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T), orient=const.OUTPUT_ORIENT)
 
     eff_dmu_name = []
     for key, value in eff_dict.items():
@@ -65,7 +66,7 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0):
             eff_dmu_name.append(key)
     
     df = transformed_df.T[eff_dmu_name].T
-    exp = dmp.get_smrts_dfs(dmu_idxs=[i for i in range(df.shape[0])], x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, wanted_idxs=None, i_star=i_star)
+    exp = dmp.get_smrts_dfs(dmu_idxs=[i for i in range(df.shape[0])], x=np.array(df[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(df[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T), trace=False, round_to=5, wanted_idxs=None, i_star=i_star)
     old_keys = list(exp.keys())
     for old_key in old_keys:
         exp[eff_dmu_name[old_key]] = exp.pop(old_key)
@@ -167,7 +168,7 @@ for key, value in exp20.items():
 def find_eff_dmu(df:pd.DataFrame):
     transformed_df = denoise_nonpositive(df, .1)
     # print(transformed_df)
-    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[['insurance_exp', 'operation_exp']].T), y=np.array(transformed_df[['underwriting_profit', 'investment_profit']].T))
+    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(transformed_df[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T))
 
     eff_dmu_name = []
     for key, value in eff_dict.items():
@@ -236,10 +237,10 @@ sys_smrts(success_smrts_df, i_star=0)
 # f.close()
 #%%
 plt.figure(figsize=(8, 6))
-plt.scatter(denoise_LIFE["underwriting_profit"], denoise_LIFE["investment_profit"], c="blue")
-# plt.scatter(LIFE["underwriting_profit"], LIFE["investment_profit"], c="green")
+plt.scatter(denoise_LIFE[const.UNDERWRITING_PROFIT], denoise_LIFE[const.INVESTMENT_PROFIT], c="blue")
+# plt.scatter(LIFE[const.UNDERWRITING_PROFIT], LIFE[const.INVESTMENT_PROFIT], c="green")
 plt.xlabel("underwriting_profit after transform", fontsize=20)
-plt.ylabel("investment_profit", fontsize=20)
+plt.ylabel(const.INVESTMENT_PROFIT, fontsize=20)
 plt.show()
 #%%
 plt.figure(figsize=(8, 6))

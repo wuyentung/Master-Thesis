@@ -11,6 +11,7 @@ import fiscal_analyzing_utils as utils
 import os
 import pandas as pd
 import numpy as np
+import constant as const
 import dmp
 import solver
 import solver_r
@@ -24,19 +25,19 @@ import seaborn as sns
 sns.set_theme(style="darkgrid")
 # %%
 ### 14~16
-utils.plot_3D(dmu=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16'], stitle="Cathay Life", target_input="operation_exp", smrts_dict=OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516), dummy_dmu=["Global Life 14", "Singfor Life 14", "DUMMY Cathay 15"])
+utils.plot_3D(dmu=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16'], stitle="Cathay Life", target_input=const.OPERATION_EXP, smrts_dict=OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516), dummy_dmu=["Global Life 14", "Singfor Life 14", "DUMMY Cathay 15"])
 plt.show()
 #%%
-utils.plot_3D(dmu=['Taiwan Life 14', 'Taiwan Life 15', 'Taiwan Life 16'], stitle="DUMMY Taiwan", target_input="operation_exp", smrts_dict=OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516), dummy_dmu=["CTBC Life 14", "CTBC Life 15", "DUMMY Taiwan 16"])
+utils.plot_3D(dmu=['Taiwan Life 14', 'Taiwan Life 15', 'Taiwan Life 16'], stitle="DUMMY Taiwan", target_input=const.OPERATION_EXP, smrts_dict=OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516), dummy_dmu=["CTBC Life 14", "CTBC Life 15", "DUMMY Taiwan 16"])
 plt.show()
 # %%
 # visualize_progress
 for k in ENG_NAMES_16:
     if "Chubb Tempest Life" == k:
         continue
-    for target_input in ["insurance_exp", "operation_exp"]:
+    for target_input in [const.INSURANCE_EXP, const.OPERATION_EXP]:
         
-        if "insurance_exp" == target_input:
+        if const.INSURANCE_EXP == target_input:
             smrts_dict = INSURANCE_SMRTS_DUMMY141516
         else:
             smrts_dict = OPERATION_SMRTS_DUMMY141516
@@ -46,9 +47,9 @@ for k in ENG_NAMES_16:
         plt.show()
 #%%
 dmus = ["ACE Tempest Life 14", "ACE Tempest Life 15", "Chubb Tempest Life 16"]
-for target_input in ["insurance_exp", "operation_exp"]:
+for target_input in [const.INSURANCE_EXP, const.OPERATION_EXP]:
     
-    if "insurance_exp" == target_input:
+    if const.INSURANCE_EXP == target_input:
         smrts_dict = INSURANCE_SMRTS_DUMMY141516
     else:
         smrts_dict = OPERATION_SMRTS_DUMMY141516
@@ -58,9 +59,9 @@ for target_input in ["insurance_exp", "operation_exp"]:
     plt.show()
 #%%
 dmus = ["CTBC Life 14", "CTBC Life 15",]
-for target_input in ["insurance_exp", "operation_exp"]:
+for target_input in [const.INSURANCE_EXP, const.OPERATION_EXP]:
     
-    if "insurance_exp" == target_input:
+    if const.INSURANCE_EXP == target_input:
         smrts_dict = INSURANCE_SMRTS_DUMMY141516
     else:
         smrts_dict = OPERATION_SMRTS_DUMMY141516
@@ -110,24 +111,24 @@ all_analysis = utils.get_analyze_df(
 utils.round_analyze_df(all_analysis, round_to=4)#.to_excel("14-16 all_dmu analysis.xlsx")
 #%%
 no16 = all_analysis.loc[["16" not in idx for idx in all_analysis.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
-no16["scale"] = no16['insurance_exp'] + no16['operation_exp']
-no16["profit"] = no16['underwriting_profit'] + no16['investment_profit']
+no16[const.SCALE] = no16[const.INSURANCE_EXP] + no16[const.OPERATION_EXP]
+no16[const.PROFIT] = no16[const.UNDERWRITING_PROFIT] + no16[const.INVESTMENT_PROFIT]
 #%%
-for col in ['scale', 'profit',]:
+for col in [const.SCALE, const.PROFIT,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
-    utils.analyze_plot(ax, no16.loc[[1 == idx for idx in no16["efficiency"].tolist()]], according_col=col)
+    utils.analyze_plot(ax, no16.loc[[1 == idx for idx in no16[const.EFFICIENCY].tolist()]], according_col=col)
     ax.set_title(f"eff=1 {col}")
     # plt.savefig(f"eff=1 {col}.png")
     plt.show()
 #%%
-for col in ['scale', 'profit', 'efficiency',]:
+for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
-    utils.analyze_plot(ax, no16.loc[[1 != idx for idx in no16["efficiency"].tolist()]], according_col=col)
+    utils.analyze_plot(ax, no16.loc[[1 != idx for idx in no16[const.EFFICIENCY].tolist()]], according_col=col)
     ax.set_title(f"eff>1 {col}")
     # plt.savefig(f"eff>1 {col}.png")
     plt.show()
 #%%
-for col in ['scale', 'profit', 'efficiency',]:
+for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
     utils.analyze_plot(ax, no16, according_col=col)
     ax.set_title(col)
@@ -136,13 +137,13 @@ for col in ['scale', 'profit', 'efficiency',]:
 #%%
 ## input output correlation plot
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
-sns.scatterplot(x='insurance_exp', y='operation_exp', data=all_analysis, ax=ax, )
+sns.scatterplot(x=const.INSURANCE_EXP, y=const.OPERATION_EXP, data=all_analysis, ax=ax, )
 ax.set_title("inputs plot")
 # plt.savefig(f"inputs plot.png")
 plt.show()
 
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
-sns.scatterplot(x='underwriting_profit', y='investment_profit', data=all_analysis, ax=ax, )
+sns.scatterplot(x=const.UNDERWRITING_PROFIT, y=const.INVESTMENT_PROFIT, data=all_analysis, ax=ax, )
 ax.set_title("outputs plot")
 # plt.savefig(f"outputs plot.png")
 plt.show()

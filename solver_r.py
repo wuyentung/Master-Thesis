@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np 
 gp.setParam("LogToConsole", 0)
 gp.setParam("LogFile", "log.txt")
+import constant as const
 '''DEA data structure
 x:array([
     [i1_k1, i1_k2, ..., i1_kK], 
@@ -23,7 +24,7 @@ y:array([
     ]) J outputs, K firms
 '''
 #%%
-def io_dual(dmu:list, r:int, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, rs="vrs"):
+def io_dual(dmu:list, r:int, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, rs=const.VRS):
     ## input-oriented dual dea solver
     ## if vrs: cal vrs dual, else: cal crs dual
     
@@ -52,18 +53,18 @@ def io_dual(dmu:list, r:int, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.0000000000
     for j in range(J):
         m.addConstr(gp.quicksum(lambda_k[k] * y[j, k] for k in range(K)) >= y[j, r])
         
-    if "vrs" == rs:
+    if const.VRS == rs:
         m.addConstr(gp.quicksum(lambda_k[k] for k in range(K)) == 1)
-    elif "nirs" == rs:
+    elif const.NIRS == rs:
         m.addConstr(gp.quicksum(lambda_k[k] for k in range(K)) <= 1)
-    elif "ndrs" == rs:
+    elif const.NDRS == rs:
         m.addConstr(gp.quicksum(lambda_k[k] for k in range(K)) >= 1)
 
     m.optimize()
     
     return m.objVal, m.getAttr('x', lambda_k)
 #%%
-def oo_dual(dmu:list, r:int, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, rs="vrs"):
+def oo_dual(dmu:list, r:int, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, rs=const.VRS):
     ## output-oriented dual dea solver
     ## if vrs: cal vrs dual, else: cal crs dual
     
@@ -91,11 +92,11 @@ def oo_dual(dmu:list, r:int, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.0000000000
         m.addConstr(gp.quicksum(lambda_k[k] * y[j, k] for k in range(K)) >= theta_r * y[j, r])
     for i in range(I):
         m.addConstr(gp.quicksum(lambda_k[k] * x[i, k] for k in range(K)) <= x[i, r])
-    if "vrs" == rs:
+    if const.VRS == rs:
         m.addConstr(gp.quicksum(lambda_k[k] for k in range(K)) == 1)
-    elif "nirs" == rs:
+    elif const.NIRS == rs:
         m.addConstr(gp.quicksum(lambda_k[k] for k in range(K)) <= 1)
-    elif "ndrs" == rs:
+    elif const.NDRS == rs:
         m.addConstr(gp.quicksum(lambda_k[k] for k in range(K)) >= 1)
 
     m.optimize()

@@ -2,6 +2,7 @@
 import dmp
 import pandas as pd
 import numpy as np
+import constant as const
 import solver
 from load_data import denoise_nonpositive, LIFE141516, LIFE_DUMMY141516
 import time
@@ -13,13 +14,13 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0, div_norm=6, round_to=6):
     ## s-MRTS for  whole system
     transformed_df = denoise_nonpositive(df, div_norm=div_norm, round_to=round_to)
                 
-    eff_dict, lambdas_dict, projected_x, projected_y = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[['insurance_exp', 'operation_exp']].T), y=np.array(transformed_df[['underwriting_profit', 'investment_profit']].T), orient="OO")
+    eff_dict, lambdas_dict, projected_x, projected_y = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(transformed_df[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T), orient=const.OUTPUT_ORIENT)
     
     if project:
-        transformed_df['insurance_exp'] = projected_x[0]
-        transformed_df['operation_exp'] = projected_x[1]
-        transformed_df['underwriting_profit'] = projected_y[0]
-        transformed_df['investment_profit'] = projected_y[1]
+        transformed_df[const.INSURANCE_EXP] = projected_x[0]
+        transformed_df[const.OPERATION_EXP] = projected_x[1]
+        transformed_df[const.UNDERWRITING_PROFIT] = projected_y[0]
+        transformed_df[const.INVESTMENT_PROFIT] = projected_y[1]
         df = transformed_df
         print("project=True cannot calculate since underflow problem")
         return None, eff_dict, df
@@ -33,7 +34,7 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0, div_norm=6, round_to=6):
         
         df = transformed_df.loc[eff_dmu_name]
 
-    smrts_dfs = dmp.get_smrts_dfs(dmu=df.index, x=np.array(df[['insurance_exp', 'operation_exp']].T), y=np.array(df[['underwriting_profit', 'investment_profit']].T), trace=False, round_to=5, wanted_idxs=None, i_star=i_star)
+    smrts_dfs = dmp.get_smrts_dfs(dmu=df.index, x=np.array(df[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(df[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T), trace=False, round_to=5, wanted_idxs=None, i_star=i_star)
     
     if project:
         return smrts_dfs, eff_dict, lambdas_dict, df

@@ -2,6 +2,7 @@
 import os
 import pandas as pd
 import numpy as np
+import constant as const
 # %%
 
 
@@ -143,8 +144,8 @@ ENG_NAMES_18 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'C
 CHI_NAMES_18 = ['臺銀人壽', '台灣人壽', '保誠人壽', '國泰人壽', '中國人壽', '南山人壽', '新光人壽', '富邦人壽', '三商美邦人壽' '遠雄人壽', '宏泰人壽',
                 '安聯人壽', '中華郵政', '第一金人壽', '合作金庫人壽', '保德信國際人壽', '康健人壽', '元大人壽', '全球人壽', '友邦人壽', '法國巴黎人壽', '安達人壽', ]
 # %%
-FISCAL_ATTRIBUTES = ["insurance_exp", "operation_exp", "insurance_income",
-                     "reinsurance_exp", "reinsurance_income", "underwriting_profit", "investment_profit"]
+FISCAL_ATTRIBUTES = [const.INSURANCE_EXP, const.OPERATION_EXP, "insurance_income",
+                     "reinsurance_exp", "reinsurance_income", const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]
 FISCAL_LIFE2018 = pd.DataFrame([single_insurer(df=life2018_raw_df, name=name) for name in ENG_NAMES_18], index=[
                                name+" 18" for name in ENG_NAMES_18], columns=FISCAL_ATTRIBUTES)
 FISCAL_LIFE2019 = pd.DataFrame([single_insurer(df=life2019_raw_df, name=name) for name in ENG_NAMES_18], index=[

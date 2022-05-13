@@ -4,6 +4,7 @@ define dea solvers for all dmu
 '''
 import pandas as pd
 import numpy as np 
+import constant as const
 import solver_r
 '''data structure
 x:array([
@@ -21,14 +22,14 @@ y:array([
     ]) J outputs, K firms
 '''
 #%%
-def dea_dual(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, orient="IO", rs="vrs"):
+def dea_dual(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, orient=const.INPUT_ORIENT, rs=const.VRS):
     ## vrs dual dea solver using solver_r.io_vrs_dual() or solver_r.oo_vrs_dual()
-    if "IO" == orient:
+    if const.INPUT_ORIENT == orient:
         solver_r_dual = solver_r.io_dual
-    elif "OO" == orient:
+    elif const.OUTPUT_ORIENT == orient:
         solver_r_dual = solver_r.oo_dual
     else:
-        raise ValueError("only 'IO' or 'OO' can ba calculated") 
+        raise ValueError("only const.INPUT_ORIENT or const.OUTPUT_ORIENT can ba calculated") 
     
     eff_dict = {}
     lambdas_dict = {}
@@ -39,7 +40,7 @@ def dea_dual(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, or
     for r in range(K):
         eff_dict[dmu[r]], r_lambdas_dict = solver_r_dual(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD, rs=rs)
         projected_x[:, r] *= eff_dict[dmu[r]]
-        r_lambdas_df = pd.DataFrame.from_dict(r_lambdas_dict, orient="index", columns=["lambda"])
+        r_lambdas_df = pd.DataFrame.from_dict(r_lambdas_dict, orient="index", columns=[const.LAMBDA])
         r_lambdas_df["DMU_name"] = dmu
         r_lambdas_df = r_lambdas_df.set_index("DMU_name")
         lambdas_dict[dmu[r]] = r_lambdas_df
@@ -49,37 +50,37 @@ def dea_dual(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, or
         
     return eff_dict, lambdas_dict, projected_x, projected_y
 #%%
-def dea_vrs(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, orient="OO"):
+def dea_vrs(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, orient=const.OUTPUT_ORIENT):
     ## vrs dual dea solver using solver_r.io_vrs_dual() or solver_r.oo_vrs_dual()
     eff_dict = {}
     v_dict = {}
     u_dict = {}
     intercept_dict = {}
-    if "IO" == orient:
+    if const.INPUT_ORIENT == orient:
         raise ValueError("IO vrs is not implemented yet")
         for r in dmu:
             eff_dict[r], v_dict[r], u_dict[r], intercept_dict[r], = solver_r.io_vrs(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD)
-    elif "OO" == orient:
+    elif const.OUTPUT_ORIENT == orient:
         for r in dmu:
             eff_dict[r], v_dict[r], u_dict[r], intercept_dict[r],  = solver_r.oo_vrs(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD)
     else:
-        raise ValueError("only 'IO' or 'OO' can ba calculated") 
+        raise ValueError("only const.INPUT_ORIENT or const.OUTPUT_ORIENT can ba calculated") 
     return eff_dict, v_dict, u_dict, intercept_dict
 #%%
-# def project_frontier(x:np.ndarray, y:np.ndarray, orient="IO", rs="vrs"):
+# def project_frontier(x:np.ndarray, y:np.ndarray, orient=const.INPUT_ORIENT, rs=const.VRS):
 #     projected_x = x.copy()
 #     projected_y = y.copy()
 #     lamdas = {}
 #     K = x.shape[1]
 #     for r in range(K):
-#         if "IO" == orient:
+#         if const.INPUT_ORIENT == orient:
 #             obj, vars_dict = solver_r.io_dual(dmu=[i for i in range(K)], r=r, x=x, y=y, rs=rs)
 #             projected_x[:, r] *= obj
-#         elif "OO" == orient:
+#         elif const.OUTPUT_ORIENT == orient:
 #             obj, vars_dict = solver_r.oo_dual(dmu=[i for i in range(K)], r=r, x=x, y=y, rs=rs)
 #             projected_y[:, r] *= obj
 #         else:
-#             raise ValueError("only 'IO' or 'OO' can ba calculated") 
+#             raise ValueError("only const.INPUT_ORIENT or const.OUTPUT_ORIENT can ba calculated") 
 #         lamdas[r] = vars_dict
         
 #     return projected_x, projected_y, lamdas

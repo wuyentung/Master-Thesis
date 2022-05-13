@@ -21,7 +21,7 @@ def sys_smrts(df:pd.DataFrame, i_star=0, xcol:list=None, ycol:list=None):
     ## s-MRTS for  whole system
     transformed_df = denoise_nonpositive(df)/1000/1000
     # print(np.array([transformed_df[xcol].T]))
-    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[xcol].T), y=np.array(transformed_df[ycol].T), orient="OO")
+    eff_dict, lambdas_dict = solver.dea_dual(dmu=transformed_df.index, x=np.array(transformed_df[xcol].T), y=np.array(transformed_df[ycol].T), orient=const.OUTPUT_ORIENT)
 
     eff_dmu_name = []
     for key, value in eff_dict.items():
