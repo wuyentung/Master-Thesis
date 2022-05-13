@@ -6,7 +6,7 @@ import dmp
 import solver
 import solver_r
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES
-from exp_fiscal_data import OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516
+from exp_fiscal_data import OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 CMAP = plt.get_cmap('jet')
@@ -94,14 +94,14 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
         
         ## max direction of MP
         if all_dmu[i] in smrts_dict:
-            smrts_df = smrts_dict[all_dmu[i]]
-            max_dir_mp = _float_direction(_find_max_dir_mp(smrts_df))
-            # print(max_dir_mp_str)
             smrts_color = "red"
         else:
             # max_dir_mp = [0.5, 0.5]
-            max_dir_mp = [x_start/(x_start+y_start), y_start/(x_start+y_start)]
             smrts_color = "orangered"
+        reference_dmu = LAMBDA_DICT_DUMMY141516[all_dmu[i]]["lambda"].idxmax()
+        # print(reference_dmu, LAMBDA_DICT_DUMMY141516[all_dmu[i]]["lambda"])
+        smrts_df = smrts_dict[reference_dmu]
+        max_dir_mp = _float_direction(_find_max_dir_mp(smrts_df))
             
         # print(max_dir_mp)
             
@@ -132,6 +132,8 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
 #%%
 def round_analyze_df(analyze_df:pd.DataFrame, round_to:int=2):
     for col in analyze_df.columns:
+        if isinstance(analyze_df[col].iloc[0], str):
+            continue
         try:
             analyze_df[col] = np.round(analyze_df[col], round_to)
         except:
@@ -152,6 +154,14 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
         return [((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2)/np.abs(np.abs((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + np.abs((investment_profits[end_idx]-investment_profits[start_idx])/2)), ((investment_profits[end_idx]-investment_profits[start_idx])/2)/np.abs(np.abs((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + np.abs((investment_profits[end_idx]-investment_profits[start_idx])/2))]
     out_dirs = [_out_dir(i, i+1) for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
+    
+    reference_dmus = [LAMBDA_DICT_DUMMY141516[k]["lambda"].idxmax() for k in dmu_ks]
+    reference_lambdas = [LAMBDA_DICT_DUMMY141516[k]["lambda"].max() for k in dmu_ks]
+    # for n in range(len(dmu_ks)):
+    #     ## max direction of MP
+    #     reference_dmu = LAMBDA_DICT_DUMMY141516[dmu_ks[n]]["lambda"].idxmax()
+    #     reference_dmus.append(reference_dmu)
+
     ## insurance_exp max direction of MP
     ## investment_profit max direction of MP
     insurance_max_dirs = []
@@ -170,13 +180,14 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
         
         for n in range(len(dmu_ks)):
             ## max direction of MP
-            if dmu_ks[n] in smrts_dict:
-                smrts_df = smrts_dict[dmu_ks[n]]
-                max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df))
-            else:
-                ## not efficient dmu, then radio measure
-                # max_dir_mp_str = [0.5, 0.5] # non-radio measure
-                max_dir_mp_str = [underwriting_profits[n]/(underwriting_profits[n]+investment_profits[n]), investment_profits[n]/(underwriting_profits[n]+investment_profits[n])]
+            smrts_df = smrts_dict[reference_dmus[n]]
+            max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df))
+            # if dmu_ks[n] in smrts_dict:
+            #     smrts_df = smrts_dict[dmu_ks[n]]
+            # else:
+            #     ## not efficient dmu, then radio measure
+            #     # max_dir_mp_str = [0.5, 0.5] # non-radio measure
+            #     max_dir_mp_str = [underwriting_profits[n]/(underwriting_profits[n]+investment_profits[n]), investment_profits[n]/(underwriting_profits[n]+investment_profits[n])]
             max_dirs.append(max_dir_mp_str)
             # max_dir_mp = float_direction(max_dir_mp_str)
             cos_sims.append(_cal_cosine_similarity(out_dirs[n], max_dirs[n]))
@@ -195,6 +206,8 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             "underwriting_profit": underwriting_profits, 
             "investment_profit": investment_profits, 
             "output progress direction": out_dirs, 
+            "reference DMU": reference_dmus, 
+            "reference lambda": reference_lambdas, 
             "insurance_exp max direction of MP": insurance_max_dirs, 
             "insurance_exp cosine similarity": insurance_cos_sims, 
             "operation_exp max direction of MP": operation_max_dirs, 
