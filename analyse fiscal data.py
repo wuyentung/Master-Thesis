@@ -24,10 +24,10 @@ import seaborn as sns
 sns.set_theme(style="darkgrid")
 # %%
 ### 14~16
-utils.plot_3D(dmu=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16'], stitle="Cathay Life", target_input="operation_exp", smrts_dict=OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000, dummy_dmu=["Global Life 14", "Singfor Life 14", "DUMMY Cathay 15"])
+utils.plot_3D(dmu=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16'], stitle="Cathay Life", target_input="operation_exp", smrts_dict=OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516), dummy_dmu=["Global Life 14", "Singfor Life 14", "DUMMY Cathay 15"])
 plt.show()
 #%%
-utils.plot_3D(dmu=['Taiwan Life 14', 'Taiwan Life 15', 'Taiwan Life 16'], stitle="DUMMY Taiwan", target_input="operation_exp", smrts_dict=OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516)/1000/1000, dummy_dmu=["CTBC Life 14", "CTBC Life 15", "DUMMY Taiwan 16"])
+utils.plot_3D(dmu=['Taiwan Life 14', 'Taiwan Life 15', 'Taiwan Life 16'], stitle="DUMMY Taiwan", target_input="operation_exp", smrts_dict=OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516), dummy_dmu=["CTBC Life 14", "CTBC Life 15", "DUMMY Taiwan 16"])
 plt.show()
 # %%
 # visualize_progress
