@@ -108,11 +108,11 @@ all_analysis = utils.get_analyze_df(
         'Yuanta Life 14', 'Yuanta Life 15', 'Yuanta Life 16', 
         'Zurich 14', 'Zurich 15', 'Zurich 16', 
             ], df=denoise_nonpositive(LIFE_DUMMY141516),)
+all_analysis[const.SCALE] = all_analysis[const.INSURANCE_EXP] + all_analysis[const.OPERATION_EXP]
+all_analysis[const.PROFIT] = all_analysis[const.UNDERWRITING_PROFIT] + all_analysis[const.INVESTMENT_PROFIT]
 utils.round_analyze_df(all_analysis, round_to=4)#.to_excel("14-16 all_dmu analysis.xlsx")
 #%%
 no16 = all_analysis.loc[["16" not in idx for idx in all_analysis.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
-no16[const.SCALE] = no16[const.INSURANCE_EXP] + no16[const.OPERATION_EXP]
-no16[const.PROFIT] = no16[const.UNDERWRITING_PROFIT] + no16[const.INVESTMENT_PROFIT]
 #%%
 for col in [const.SCALE, const.PROFIT,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
@@ -160,8 +160,9 @@ plt.show()
 for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
     utils.analyze_plot(ax, no16, according_col=col)
-    ax.set_title(col)
-    # plt.savefig(f"basic {col}.png")
+    stitle = f"all DMU with {col}"
+    ax.set_title(stitle)
+    # plt.savefig(f"{stitle}.png")
     plt.show()
 #%%
 ## input output correlation plot
