@@ -117,16 +117,45 @@ no16[const.PROFIT] = no16[const.UNDERWRITING_PROFIT] + no16[const.INVESTMENT_PRO
 for col in [const.SCALE, const.PROFIT,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
     utils.analyze_plot(ax, no16.loc[[1 == idx for idx in no16[const.EFFICIENCY].tolist()]], according_col=col)
-    ax.set_title(f"eff=1 {col}")
-    # plt.savefig(f"eff=1 {col}.png")
+    stitle = f"{const.EFFICIENCY}=1 with {col}"
+    ax.set_title(stitle)
+    # plt.savefig(f"{stitle}.png")
     plt.show()
 #%%
+no16no1 = no16.loc[[1 != idx for idx in no16[const.EFFICIENCY].tolist()]]
 for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
-    utils.analyze_plot(ax, no16.loc[[1 != idx for idx in no16[const.EFFICIENCY].tolist()]], according_col=col)
-    ax.set_title(f"eff>1 {col}")
-    # plt.savefig(f"eff>1 {col}.png")
+    utils.analyze_plot(ax, no16no1, according_col=col)
+    stitle = f"{const.EFFICIENCY}>1 with {col}"
+    ax.set_title(stitle)
+    # plt.savefig(f"{stitle}.png")
     plt.show()
+#%%
+no16no1no0 = no16no1.loc[[0 != idx for idx in no16no1[const.COS_SIM].tolist()]]
+for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
+    fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
+    utils.analyze_plot(ax, no16no1no0, according_col=col)
+    stitle = f"{const.EFFICIENCY}>1, {const.COS_SIM}!=0 with {col}"
+    ax.set_title(stitle)
+    # plt.savefig(f"{stitle}.png")
+    plt.show()
+#%%
+no16no1w0 = no16no1.loc[[0 == idx for idx in no16no1[const.COS_SIM].tolist()]]
+fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
+sns.boxenplot(y=const.EC, data=no16no1w0, orient="v", ax=ax, palette="Set3")
+sns.swarmplot(y=const.EC, data=no16no1w0, orient="v", ax=ax, color=".25")
+plt.annotate(
+    no16no1w0[const.EC].idxmax(), # this is the text
+    (0, no16no1w0[const.EC].max()), # these are the coordinates to position the label
+    textcoords="offset points", # how to position the text
+    xytext=(-10, 0), # distance from text to points (x,y)
+    ha='right', # horizontal alignment can be left, right or center
+    fontsize=10, 
+    ) 
+stitle = f"{const.EFFICIENCY}>1, {const.COS_SIM}=0"
+ax.set_title(stitle)
+# plt.savefig(f"{stitle}.png")
+plt.show()
 #%%
 for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
