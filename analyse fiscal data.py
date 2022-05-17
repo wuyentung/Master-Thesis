@@ -117,7 +117,7 @@ no16 = all_analysis.loc[["16" not in idx for idx in all_analysis.index.tolist()]
 for col in [const.SCALE, const.PROFIT,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
     utils.analyze_plot(ax, no16.loc[[1 == idx for idx in no16[const.EFFICIENCY].tolist()]], according_col=col)
-    stitle = f"{const.EFFICIENCY}=1 with {col}"
+    stitle = f"Inefficiency with {col}"
     ax.set_title(stitle)
     # plt.savefig(f"{stitle}.png")
     plt.show()
@@ -126,7 +126,7 @@ no16no1 = no16.loc[[1 != idx for idx in no16[const.EFFICIENCY].tolist()]]
 for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
     utils.analyze_plot(ax, no16no1, according_col=col)
-    stitle = f"{const.EFFICIENCY}>1 with {col}"
+    stitle = f"Inefficiency with {col}"
     ax.set_title(stitle)
     # plt.savefig(f"{stitle}.png")
     plt.show()
@@ -135,7 +135,7 @@ no16no1no0 = no16no1.loc[[0 != idx for idx in no16no1[const.COS_SIM].tolist()]]
 for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
     utils.analyze_plot(ax, no16no1no0, according_col=col)
-    stitle = f"{const.EFFICIENCY}>1, {const.COS_SIM}!=0 with {col}"
+    stitle = f"Inefficiency, non-zero {const.COS_SIM} with {col}"
     ax.set_title(stitle)
     # plt.savefig(f"{stitle}.png")
     plt.show()
@@ -152,7 +152,7 @@ plt.annotate(
     ha='right', # horizontal alignment can be left, right or center
     fontsize=10, 
     ) 
-stitle = f"{const.EFFICIENCY}>1, {const.COS_SIM}=0"
+stitle = f"Inefficiency, zero {const.COS_SIM}"
 ax.set_title(stitle)
 # plt.savefig(f"{stitle}.png")
 plt.show()
