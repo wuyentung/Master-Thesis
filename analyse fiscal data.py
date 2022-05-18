@@ -188,6 +188,7 @@ ax.set_title(stitle)
 # plt.savefig(f"{stitle}.png")
 plt.show()
 #%%
+large_eff = eff.loc[[10 < scale for scale in eff[const.SCALE].tolist()]]
 small_eff = eff.loc[[10 > scale for scale in eff[const.SCALE].tolist()]]
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
 # utils.analyze_plot(ax=ax, df=eff, x_col=const.SCALE, y_col=const.PROFIT, according_col=const.COS_SIM)
