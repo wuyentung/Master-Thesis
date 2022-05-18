@@ -178,3 +178,23 @@ ax.set_title("outputs plot")
 # plt.savefig(f"outputs plot.png")
 plt.show()
 #%%
+eff = all_analysis.loc[[1 == ef for ef in all_analysis[const.EFFICIENCY].tolist()]]
+fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
+# utils.analyze_plot(ax=ax, df=eff, x_col=const.SCALE, y_col=const.PROFIT, according_col=const.COS_SIM)
+sns.scatterplot(x=const.SCALE, y=const.PROFIT, data=eff, ax=ax, hue=const.COS_SIM, palette=CMAP,)
+utils.label_data(zip_x=eff[const.SCALE], zip_y=eff[const.PROFIT], labels=eff.index)
+stitle = f"Efficient DMU"
+ax.set_title(stitle)
+# plt.savefig(f"{stitle}.png")
+plt.show()
+#%%
+small_eff = eff.loc[[10 > scale for scale in eff[const.SCALE].tolist()]]
+fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
+# utils.analyze_plot(ax=ax, df=eff, x_col=const.SCALE, y_col=const.PROFIT, according_col=const.COS_SIM)
+sns.scatterplot(x=const.SCALE, y=const.PROFIT, data=small_eff, ax=ax, hue=const.COS_SIM, palette=CMAP,)
+utils.label_data(zip_x=small_eff[const.SCALE], zip_y=small_eff[const.PROFIT], labels=small_eff.index)
+stitle = f"Efficient Small Size DMU"
+ax.set_title(stitle)
+# plt.savefig(f"{stitle}.png")
+plt.show()
+#%%
