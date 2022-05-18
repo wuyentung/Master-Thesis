@@ -242,17 +242,3 @@ def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.COS_S
     ax.vlines(x=df[x_col].mean(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
     sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
     label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index)
-    # # zip joins x and y coordinates in pairs
-    # c = 0
-    # for x,y in zip(df[x_col], df[y_col]):
-    #     label = f"{df.index[c]}"
-
-    #     plt.annotate(
-    #         label, # this is the text
-    #         (x,y), # these are the coordinates to position the label
-    #         textcoords="offset points", # how to position the text
-    #         xytext=(0,5), # distance from text to points (x,y)
-    #         ha='center', # horizontal alignment can be left, right or center
-    #         fontsize=5, 
-    #         ) 
-    #     c+=1
