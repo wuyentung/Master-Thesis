@@ -220,21 +220,39 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
         )
     return dmu_df
 #%%
-def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.COS_SIM, according_col=const.EFFICIENCY):
-    ax.hlines(y=df[y_col].mean(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
-    ax.vlines(x=df[x_col].mean(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
-    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
+def label_data(zip_x, zip_y, labels, xytext=(0, 5), ha='center', fontsize=5):
     # zip joins x and y coordinates in pairs
     c = 0
-    for x,y in zip(df[x_col], df[y_col]):
-        label = f"{df.index[c]}"
+    for x,y in zip(zip_x, zip_y):
+        label = f"{labels[c]}"
 
         plt.annotate(
             label, # this is the text
             (x,y), # these are the coordinates to position the label
             textcoords="offset points", # how to position the text
-            xytext=(0,5), # distance from text to points (x,y)
-            ha='center', # horizontal alignment can be left, right or center
-            fontsize=5, 
+            xytext=xytext, # distance from text to points (x,y)
+            ha=ha, # horizontal alignment can be left, right or center
+            fontsize=fontsize, 
             ) 
         c+=1
+    
+#%%
+def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.COS_SIM, according_col=const.EFFICIENCY):
+    ax.hlines(y=df[y_col].mean(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
+    ax.vlines(x=df[x_col].mean(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
+    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
+    label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index)
+    # # zip joins x and y coordinates in pairs
+    # c = 0
+    # for x,y in zip(df[x_col], df[y_col]):
+    #     label = f"{df.index[c]}"
+
+    #     plt.annotate(
+    #         label, # this is the text
+    #         (x,y), # these are the coordinates to position the label
+    #         textcoords="offset points", # how to position the text
+    #         xytext=(0,5), # distance from text to points (x,y)
+    #         ha='center', # horizontal alignment can be left, right or center
+    #         fontsize=5, 
+    #         ) 
+    #     c+=1
