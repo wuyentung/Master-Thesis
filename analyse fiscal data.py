@@ -199,3 +199,11 @@ ax.set_title(stitle)
 # plt.savefig(f"{stitle}.png")
 plt.show()
 #%%
+fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
+sns.scatterplot(x=const.EC, y=const.EC, data=no16no1.loc[["Zurich 16" == ref_dmu for ref_dmu in no16no1[const.REF_DMU].tolist()]], ax=ax, style=const.REF_DMU, palette=CMAP, s=100)
+# utils.analyze_plot(ax, no16no1, according_col=col)
+stitle = f"Inefficient with {col}"
+ax.set_title(stitle)
+# plt.savefig(f"{stitle}.png")
+plt.show()
+#%%
