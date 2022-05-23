@@ -57,7 +57,7 @@ def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:i
         m.update()
 
         ## alpha
-        m.setObjective(v[i_star] / np.max(x[i_star]), gp.GRB.MINIMIZE)
+        m.setObjective(v[i_star] / np.max(x[i_star]), gp.GRB.MAXIMIZE)
 
         ## s.t.
         m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(r)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(r)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus == 0)
@@ -113,7 +113,7 @@ class Dmu_Direction(object):
     #     return np.round(x, f)
 #%%
 DIRECTIONS = [ 
-    [-1, 0], 
+    [-0.99, -0.01], # since [-1, 0] can cause infeasible or unbounded
     [-0.9, -0.1], 
     [-0.8, -0.2], 
     [-0.7, -0.3], 
@@ -154,7 +154,6 @@ def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, trace=False, round_to:in
             print()
         for r in wanted_idxs:
             results.append(Dmu_Direction(dmu=dmu[r], direction=direction, alpha=alpha[r], dmp=dmp[r], smrts=smrts[r], round_to=round_to))
-
     col_names = ["direction", "alpha", "DMP", "s-MRTS"]
     dfs = {}
     for r in wanted_idxs:
@@ -192,7 +191,7 @@ if __name__ == "__main__":
         [1, 2, 4], 
         [200, 300, 100], 
         ])
-    dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=5)
+    dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=5, wanted_idxs=[0, 1])
     # print(dfs["A"])
     # print(2)
 #%%
