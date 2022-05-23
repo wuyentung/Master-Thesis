@@ -63,7 +63,7 @@ def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:i
         m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(r)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(r)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus == 0)
         for k in dmu_idxs:
             m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(k)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(k)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus >= 0)
-        m.addConstr(gp.quicksum(u[j] * gy[j] for j in range(J)) == 1)
+        m.addConstr(gp.quicksum(u[j] * gy[j] for j in range(J)) == -1)
             
         m.optimize()
         
@@ -113,17 +113,17 @@ class Dmu_Direction(object):
     #     return np.round(x, f)
 #%%
 DIRECTIONS = [ 
-    [1, 0], 
-    [.9, .1], 
-    [.8, .2], 
-    [.7, .3], 
-    [.6, .4], 
-    [.5, .5], 
-    [.4, .6], 
-    [.3, .7], 
-    [.2, .8], 
-    [.1, .9], 
-    [0, 1], 
+    [-1, 0], 
+    [-0.9, -0.1], 
+    [-0.8, -0.2], 
+    [-0.7, -0.3], 
+    [-0.6, -0.4], 
+    [-0.5, -0.5], 
+    [-0.4, -0.6], 
+    [-0.3, -0.7], 
+    [-0.2, -0.8], 
+    [-0.1, -0.9], 
+    [0, -1], 
 ]
 #%%
 def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, trace=False, round_to:int=2, wanted_idxs:list=None, i_star:int=0):
