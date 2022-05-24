@@ -27,7 +27,7 @@ gy: array([
     gy1, gy2, ..., gyJ
 ])
 '''
-def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, left_side_DMP:bool, THRESHOLD=0.000000000001, wanted_idxs:list=None):
+def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, DMP_contraction:bool, THRESHOLD=0.000000000001, wanted_idxs:list=None):
     ## i_star: index of the change of single input Xi*, which is the target we want to investigate
     ## dmu_wanted: the dmu we want to investigate, defalt None
     """_summary_
@@ -38,7 +38,7 @@ def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:i
         y (np.ndarray): _description_
         gy (np.ndarray): _description_
         i_star (int): _description_
-        left_side_DMP (bool): True means left side of DMP, False means right side of DMP
+        DMP_contraction (bool): True means left side of DMP, False means right side of DMP
         THRESHOLD (float, optional): _description_. Defaults to 0.000000000001.
         wanted_idxs (list, optional): _description_. Defaults to None.
 
@@ -48,7 +48,7 @@ def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:i
     I = x.shape[0]
     J = y.shape[0]
     alpha = {}
-    if left_side_DMP:
+    if DMP_contraction:
         obj_fun = gp.GRB.MAXIMIZE
         third_rhs = -1
     else:
@@ -164,7 +164,7 @@ NEG_DIRECTIONS = [
     [0, -1], 
 ]
 #%%
-def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, left_side_DMP:bool, trace=False, round_to:int=2, wanted_idxs:list=None, i_star:int=0):
+def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, DMP_contraction:bool, trace=False, round_to:int=2, wanted_idxs:list=None, i_star:int=0):
     dmu_idxs = [i for i in range(len(dmu))]
     ## wanted_idxs: the index of dmu we want to investigate
     if wanted_idxs is None:
@@ -173,14 +173,14 @@ def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, left_side_DMP:bool, trac
     results = []
     dmp_directions = []
     
-    if left_side_DMP:
+    if DMP_contraction:
         directions = NEG_DIRECTIONS
     else:
         directions = DIRECTIONS
         
     for i in range(len(directions)):
         direction = directions[i]
-        alpha = cal_alpha(dmu_idxs=dmu_idxs, x=x, y=y, gy=direction, wanted_idxs=wanted_idxs, i_star=i_star, left_side_DMP=left_side_DMP)
+        alpha = cal_alpha(dmu_idxs=dmu_idxs, x=x, y=y, gy=direction, wanted_idxs=wanted_idxs, i_star=i_star, DMP_contraction=DMP_contraction)
         dmp = cal_dmp(dmu_idxs=dmu_idxs, alpha=alpha, y=y, gy=direction, wanted_idxs=wanted_idxs)
         dmp_directions.append(dmp)
         if not i:
@@ -231,7 +231,7 @@ if __name__ == "__main__":
         [1, 2, 4], 
         [200, 300, 100], 
         ])
-    dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=5, wanted_idxs=[0, 1, 2], left_side_DMP=False)
+    dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=5, wanted_idxs=[0, 1, 2], DMP_contraction=False)
     # print(dfs["A"])
     # print(2)
 #%%
