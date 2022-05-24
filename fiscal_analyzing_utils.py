@@ -32,7 +32,7 @@ class Arrow3D(FancyArrowPatch):
         
 
 def _find_max_dir_mp(smrts_df:pd.DataFrame):
-    max_dmp_dis = 0
+    max_dmp_dis = -np.inf
     max_dir_mp = "[0, 0]"
     for idx, row in smrts_df.iterrows():
         dmp = row["DMP"]
