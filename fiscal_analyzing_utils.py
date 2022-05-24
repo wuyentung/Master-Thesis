@@ -153,45 +153,27 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     
     def _out_dir(start_idx, end_idx):
         return [((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2)/np.abs(np.abs((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + np.abs((investment_profits[end_idx]-investment_profits[start_idx])/2)), ((investment_profits[end_idx]-investment_profits[start_idx])/2)/np.abs(np.abs((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + np.abs((investment_profits[end_idx]-investment_profits[start_idx])/2))]
+    
     out_dirs = [_out_dir(i, i+1) for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
     
     reference_dmus = [LAMBDA_DICT_DUMMY141516[k][const.LAMBDA].idxmax() for k in dmu_ks]
     reference_lambdas = [LAMBDA_DICT_DUMMY141516[k][const.LAMBDA].max() for k in dmu_ks]
-    # for n in range(len(dmu_ks)):
-    #     ## max direction of MP
-    #     reference_dmu = LAMBDA_DICT_DUMMY141516[dmu_ks[n]][const.LAMBDA].idxmax()
-    #     reference_dmus.append(reference_dmu)
-
-    ## insurance_exp max direction of MP
-    ## investment_profit max direction of MP
-    insurance_max_dirs = []
-    insurance_cos_sims = []
-    operation_max_dirs = []
-    operation_cos_sims = []
-    for target_input in [const.INSURANCE_EXP, const.OPERATION_EXP]:
-        if const.INSURANCE_EXP == target_input:
-            smrts_dict = EXPANSION_INSURANCE_SMRTS_DUMMY141516
-            max_dirs = insurance_max_dirs
-            cos_sims = insurance_cos_sims
-        else:
-            smrts_dict = EXPANSION_OPERATION_SMRTS_DUMMY141516
-            max_dirs = operation_max_dirs
-            cos_sims = operation_cos_sims
-        
+    
+    def _cal_cos_sim(smrts_dict):
+        max_dirs = []
+        cos_sims = []
         for n in range(len(dmu_ks)):
             ## max direction of MP
             smrts_df = smrts_dict[reference_dmus[n]]
             max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df))
-            # if dmu_ks[n] in smrts_dict:
-            #     smrts_df = smrts_dict[dmu_ks[n]]
-            # else:
-            #     ## not efficient dmu, then radio measure
-            #     # max_dir_mp_str = [0.5, 0.5] # non-radio measure
-            #     max_dir_mp_str = [underwriting_profits[n]/(underwriting_profits[n]+investment_profits[n]), investment_profits[n]/(underwriting_profits[n]+investment_profits[n])]
             max_dirs.append(max_dir_mp_str)
-            # max_dir_mp = float_direction(max_dir_mp_str)
             cos_sims.append(_cal_cosine_similarity(out_dirs[n], max_dirs[n]))
+        return max_dirs, cos_sims
+    
+    insurance_max_dirs, insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_DUMMY141516)
+    operation_max_dirs, operation_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_OPERATION_SMRTS_DUMMY141516)
+    
     ## overall cosine similarity
     overall_cos_sims = [insurance_cos_sims[i] if insurance_cos_sims[i] else operation_cos_sims[i] for i in range(len(dmu_ks))]
     
