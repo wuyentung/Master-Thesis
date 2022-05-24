@@ -7,7 +7,7 @@ import solver
 import solver_r
 import constant as const
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES
-from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
+from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516, CONTRACTION_INSURANCE_SMRTS_DUMMY141516, CONTRACTION_OPERATION_SMRTS_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 CMAP = plt.get_cmap('jet')
@@ -40,13 +40,16 @@ def _find_max_dir_mp(smrts_df:pd.DataFrame):
         dmp_dis = dmp[0] + dmp[1]
         # dmp_dis = np.square(dmp[0]**2 + dmp[1]**2)
         # print(mdp_dis)
-        if dmp_dis > max_dmp_dis:
+        if dmp_dis and dmp_dis > max_dmp_dis:
             max_dmp_dis = dmp_dis
             max_dir_mp = idx
     return max_dir_mp
 
 def _float_direction(str_direction:str):
     for direction in dmp.DIRECTIONS:
+        if str(direction) == str_direction:
+            return direction
+    for direction in dmp.NEG_DIRECTIONS:
         if str(direction) == str_direction:
             return direction
     return [0, 0]
@@ -171,11 +174,14 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             cos_sims.append(_cal_cosine_similarity(out_dirs[n], max_dirs[n]))
         return max_dirs, cos_sims
     
-    insurance_max_dirs, insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_DUMMY141516)
-    operation_max_dirs, operation_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_OPERATION_SMRTS_DUMMY141516)
+    expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_DUMMY141516)
+    expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_OPERATION_SMRTS_DUMMY141516)
+    contraction_insurance_max_dirs, contraction_insurance_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_INSURANCE_SMRTS_DUMMY141516)
+    contraction_operation_max_dirs, contraction_operation_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_OPERATION_SMRTS_DUMMY141516)
     
-    ## overall cosine similarity
-    overall_cos_sims = [insurance_cos_sims[i] if insurance_cos_sims[i] else operation_cos_sims[i] for i in range(len(dmu_ks))]
+    ## marginal consistency
+    expansion_consistencies = [expansion_insurance_cos_sims[i] if expansion_insurance_cos_sims[i] else expansion_operation_cos_sims[i] for i in range(len(dmu_ks))]
+    contraction_consistencies = [contraction_insurance_cos_sims[i] if contraction_insurance_cos_sims[i] else contraction_operation_cos_sims[i] for i in range(len(dmu_ks))]
     
     ## effiency and eff_change
     effiencies = [EFF_DICT_DUMMY141516[k] for k in dmu_ks]
@@ -191,11 +197,19 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             const.OUT_DIR: out_dirs, 
             const.REF_DMU: reference_dmus, 
             const.REF_LAMBDA: reference_lambdas, 
-            const.INSURANCE_MAXDMP: insurance_max_dirs, 
-            const.INSURANCE_COS_SIM: insurance_cos_sims, 
-            const.OPERATION_MAXDMP: operation_max_dirs, 
-            const.OPERATION_COS_SIM: operation_cos_sims, 
-            const.COS_SIM: overall_cos_sims, 
+            
+            const.EXPANSION_INSURANCE_MAXDMP: expansion_insurance_max_dirs, 
+            const.EXPANSION_INSURANCE_COS_SIM: expansion_insurance_cos_sims, 
+            const.EXPANSION_OPERATION_MAXDMP: expansion_operation_max_dirs, 
+            const.EXPANSION_OPERATION_COS_SIM: expansion_operation_cos_sims, 
+            const.EXPANSION_CONSISTENCY: expansion_consistencies,
+             
+            const.CONTRACTION_INSURANCE_MAXDMP: contraction_insurance_max_dirs, 
+            const.CONTRACTION_INSURANCE_COS_SIM: contraction_insurance_cos_sims, 
+            const.CONTRACTION_OPERATION_MAXDMP: contraction_operation_max_dirs, 
+            const.CONTRACTION_OPERATION_COS_SIM: contraction_operation_cos_sims, 
+            const.CONTRACTION_CONSISTENCY: contraction_consistencies,
+             
             const.EFFICIENCY: effiencies, 
             const.EC: eff_changes, 
         }, index=dmu_ks
@@ -219,8 +233,8 @@ def label_data(zip_x, zip_y, labels, xytext=(0, 5), ha='center', fontsize=5):
         c+=1
     
 #%%
-def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.COS_SIM, according_col=const.EFFICIENCY):
+def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.EXPANSION_CONSISTENCY, according_col=const.EFFICIENCY):
     ax.hlines(y=df[y_col].mean(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
-    ax.vlines(x=df[x_col].mean(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
+    ax.vlines(x=1 if x_col == const.EC else df[x_col].mean(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
     sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
     label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index)

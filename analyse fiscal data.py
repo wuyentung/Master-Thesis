@@ -131,16 +131,16 @@ for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     # plt.savefig(f"{stitle}.png")
     plt.show()
 #%%
-no16no1no0 = no16no1.loc[[0 != idx for idx in no16no1[const.COS_SIM].tolist()]]
+no16no1no0 = no16no1.loc[[0 != idx for idx in no16no1[const.EXPANSION_CONSISTENCY].tolist()]]
 for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
     utils.analyze_plot(ax, no16no1no0, according_col=col)
-    stitle = f"Inefficient, non-zero {const.COS_SIM} with {col}"
+    stitle = f"Inefficient, non-zero {const.EXPANSION_CONSISTENCY} with {col}"
     ax.set_title(stitle)
     # plt.savefig(f"{stitle}.png")
     plt.show()
 #%%
-no16no1w0 = no16no1.loc[[0 == idx for idx in no16no1[const.COS_SIM].tolist()]]
+no16no1w0 = no16no1.loc[[0 == idx for idx in no16no1[const.EXPANSION_CONSISTENCY].tolist()]]
 fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
 sns.boxenplot(y=const.EC, data=no16no1w0, orient="v", ax=ax, palette="Set3")
 sns.swarmplot(y=const.EC, data=no16no1w0, orient="v", ax=ax, color=".25")
@@ -152,7 +152,7 @@ plt.annotate(
     ha='right', # horizontal alignment can be left, right or center
     fontsize=10, 
     ) 
-stitle = f"Inefficient, zero {const.COS_SIM}"
+stitle = f"Inefficient, zero {const.EXPANSION_CONSISTENCY}"
 ax.set_title(stitle)
 # plt.savefig(f"{stitle}.png")
 plt.show()
@@ -181,7 +181,7 @@ plt.show()
 eff = all_analysis.loc[[1 == ef for ef in all_analysis[const.EFFICIENCY].tolist()]]
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
 # utils.analyze_plot(ax=ax, df=eff, x_col=const.SCALE, y_col=const.PROFIT, according_col=const.COS_SIM)
-sns.scatterplot(x=const.SCALE, y=const.PROFIT, data=eff, ax=ax, hue=const.COS_SIM, palette=CMAP,)
+sns.scatterplot(x=const.SCALE, y=const.PROFIT, data=eff, ax=ax, hue=const.EXPANSION_CONSISTENCY, palette=CMAP,)
 utils.label_data(zip_x=eff[const.SCALE], zip_y=eff[const.PROFIT], labels=eff.index)
 stitle = f"Efficient DMU"
 ax.set_title(stitle)
@@ -192,7 +192,7 @@ large_eff = eff.loc[[10 < scale for scale in eff[const.SCALE].tolist()]]
 small_eff = eff.loc[[10 > scale for scale in eff[const.SCALE].tolist()]]
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
 # utils.analyze_plot(ax=ax, df=eff, x_col=const.SCALE, y_col=const.PROFIT, according_col=const.COS_SIM)
-sns.scatterplot(x=const.SCALE, y=const.PROFIT, data=small_eff, ax=ax, hue=const.COS_SIM, palette=CMAP,)
+sns.scatterplot(x=const.SCALE, y=const.PROFIT, data=small_eff, ax=ax, hue=const.EXPANSION_CONSISTENCY, palette=CMAP,)
 utils.label_data(zip_x=small_eff[const.SCALE], zip_y=small_eff[const.PROFIT], labels=small_eff.index)
 stitle = f"Efficient Small Size DMU"
 ax.set_title(stitle)
