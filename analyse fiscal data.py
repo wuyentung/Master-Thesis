@@ -16,7 +16,7 @@ import dmp
 import solver
 import solver_r
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES,  LIFE_DUMMY141516, ENG_NAMES_16
-from exp_fiscal_data import OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
+from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516, CONTRACTION_INSURANCE_SMRTS_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
@@ -25,10 +25,10 @@ import seaborn as sns
 sns.set_theme(style="darkgrid")
 # %%
 ### 14~16
-utils.plot_3D(dmu=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16'], stitle="Cathay Life", target_input=const.OPERATION_EXP, smrts_dict=OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516), dummy_dmu=["Global Life 14", "Singfor Life 14", "DUMMY Cathay 15"])
+utils.plot_3D(dmu=['Cathay Life 14', 'Cathay Life 15', 'Cathay Life 16'], stitle="Cathay Life", target_input=const.OPERATION_EXP, smrts_dict=EXPANSION_OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516), dummy_dmu=["Global Life 14", "Singfor Life 14", "DUMMY Cathay 15"])
 plt.show()
 #%%
-utils.plot_3D(dmu=['Taiwan Life 14', 'Taiwan Life 15', 'Taiwan Life 16'], stitle="DUMMY Taiwan", target_input=const.OPERATION_EXP, smrts_dict=OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516), dummy_dmu=["CTBC Life 14", "CTBC Life 15", "DUMMY Taiwan 16"])
+utils.plot_3D(dmu=['Taiwan Life 14', 'Taiwan Life 15', 'Taiwan Life 16'], stitle="DUMMY Taiwan", target_input=const.OPERATION_EXP, smrts_dict=EXPANSION_OPERATION_SMRTS_DUMMY141516, df=denoise_nonpositive(LIFE_DUMMY141516), dummy_dmu=["CTBC Life 14", "CTBC Life 15", "DUMMY Taiwan 16"])
 plt.show()
 # %%
 # visualize_progress
@@ -38,9 +38,9 @@ for k in ENG_NAMES_16:
     for target_input in [const.INSURANCE_EXP, const.OPERATION_EXP]:
         
         if const.INSURANCE_EXP == target_input:
-            smrts_dict = INSURANCE_SMRTS_DUMMY141516
+            smrts_dict = EXPANSION_INSURANCE_SMRTS_DUMMY141516
         else:
-            smrts_dict = OPERATION_SMRTS_DUMMY141516
+            smrts_dict = EXPANSION_OPERATION_SMRTS_DUMMY141516
             
         utils.plot_3D(dmu=[k+n for n in [' 14', ' 15', ' 16']], stitle=k, target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516))
         plt.savefig("%s %s.png" %(k, target_input), dpi=400)
@@ -50,9 +50,9 @@ dmus = ["ACE Tempest Life 14", "ACE Tempest Life 15", "Chubb Tempest Life 16"]
 for target_input in [const.INSURANCE_EXP, const.OPERATION_EXP]:
     
     if const.INSURANCE_EXP == target_input:
-        smrts_dict = INSURANCE_SMRTS_DUMMY141516
+        smrts_dict = EXPANSION_INSURANCE_SMRTS_DUMMY141516
     else:
-        smrts_dict = OPERATION_SMRTS_DUMMY141516
+        smrts_dict = EXPANSION_OPERATION_SMRTS_DUMMY141516
         
     utils.plot_3D(dmu=dmus, stitle="Chubb Tempest Life", target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516))
     plt.savefig("%s %s.png" %("Chubb Tempest Life", target_input), dpi=400)
@@ -62,9 +62,9 @@ dmus = ["CTBC Life 14", "CTBC Life 15",]
 for target_input in [const.INSURANCE_EXP, const.OPERATION_EXP]:
     
     if const.INSURANCE_EXP == target_input:
-        smrts_dict = INSURANCE_SMRTS_DUMMY141516
+        smrts_dict = EXPANSION_INSURANCE_SMRTS_DUMMY141516
     else:
-        smrts_dict = OPERATION_SMRTS_DUMMY141516
+        smrts_dict = EXPANSION_OPERATION_SMRTS_DUMMY141516
         
     utils.plot_3D(dmu=dmus, stitle="CTBC Life", target_input=target_input, smrts_dict=smrts_dict, df=denoise_nonpositive(LIFE_DUMMY141516))
     plt.savefig("%s %s.png" %("CTBC Life", target_input), dpi=400)
