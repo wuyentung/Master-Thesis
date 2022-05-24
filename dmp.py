@@ -27,13 +27,34 @@ gy: array([
     gy1, gy2, ..., gyJ
 ])
 '''
-def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, THRESHOLD=0.000000000001, wanted_idxs:list=None):
+def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, left_side_DMP:bool, THRESHOLD=0.000000000001, wanted_idxs:list=None):
     ## i_star: index of the change of single input Xi*, which is the target we want to investigate
     ## dmu_wanted: the dmu we want to investigate, defalt None
-    
+    """_summary_
+
+    Args:
+        dmu_idxs (list): _description_
+        x (np.ndarray): _description_
+        y (np.ndarray): _description_
+        gy (np.ndarray): _description_
+        i_star (int): _description_
+        left_side_DMP (bool): True means left side of DMP, False means right side of DMP
+        THRESHOLD (float, optional): _description_. Defaults to 0.000000000001.
+        wanted_idxs (list, optional): _description_. Defaults to None.
+
+    Returns:
+        _type_: _description_
+    """
     I = x.shape[0]
     J = y.shape[0]
     alpha = {}
+    if left_side_DMP:
+        obj_fun = gp.GRB.MAXIMIZE
+        third_rhs = -1
+    else:
+        obj_fun = gp.GRB.MINIMIZE
+        third_rhs = 1
+        
     for r in wanted_idxs:
         v = {}
         u = {}
@@ -57,17 +78,21 @@ def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:i
         m.update()
 
         ## alpha
-        m.setObjective(v[i_star] / np.max(x[i_star]), gp.GRB.MAXIMIZE)
+        m.setObjective(v[i_star] / np.max(x[i_star]), obj_fun)
 
         ## s.t.
         m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(r)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(r)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus == 0)
         for k in dmu_idxs:
             m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(k)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(k)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus >= 0)
-        m.addConstr(gp.quicksum(u[j] * gy[j] for j in range(J)) == -1)
+        m.addConstr(gp.quicksum(u[j] * gy[j] for j in range(J)) == third_rhs)
             
         m.optimize()
         
-        alpha[r] = m.objVal
+        if 2 == m.status:
+            alpha[r] = m.objVal
+        else:
+            # print(f"DMU index {r} with direction {gy} is infeasible or unbounded")
+            alpha[r] = np.nan
     
     return alpha
 #%%
@@ -113,6 +138,19 @@ class Dmu_Direction(object):
     #     return np.round(x, f)
 #%%
 DIRECTIONS = [ 
+    [1, 0], 
+    [.9, .1], 
+    [.8, .2], 
+    [.7, .3], 
+    [.6, .4], 
+    [.5, .5], 
+    [.4, .6], 
+    [.3, .7], 
+    [.2, .8], 
+    [.1, .9], 
+    [0, 1], 
+]
+NEG_DIRECTIONS = [ 
     [-0.99, -0.01], # since [-1, 0] can cause infeasible or unbounded
     [-0.9, -0.1], 
     [-0.8, -0.2], 
@@ -126,27 +164,29 @@ DIRECTIONS = [
     [0, -1], 
 ]
 #%%
-def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, trace=False, round_to:int=2, wanted_idxs:list=None, i_star:int=0):
+def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, left_side_DMP:bool, trace=False, round_to:int=2, wanted_idxs:list=None, i_star:int=0):
     dmu_idxs = [i for i in range(len(dmu))]
     ## wanted_idxs: the index of dmu we want to investigate
     if wanted_idxs is None:
         wanted_idxs = dmu_idxs
 
     results = []
-    # alpha_directions = []
     dmp_directions = []
-    # smrts_directions = []
-    for i in range(len(DIRECTIONS)):
-        direction = DIRECTIONS[i]
-        alpha = cal_alpha(dmu_idxs=dmu_idxs, x=x, y=y, gy=direction, wanted_idxs=wanted_idxs, i_star=i_star)
+    
+    if left_side_DMP:
+        directions = NEG_DIRECTIONS
+    else:
+        directions = DIRECTIONS
+        
+    for i in range(len(directions)):
+        direction = directions[i]
+        alpha = cal_alpha(dmu_idxs=dmu_idxs, x=x, y=y, gy=direction, wanted_idxs=wanted_idxs, i_star=i_star, left_side_DMP=left_side_DMP)
         dmp = cal_dmp(dmu_idxs=dmu_idxs, alpha=alpha, y=y, gy=direction, wanted_idxs=wanted_idxs)
-        # alpha_directions.append(alpha)
         dmp_directions.append(dmp)
         if not i:
             smrts = {r:None for r in wanted_idxs}
         else:
             smrts = cal_smrts(dmu_idxs=dmu_idxs, dmp1=dmp_directions[i-1], dmp2=dmp_directions[i], round_to=round_to, wanted_idxs=wanted_idxs)
-        # smrts_directions.append(smrts)
         if trace:
             print(direction)
             for r in wanted_idxs:
@@ -191,7 +231,7 @@ if __name__ == "__main__":
         [1, 2, 4], 
         [200, 300, 100], 
         ])
-    dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=5, wanted_idxs=[0, 1])
+    dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=5, wanted_idxs=[0, 1, 2], left_side_DMP=False)
     # print(dfs["A"])
     # print(2)
 #%%
