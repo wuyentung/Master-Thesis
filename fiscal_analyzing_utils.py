@@ -7,7 +7,7 @@ import solver
 import solver_r
 import constant as const
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES
-from exp_fiscal_data import OPERATION_SMRTS_DUMMY141516, INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
+from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 CMAP = plt.get_cmap('jet')
@@ -171,11 +171,11 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     operation_cos_sims = []
     for target_input in [const.INSURANCE_EXP, const.OPERATION_EXP]:
         if const.INSURANCE_EXP == target_input:
-            smrts_dict = INSURANCE_SMRTS_DUMMY141516
+            smrts_dict = EXPANSION_INSURANCE_SMRTS_DUMMY141516
             max_dirs = insurance_max_dirs
             cos_sims = insurance_cos_sims
         else:
-            smrts_dict = OPERATION_SMRTS_DUMMY141516
+            smrts_dict = EXPANSION_OPERATION_SMRTS_DUMMY141516
             max_dirs = operation_max_dirs
             cos_sims = operation_cos_sims
         
