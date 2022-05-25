@@ -157,7 +157,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     def _out_dir(start_idx, end_idx):
         return [((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2)/np.abs(np.abs((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + np.abs((investment_profits[end_idx]-investment_profits[start_idx])/2)), ((investment_profits[end_idx]-investment_profits[start_idx])/2)/np.abs(np.abs((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + np.abs((investment_profits[end_idx]-investment_profits[start_idx])/2))]
     
-    out_dirs = [_out_dir(i, i+1) for i in range(len(dmu_ks)-1)]
+    out_dirs = [_out_dir(i, i+1) if dmu_ks[i] not in const.LAST_Y else [np.nan, np.nan] for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
     
     reference_dmus = [LAMBDA_DICT_DUMMY141516[k][const.LAMBDA].idxmax() for k in dmu_ks]
@@ -166,12 +166,15 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     def _cal_cos_sim(smrts_dict):
         max_dirs = []
         cos_sims = []
-        for n in range(len(dmu_ks)):
+        for i in range(len(dmu_ks)):
             ## max direction of MP
-            smrts_df = smrts_dict[reference_dmus[n]]
+            smrts_df = smrts_dict[reference_dmus[i]]
             max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df))
             max_dirs.append(max_dir_mp_str)
-            cos_sims.append(_cal_cosine_similarity(out_dirs[n], max_dirs[n]))
+            if dmu_ks[i] in const.LAST_Y:
+                cos_sims.append(np.nan)
+            else:
+                cos_sims.append(_cal_cosine_similarity(out_dirs[i], max_dirs[i]))
         return max_dirs, cos_sims
     
     expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_DUMMY141516)
@@ -181,11 +184,13 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     
     ## marginal consistency
     expansion_consistencies = [expansion_insurance_cos_sims[i] if expansion_insurance_cos_sims[i] else expansion_operation_cos_sims[i] for i in range(len(dmu_ks))]
+    # expansion_consistencies = [expansion_consistencies[i] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks))]
     contraction_consistencies = [contraction_insurance_cos_sims[i] if contraction_insurance_cos_sims[i] else contraction_operation_cos_sims[i] for i in range(len(dmu_ks))]
+    # contraction_consistencies = [contraction_consistencies[i] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks))]
     
     ## effiency and eff_change
     effiencies = [EFF_DICT_DUMMY141516[k] for k in dmu_ks]
-    eff_changes = [effiencies[i]/effiencies[i+1] for i in range(len(dmu_ks)-1)]
+    eff_changes = [effiencies[i]/effiencies[i+1] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks)-1)]
     eff_changes.append(np.nan)
     
     dmu_df = pd.DataFrame(
