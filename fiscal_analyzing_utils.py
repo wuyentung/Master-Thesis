@@ -239,7 +239,7 @@ def label_data(zip_x, zip_y, labels, xytext=(0, 5), ha='center', fontsize=5):
     
 #%%
 def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.EXPANSION_CONSISTENCY, according_col=const.EFFICIENCY):
-    ax.hlines(y=df[y_col].mean(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
-    ax.vlines(x=1 if x_col == const.EC else df[x_col].mean(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
+    ax.hlines(y=df[y_col].median(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
+    ax.vlines(x=1 if x_col == const.EC else df[x_col].median(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
     sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
     label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index)

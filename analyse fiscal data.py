@@ -161,7 +161,7 @@ for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     for y_col in [const.EXPANSION_CONSISTENCY, const.CONTRACTION_CONSISTENCY]:
         fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
         utils.analyze_plot(ax, no16, y_col=y_col, according_col=col)
-        stitle = f"all DMU with {col}"
+        stitle = f"all DMU {y_col} with {col}"
         ax.set_title(stitle)
         # plt.savefig(f"{stitle}.png")
         plt.show()
