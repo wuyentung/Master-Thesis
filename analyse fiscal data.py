@@ -158,12 +158,13 @@ ax.set_title(stitle)
 plt.show()
 #%%
 for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
-    fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
-    utils.analyze_plot(ax, no16, according_col=col)
-    stitle = f"all DMU with {col}"
-    ax.set_title(stitle)
-    # plt.savefig(f"{stitle}.png")
-    plt.show()
+    for y_col in [const.EXPANSION_CONSISTENCY, const.CONTRACTION_CONSISTENCY]:
+        fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
+        utils.analyze_plot(ax, no16, y_col=y_col, according_col=col)
+        stitle = f"all DMU with {col}"
+        ax.set_title(stitle)
+        # plt.savefig(f"{stitle}.png")
+        plt.show()
 #%%
 ## input output correlation plot
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
