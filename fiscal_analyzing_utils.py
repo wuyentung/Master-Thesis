@@ -38,6 +38,7 @@ def _find_max_dir_mp(smrts_df:pd.DataFrame, DMP_contraction:bool):
         dmp = row["DMP"]
         ## 相加後會是總獲利
         dmp_dis = dmp[0] + dmp[1]
+        ## contraction 反而要挑最小，亦即負最大
         if DMP_contraction:
             dmp_dis*=-1
         # dmp_dis = np.square(dmp[0]**2 + dmp[1]**2)
