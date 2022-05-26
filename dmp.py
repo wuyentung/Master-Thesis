@@ -50,10 +50,10 @@ def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:i
     alpha = {}
     if DMP_contraction:
         obj_fun = gp.GRB.MAXIMIZE
-        third_rhs = -1
+        # third_rhs = -1
     else:
         obj_fun = gp.GRB.MINIMIZE
-        third_rhs = 1
+    third_rhs = 1
         
     for r in wanted_idxs:
         v = {}
@@ -173,10 +173,10 @@ def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, DMP_contraction:bool, tr
     results = []
     dmp_directions = []
     
-    if DMP_contraction:
-        directions = NEG_DIRECTIONS
-    else:
-        directions = DIRECTIONS
+    # if DMP_contraction:
+    #     directions = NEG_DIRECTIONS
+    # else:
+    directions = DIRECTIONS
         
     for i in range(len(directions)):
         direction = directions[i]

@@ -31,13 +31,15 @@ class Arrow3D(FancyArrowPatch):
         FancyArrowPatch.draw(self, renderer)
         
 
-def _find_max_dir_mp(smrts_df:pd.DataFrame):
+def _find_max_dir_mp(smrts_df:pd.DataFrame, DMP_contraction:bool):
     max_dmp_dis = -np.inf
     max_dir_mp = "[0, 0]"
     for idx, row in smrts_df.iterrows():
         dmp = row["DMP"]
         ## 相加後會是總獲利
         dmp_dis = dmp[0] + dmp[1]
+        if DMP_contraction:
+            dmp_dis*=-1
         # dmp_dis = np.square(dmp[0]**2 + dmp[1]**2)
         # print(mdp_dis)
         if dmp_dis and dmp_dis > max_dmp_dis:
@@ -66,7 +68,7 @@ def _cal_cosine_similarity(vec_a, vec_b):
     cos_sim = dot / (norm_a*norm_b)
     return cos_sim
 ## 成功計算出 s-MRTS 後視覺化資料
-def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input=const.INSURANCE_EXP, view_v=45, view_h=-80, dummy_dmu:list=None):
+def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input=const.INSURANCE_EXP, view_v=45, view_h=-80, dummy_dmu:list=None, DMP_contraction:bool=False):
     
     if const.INSURANCE_EXP != target_input and const.OPERATION_EXP != target_input:
         raise ValueError("target_input should be const.INSURANCE_EXP or const.OPERATION_EXP.")
@@ -105,7 +107,7 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
         reference_dmu = LAMBDA_DICT_DUMMY141516[all_dmu[i]][const.LAMBDA].idxmax()
         # print(reference_dmu, LAMBDA_DICT_DUMMY141516[all_dmu[i]][const.LAMBDA])
         smrts_df = smrts_dict[reference_dmu]
-        max_dir_mp = _float_direction(_find_max_dir_mp(smrts_df))
+        max_dir_mp = _float_direction(_find_max_dir_mp(smrts_df, DMP_contraction))
             
         # print(max_dir_mp)
             
@@ -163,13 +165,13 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     reference_dmus = [LAMBDA_DICT_DUMMY141516[k][const.LAMBDA].idxmax() for k in dmu_ks]
     reference_lambdas = [LAMBDA_DICT_DUMMY141516[k][const.LAMBDA].max() for k in dmu_ks]
     
-    def _cal_cos_sim(smrts_dict):
+    def _cal_cos_sim(smrts_dict, DMP_contraction):
         max_dirs = []
         cos_sims = []
         for i in range(len(dmu_ks)):
             ## max direction of MP
             smrts_df = smrts_dict[reference_dmus[i]]
-            max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df))
+            max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df, DMP_contraction))
             max_dirs.append(max_dir_mp_str)
             if dmu_ks[i] in const.LAST_Y:
                 cos_sims.append(np.nan)
@@ -177,10 +179,10 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
                 cos_sims.append(_cal_cosine_similarity(out_dirs[i], max_dirs[i]))
         return max_dirs, cos_sims
     
-    expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_DUMMY141516)
-    expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_OPERATION_SMRTS_DUMMY141516)
-    contraction_insurance_max_dirs, contraction_insurance_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_INSURANCE_SMRTS_DUMMY141516)
-    contraction_operation_max_dirs, contraction_operation_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_OPERATION_SMRTS_DUMMY141516)
+    expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_DUMMY141516, DMP_contraction=False)
+    expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_OPERATION_SMRTS_DUMMY141516, DMP_contraction=False)
+    contraction_insurance_max_dirs, contraction_insurance_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_INSURANCE_SMRTS_DUMMY141516, DMP_contraction=True)
+    contraction_operation_max_dirs, contraction_operation_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_OPERATION_SMRTS_DUMMY141516, DMP_contraction=True)
     
     ## marginal consistency
     expansion_consistencies = [expansion_insurance_cos_sims[i] if expansion_insurance_cos_sims[i] else expansion_operation_cos_sims[i] for i in range(len(dmu_ks))]
