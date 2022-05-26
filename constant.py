@@ -19,7 +19,7 @@ OUT_DIR = "output progress direction"
 REF_DMU = "reference DMU"
 REF_LAMBDA = "reference lambda"
 
-EXPANSION_INSURANCE_MAXDMP = "expandsion insurance_exp max direction of MP"
+EXPANSION_INSURANCE_MAXDMP = "expansion insurance_exp max direction of MP"
 EXPANSION_INSURANCE_COS_SIM = "expansion insurance_exp cosine similarity"
 EXPANSION_OPERATION_MAXDMP = "expansion operation_exp max direction of MP"
 EXPANSION_OPERATION_COS_SIM = "expansion operation_exp cosine similarity"

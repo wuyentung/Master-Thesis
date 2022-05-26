@@ -68,6 +68,22 @@ def _cal_cosine_similarity(vec_a, vec_b):
         return 0
     cos_sim = dot / (norm_a*norm_b)
     return cos_sim
+#%%
+def _find_ref_dmu(lamda_df:pd.DataFrame, DMP_contraction:str, ):
+    if DMP_contraction:
+        bad_ks = ["Zurich 16"]
+    else:
+        bad_ks = ["Zurich 16", "Cardif 16"]
+        
+    lamda_df_copy = lamda_df.sort_values(by=const.LAMBDA, ascending=False)
+    
+    if lamda_df_copy[const.LAMBDA].max() > .99:
+        return lamda_df_copy[const.LAMBDA].idxmax()
+    
+    for dmu_k in lamda_df_copy.index:
+        if dmu_k in bad_ks:
+            continue
+        return dmu_k
 ## 成功計算出 s-MRTS 後視覺化資料
 def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input=const.INSURANCE_EXP, view_v=45, view_h=-80, dummy_dmu:list=None, DMP_contraction:bool=False):
     
@@ -106,6 +122,8 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
             # max_dir_mp = [0.5, 0.5]
             smrts_color = "orangered"
         reference_dmu = LAMBDA_DICT_DUMMY141516[all_dmu[i]][const.LAMBDA].idxmax()
+        
+        reference_dmu = _find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[all_dmu[i]], DMP_contraction=DMP_contraction)
         # print(reference_dmu, LAMBDA_DICT_DUMMY141516[all_dmu[i]][const.LAMBDA])
         smrts_df = smrts_dict[reference_dmu]
         max_dir_mp = _float_direction(_find_max_dir_mp(smrts_df, DMP_contraction))
@@ -163,8 +181,8 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     out_dirs = [_out_dir(i, i+1) if dmu_ks[i] not in const.LAST_Y else [np.nan, np.nan] for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
     
-    reference_dmus = [LAMBDA_DICT_DUMMY141516[k][const.LAMBDA].idxmax() for k in dmu_ks]
-    reference_lambdas = [LAMBDA_DICT_DUMMY141516[k][const.LAMBDA].max() for k in dmu_ks]
+    reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=True) for k in dmu_ks]
+    reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]] for i in range(len(dmu_ks))]
     
     def _cal_cos_sim(smrts_dict, DMP_contraction):
         max_dirs = []
