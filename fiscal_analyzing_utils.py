@@ -240,6 +240,8 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             const.EC: eff_changes, 
         }, index=dmu_ks
         )
+    dmu_df[const.SCALE] = dmu_df[const.INSURANCE_EXP] + dmu_df[const.OPERATION_EXP]
+    dmu_df[const.PROFIT] = dmu_df[const.UNDERWRITING_PROFIT] + dmu_df[const.INVESTMENT_PROFIT]
     return dmu_df
 #%%
 def label_data(zip_x, zip_y, labels, xytext=(0, 5), ha='center', fontsize=5):
