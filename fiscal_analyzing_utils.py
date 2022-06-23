@@ -181,8 +181,8 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     out_dirs = [_out_dir(i, i+1) if dmu_ks[i] not in const.LAST_Y else [np.nan, np.nan] for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
     
-    reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=True) for k in dmu_ks]
-    reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]] for i in range(len(dmu_ks))]
+    reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=False) for k in dmu_ks]
+    reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]][const.LAMBDA] for i in range(len(dmu_ks))]
     
     def _cal_cos_sim(smrts_dict, DMP_contraction):
         max_dirs = []
