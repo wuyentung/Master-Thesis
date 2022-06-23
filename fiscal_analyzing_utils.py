@@ -7,7 +7,7 @@ import solver
 import solver_r
 import constant as const
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES
-from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516, CONTRACTION_INSURANCE_SMRTS_DUMMY141516, CONTRACTION_OPERATION_SMRTS_DUMMY141516
+from exp_fiscal_data import EXPANSION_INSURANCE_SMRTS_181920, CONTRACTION_INSURANCE_SMRTS_181920, EFF_DICT181920, LAMBDA_DICT181920, EXPANSION_OPERATION_SMRTS_181920, CONTRACTION_OPERATION_SMRTS_181920
 from itertools import combinations
 import matplotlib.pyplot as plt
 CMAP = plt.get_cmap('jet')
@@ -71,18 +71,21 @@ def _cal_cosine_similarity(vec_a, vec_b):
 #%%
 def _find_ref_dmu(lamda_df:pd.DataFrame, DMP_contraction:str, ):
     if DMP_contraction:
-        bad_ks = ["Zurich 16"]
+        bad_ks =  ["BNP Paribas Cardif TCB 20", "Cardif 20"]
     else:
-        bad_ks = ["Zurich 16", "Cardif 16"]
+        bad_ks = ["BNP Paribas Cardif TCB 20", "Cardif 20", ]
         
     lamda_df_copy = lamda_df.sort_values(by=const.LAMBDA, ascending=False)
     
     if lamda_df_copy[const.LAMBDA].max() > .99:
         return lamda_df_copy[const.LAMBDA].idxmax()
-    
+    # print()
+    # print(lamda_df_copy)
     for dmu_k in lamda_df_copy.index:
         if dmu_k in bad_ks:
             continue
+        if "TransGlobe Life 19" == dmu_k:
+            return lamda_df_copy.index[0]
         return dmu_k
 ## 成功計算出 s-MRTS 後視覺化資料
 def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input=const.INSURANCE_EXP, view_v=45, view_h=-80, dummy_dmu:list=None, DMP_contraction:bool=False):
@@ -121,9 +124,9 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
         else:
             # max_dir_mp = [0.5, 0.5]
             smrts_color = "orangered"
-        reference_dmu = LAMBDA_DICT_DUMMY141516[all_dmu[i]][const.LAMBDA].idxmax()
+        reference_dmu = LAMBDA_DICT181920[all_dmu[i]][const.LAMBDA].idxmax()
         
-        reference_dmu = _find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[all_dmu[i]], DMP_contraction=DMP_contraction)
+        reference_dmu = _find_ref_dmu(lamda_df=LAMBDA_DICT181920[all_dmu[i]], DMP_contraction=DMP_contraction)
         # print(reference_dmu, LAMBDA_DICT_DUMMY141516[all_dmu[i]][const.LAMBDA])
         smrts_df = smrts_dict[reference_dmu]
         max_dir_mp = _float_direction(_find_max_dir_mp(smrts_df, DMP_contraction))
@@ -181,8 +184,8 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     out_dirs = [_out_dir(i, i+1) if dmu_ks[i] not in const.LAST_Y else [np.nan, np.nan] for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
     
-    reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=False) for k in dmu_ks]
-    reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]][const.LAMBDA] for i in range(len(dmu_ks))]
+    reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT181920[k], DMP_contraction=False) for k in dmu_ks]
+    reference_lambdas = [LAMBDA_DICT181920[dmu_ks[i]].loc[reference_dmus[i]][const.LAMBDA] for i in range(len(dmu_ks))]
     
     def _cal_cos_sim(smrts_dict, DMP_contraction):
         max_dirs = []
@@ -198,10 +201,10 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
                 cos_sims.append(_cal_cosine_similarity(out_dirs[i], max_dirs[i]))
         return max_dirs, cos_sims
     
-    expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_DUMMY141516, DMP_contraction=False)
-    expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_OPERATION_SMRTS_DUMMY141516, DMP_contraction=False)
-    contraction_insurance_max_dirs, contraction_insurance_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_INSURANCE_SMRTS_DUMMY141516, DMP_contraction=True)
-    contraction_operation_max_dirs, contraction_operation_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_OPERATION_SMRTS_DUMMY141516, DMP_contraction=True)
+    expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_181920, DMP_contraction=False)
+    expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_OPERATION_SMRTS_181920, DMP_contraction=False)
+    contraction_insurance_max_dirs, contraction_insurance_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_INSURANCE_SMRTS_181920, DMP_contraction=True)
+    contraction_operation_max_dirs, contraction_operation_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_OPERATION_SMRTS_181920, DMP_contraction=True)
     
     ## marginal consistency
     expansion_consistencies = [expansion_insurance_cos_sims[i] if expansion_insurance_cos_sims[i] else expansion_operation_cos_sims[i] for i in range(len(dmu_ks))]
@@ -210,7 +213,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     # contraction_consistencies = [contraction_consistencies[i] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks))]
     
     ## effiency and eff_change
-    effiencies = [EFF_DICT_DUMMY141516[k] for k in dmu_ks]
+    effiencies = [EFF_DICT181920[k] for k in dmu_ks]
     eff_changes = [effiencies[i]/effiencies[i+1] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks)-1)]
     eff_changes.append(np.nan)
     
