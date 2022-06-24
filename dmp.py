@@ -225,13 +225,13 @@ def show_smrts(smrts_dict:dict, path:str=None):
 #%%
 ## unit test
 if __name__ == "__main__":
-    dmu = ["A", "B", "C"]
-    x = np.array([[2, 4, 1]])
+    dmu = ["A", "B", "C", "BC", "AC"]
+    x = np.array([[2, 4, 1, 2.5, 1.5]])
     y = np.array([
-        [1, 2, 4], 
-        [200, 300, 100], 
+        [1, 2, 4, 3, 2.5], 
+        [200, 300, 100, 200, 150], 
         ])
-    dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=5, wanted_idxs=[0, 1, 2], DMP_contraction=False)
+    dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=4, wanted_idxs=[0, 1, 2, 3, 4], DMP_contraction=False)
     # print(dfs["A"])
     # print(2)
 #%%
