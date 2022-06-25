@@ -91,7 +91,11 @@ def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:i
         if 2 == m.status:
             alpha[r] = m.objVal
         else:
-            # print(f"DMU index {r} with direction {gy} is infeasible or unbounded")
+            multiplier = 1.005
+            print(f"DMU index {r} using direction {gy} is infeasible or unbounded, multipling y with {multiplier} to meet the frontier, \nx: {x}, \ny:{y}")
+            print("=======\n\n")
+            y.T[r]*=multiplier
+            cal_alpha(dmu_idxs, x, y, gy, i_star, DMP_contraction, THRESHOLD, wanted_idxs)
             alpha[r] = np.nan
     
     return alpha
@@ -229,7 +233,7 @@ if __name__ == "__main__":
     x = np.array([[2, 4, 1, 2.5, 1.5]])
     y = np.array([
         [1, 2, 4, 3, 2.5], 
-        [200, 300, 100, 200, 150], 
+        [200, 300, 100, 200, 149], 
         ])
     dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=4, wanted_idxs=[0, 1, 2, 3, 4], DMP_contraction=False)
     # print(dfs["A"])
