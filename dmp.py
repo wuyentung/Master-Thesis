@@ -67,7 +67,7 @@ def cal_alpha_r(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star
     multiplier = 1.005
     print(f"DMU index {r} using direction {gy} is infeasible or unbounded, multipling y with {multiplier} to meet the frontier, \nx: {x}, \ny:{y}")
     print("=======\n\n")
-    y.T[r]*=(multiplier)
+    y[:, r]*=(multiplier)
     return cal_alpha_r(dmu_idxs, x, y, gy, i_star, THRESHOLD, I, J, obj_fun, third_rhs, r)
 #%%
 def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, DMP_contraction:bool, THRESHOLD:float, wanted_idxs:list):

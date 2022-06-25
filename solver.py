@@ -40,6 +40,7 @@ def dea_dual(dmu:list, x:np.ndarray, y:np.ndarray,  THRESHOLD=0.000000000001, or
     for r in range(K):
         eff_dict[dmu[r]], r_lambdas_dict = solver_r_dual(dmu=dmu, r=r, x=x, y=y, THRESHOLD=THRESHOLD, rs=rs)
         projected_x[:, r] *= eff_dict[dmu[r]]
+        projected_y[:, r] *= eff_dict[dmu[r]]
         r_lambdas_df = pd.DataFrame.from_dict(r_lambdas_dict, orient="index", columns=[const.LAMBDA])
         r_lambdas_df["DMU_name"] = dmu
         r_lambdas_df = r_lambdas_df.set_index("DMU_name")
