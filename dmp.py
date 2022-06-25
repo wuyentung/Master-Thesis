@@ -63,7 +63,7 @@ def cal_alpha_r(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star
     
     if 2 == m.status:
         return m.objVal
-    
+    return np.nan
     multiplier = 1.005
     print(f"DMU index {r} using direction {gy} is infeasible or unbounded, multipling y with {multiplier} to meet the frontier, \nx: {x}, \ny:{y}")
     print("=======\n\n")
@@ -144,7 +144,7 @@ class Dmu_Direction(object):
     #     return np.round(x, f)
 #%%
 DIRECTIONS = [ 
-    [1, 0], 
+    [.99, .01], 
     [.9, .1], 
     [.8, .2], 
     [.7, .3], 
@@ -154,7 +154,7 @@ DIRECTIONS = [
     [.3, .7], 
     [.2, .8], 
     [.1, .9], 
-    [0, 1], 
+    [.01, .99], 
 ]
 NEG_DIRECTIONS = [ 
     [-0.99, -0.01], # since [-1, 0] can cause infeasible or unbounded
