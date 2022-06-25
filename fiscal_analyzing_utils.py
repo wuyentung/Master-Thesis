@@ -7,7 +7,7 @@ import solver
 import solver_r
 import constant as const
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES
-from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516, CONTRACTION_INSURANCE_SMRTS_DUMMY141516, CONTRACTION_OPERATION_SMRTS_DUMMY141516
+from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 CMAP = plt.get_cmap('jet')
@@ -182,7 +182,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     out_dirs.append([np.nan, np.nan])
     
     reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=True) for k in dmu_ks]
-    reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]] for i in range(len(dmu_ks))]
+    reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]][const.LAMBDA] for i in range(len(dmu_ks))]
     
     def _cal_cos_sim(smrts_dict, DMP_contraction):
         max_dirs = []
@@ -200,14 +200,10 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     
     expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_DUMMY141516, DMP_contraction=False)
     expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_OPERATION_SMRTS_DUMMY141516, DMP_contraction=False)
-    contraction_insurance_max_dirs, contraction_insurance_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_INSURANCE_SMRTS_DUMMY141516, DMP_contraction=True)
-    contraction_operation_max_dirs, contraction_operation_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_OPERATION_SMRTS_DUMMY141516, DMP_contraction=True)
     
     ## marginal consistency
     expansion_consistencies = [expansion_insurance_cos_sims[i] if expansion_insurance_cos_sims[i] else expansion_operation_cos_sims[i] for i in range(len(dmu_ks))]
     # expansion_consistencies = [expansion_consistencies[i] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks))]
-    contraction_consistencies = [contraction_insurance_cos_sims[i] if contraction_insurance_cos_sims[i] else contraction_operation_cos_sims[i] for i in range(len(dmu_ks))]
-    # contraction_consistencies = [contraction_consistencies[i] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks))]
     
     ## effiency and eff_change
     effiencies = [EFF_DICT_DUMMY141516[k] for k in dmu_ks]
@@ -229,13 +225,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             const.EXPANSION_OPERATION_MAXDMP: expansion_operation_max_dirs, 
             const.EXPANSION_OPERATION_COS_SIM: expansion_operation_cos_sims, 
             const.EXPANSION_CONSISTENCY: expansion_consistencies,
-             
-            const.CONTRACTION_INSURANCE_MAXDMP: contraction_insurance_max_dirs, 
-            const.CONTRACTION_INSURANCE_COS_SIM: contraction_insurance_cos_sims, 
-            const.CONTRACTION_OPERATION_MAXDMP: contraction_operation_max_dirs, 
-            const.CONTRACTION_OPERATION_COS_SIM: contraction_operation_cos_sims, 
-            const.CONTRACTION_CONSISTENCY: contraction_consistencies,
-             
+            
             const.EFFICIENCY: effiencies, 
             const.EC: eff_changes, 
         }, index=dmu_ks

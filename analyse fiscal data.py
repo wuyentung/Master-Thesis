@@ -16,7 +16,7 @@ import dmp
 import solver
 import solver_r
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES,  LIFE_DUMMY141516, ENG_NAMES_16
-from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516, CONTRACTION_INSURANCE_SMRTS_DUMMY141516
+from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap
@@ -158,7 +158,7 @@ ax.set_title(stitle)
 plt.show()
 #%%
 for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
-    for y_col in [const.EXPANSION_CONSISTENCY, const.CONTRACTION_CONSISTENCY]:
+    for y_col in [const.EXPANSION_CONSISTENCY, ]:
         fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
         utils.analyze_plot(ax, no16, y_col=y_col, according_col=col)
         stitle = f"all DMU {y_col} with {col}"
