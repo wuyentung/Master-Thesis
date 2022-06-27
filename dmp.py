@@ -27,9 +27,53 @@ gy: array([
     gy1, gy2, ..., gyJ
 ])
 '''
-def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, DMP_contraction:bool, THRESHOLD=0.000000000001, wanted_idxs:list=None):
+def cal_alpha_r(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, THRESHOLD:float, I, J, obj_fun, third_rhs, r):
+    ## calculate alpha for rth DMU
+    v = {}
+    u = {}
+    u0_plus = {}
+    
+    m = gp.Model(f"dmp_{r}")
+
+    for i in range(I):
+        v[i]=m.addVar(vtype=gp.GRB.CONTINUOUS,name=f"v_{i}", 
+            # lb=THRESHOLD
+            )
+
+    for j in range(J):
+        u[j]=m.addVar(vtype=gp.GRB.CONTINUOUS,name=f"u_{j}", 
+            # lb=THRESHOLD 
+            )
+    
+    u0_plus = m.addVar(vtype=gp.GRB.CONTINUOUS,name="u0+", )
+    u0_minus = m.addVar(vtype=gp.GRB.CONTINUOUS,name="u0-", )
+    
+    m.update()
+
+    ## alpha
+    m.setObjective(v[i_star] / np.max(x[i_star]), obj_fun)
+
+    ## s.t.
+    m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(r)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(r)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus == 0)
+    for k in dmu_idxs:
+        m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(k)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(k)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus >= 0)
+    m.addConstr(gp.quicksum(u[j] * gy[j] for j in range(J)) == third_rhs)
+        
+    m.optimize()
+    
+    if 2 == m.status:
+        return m.objVal
+    # return np.nan
+    multiplier = 1.0005
+    print(f"DMU index {r} using direction {gy} is infeasible or unbounded, multipling y with {multiplier} to meet the frontier,")
+    # print(f"x: {x}, \ny:{y}")
+    # print("=======\n\n")
+    y[:, r]*=(multiplier)
+    return cal_alpha_r(dmu_idxs, x, y, gy, i_star, THRESHOLD, I, J, obj_fun, third_rhs, r)
+#%%
+def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:int, DMP_contraction:bool, THRESHOLD:float, wanted_idxs:list):
     ## i_star: index of the change of single input Xi*, which is the target we want to investigate
-    ## dmu_wanted: the dmu we want to investigate, defalt None
+    ## dmu_wanted: the dmu we want to investigate
     """_summary_
 
     Args:
@@ -39,8 +83,8 @@ def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:i
         gy (np.ndarray): _description_
         i_star (int): _description_
         DMP_contraction (bool): True means left side of DMP, False means right side of DMP
-        THRESHOLD (float, optional): _description_. Defaults to 0.000000000001.
-        wanted_idxs (list, optional): _description_. Defaults to None.
+        THRESHOLD (float, optional): _description_
+        wanted_idxs (list, optional): _description_
 
     Returns:
         _type_: _description_
@@ -56,44 +100,7 @@ def cal_alpha(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star:i
     third_rhs = 1
         
     for r in wanted_idxs:
-        v = {}
-        u = {}
-        u0_plus = {}
-        
-        m = gp.Model(f"dmp_{r}")
-
-        for i in range(I):
-            v[i]=m.addVar(vtype=gp.GRB.CONTINUOUS,name=f"v_{i}", 
-                # lb=THRESHOLD
-                )
-
-        for j in range(J):
-            u[j]=m.addVar(vtype=gp.GRB.CONTINUOUS,name=f"u_{j}", 
-                # lb=THRESHOLD 
-                )
-        
-        u0_plus = m.addVar(vtype=gp.GRB.CONTINUOUS,name="u0+", )
-        u0_minus = m.addVar(vtype=gp.GRB.CONTINUOUS,name="u0-", )
-        
-        m.update()
-
-        ## alpha
-        m.setObjective(v[i_star] / np.max(x[i_star]), obj_fun)
-
-        ## s.t.
-        m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(r)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(r)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus == 0)
-        for k in dmu_idxs:
-            m.addConstr(gp.quicksum(v[i] * x[i, dmu_idxs.index(k)] / np.max(x[i]) for i in range(I)) - gp.quicksum(u[j] * y[j, dmu_idxs.index(k)] / np.max(y[j]) for j in range(J)) + u0_plus - u0_minus >= 0)
-        m.addConstr(gp.quicksum(u[j] * gy[j] for j in range(J)) == third_rhs)
-            
-        m.optimize()
-        
-        if 2 == m.status:
-            alpha[r] = m.objVal
-        else:
-            # print(f"DMU index {r} with direction {gy} is infeasible or unbounded")
-            alpha[r] = np.nan
-    
+        alpha[r] = cal_alpha_r(dmu_idxs, x, y, gy, i_star, THRESHOLD, I, J, obj_fun, third_rhs, r)
     return alpha
 #%%
 def cal_dmp(dmu_idxs:list, alpha:dict, y:np.ndarray, gy:np.ndarray, wanted_idxs:list):
@@ -138,7 +145,7 @@ class Dmu_Direction(object):
     #     return np.round(x, f)
 #%%
 DIRECTIONS = [ 
-    [1, 0], 
+    [.99, .01], 
     [.9, .1], 
     [.8, .2], 
     [.7, .3], 
@@ -148,7 +155,7 @@ DIRECTIONS = [
     [.3, .7], 
     [.2, .8], 
     [.1, .9], 
-    [0, 1], 
+    [.01, .99], 
 ]
 NEG_DIRECTIONS = [ 
     [-0.99, -0.01], # since [-1, 0] can cause infeasible or unbounded
@@ -164,7 +171,7 @@ NEG_DIRECTIONS = [
     [0, -1], 
 ]
 #%%
-def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, DMP_contraction:bool, trace=False, round_to:int=2, wanted_idxs:list=None, i_star:int=0):
+def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, DMP_contraction:bool, trace=False, round_to:int=2, wanted_idxs:list=None, i_star:int=0, THRESHOLD=0.0000000001):
     dmu_idxs = [i for i in range(len(dmu))]
     ## wanted_idxs: the index of dmu we want to investigate
     if wanted_idxs is None:
@@ -180,7 +187,7 @@ def get_smrts_dfs(dmu:list, x:np.ndarray, y:np.ndarray, DMP_contraction:bool, tr
         
     for i in range(len(directions)):
         direction = directions[i]
-        alpha = cal_alpha(dmu_idxs=dmu_idxs, x=x, y=y, gy=direction, wanted_idxs=wanted_idxs, i_star=i_star, DMP_contraction=DMP_contraction)
+        alpha = cal_alpha(dmu_idxs=dmu_idxs, x=x, y=y, gy=direction, wanted_idxs=wanted_idxs, i_star=i_star, DMP_contraction=DMP_contraction, THRESHOLD=THRESHOLD)
         dmp = cal_dmp(dmu_idxs=dmu_idxs, alpha=alpha, y=y, gy=direction, wanted_idxs=wanted_idxs)
         dmp_directions.append(dmp)
         if not i:
@@ -225,13 +232,13 @@ def show_smrts(smrts_dict:dict, path:str=None):
 #%%
 ## unit test
 if __name__ == "__main__":
-    dmu = ["A", "B", "C"]
-    x = np.array([[2, 4, 1]])
+    dmu = ["A", "B", "C", "BC", "AC"]
+    x = np.array([[2, 4, 1, 2.5, 1.5]])
     y = np.array([
-        [1, 2, 4], 
-        [200, 300, 100], 
+        [1, 2, 4, 3, 2.5], 
+        [200, 300, 100, 200, 150], 
         ])
-    dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=5, wanted_idxs=[0, 1, 2], DMP_contraction=False)
+    dfs = get_smrts_dfs(dmu, x, y, trace=False, round_to=4, wanted_idxs=[0, 1, 2, 3, 4], DMP_contraction=False)
     # print(dfs["A"])
     # print(2)
 #%%
