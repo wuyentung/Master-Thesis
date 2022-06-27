@@ -181,15 +181,15 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     out_dirs = [_out_dir(i, i+1) if dmu_ks[i] not in const.LAST_Y else [np.nan, np.nan] for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
     
-    reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=True) for k in dmu_ks]
-    reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]][const.LAMBDA] for i in range(len(dmu_ks))]
+    # reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=True) for k in dmu_ks]
+    # reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]][const.LAMBDA] for i in range(len(dmu_ks))]
     
     def _cal_cos_sim(smrts_dict, DMP_contraction):
         max_dirs = []
         cos_sims = []
         for i in range(len(dmu_ks)):
             ## max direction of MP
-            smrts_df = smrts_dict[reference_dmus[i]]
+            smrts_df = smrts_dict[dmu_ks[i]]
             max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df, DMP_contraction))
             max_dirs.append(max_dir_mp_str)
             if dmu_ks[i] in const.LAST_Y:
@@ -217,8 +217,8 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             const.UNDERWRITING_PROFIT: underwriting_profits, 
             const.INVESTMENT_PROFIT: investment_profits, 
             const.OUT_DIR: out_dirs, 
-            const.REF_DMU: reference_dmus, 
-            const.REF_LAMBDA: reference_lambdas, 
+            # const.REF_DMU: reference_dmus, 
+            # const.REF_LAMBDA: reference_lambdas, 
             
             const.EXPANSION_INSURANCE_MAXDMP: expansion_insurance_max_dirs, 
             const.EXPANSION_INSURANCE_COS_SIM: expansion_insurance_cos_sims, 
