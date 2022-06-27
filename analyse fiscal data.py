@@ -16,7 +16,7 @@ import dmp
 import solver
 import solver_r
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES,  LIFE_DUMMY141516, ENG_NAMES_16
-from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
+from smrts_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 from textwrap import wrap

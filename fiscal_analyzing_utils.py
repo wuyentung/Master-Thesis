@@ -7,7 +7,7 @@ import solver
 import solver_r
 import constant as const
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES
-from exp_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
+from smrts_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
 from itertools import combinations
 import matplotlib.pyplot as plt
 CMAP = plt.get_cmap('jet')
