@@ -6,10 +6,8 @@ import constant as const
 import solver
 from load_data import denoise_nonpositive, LIFE_DUMMY141516, LIFE181920
 import time
-import fiscal_analyzing_utils as utils
-import matplotlib.pyplot as plt
 #%%
-def sys_smrts(df:pd.DataFrame, project=False, i_star=0, div_norm=6, round_to=6):
+def sys_smrts(df:pd.DataFrame, project=False, div_norm=6, round_to=6):
     ## transform data
     ## s-MRTS for  whole system
     transformed_df = denoise_nonpositive(df, div_norm=div_norm, round_to=round_to)
@@ -22,8 +20,8 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0, div_norm=6, round_to=6):
         transformed_df[const.UNDERWRITING_PROFIT] = projected_y[0]
         transformed_df[const.INVESTMENT_PROFIT] = projected_y[1]
         df = transformed_df
-        print("project=True cannot calculate since underflow problem")
-        return None, eff_dict, df
+        # print("project=True cannot calculate since underflow problem")
+        # return None, eff_dict, df
         
     else:
         ## efficienct dmu only
@@ -33,22 +31,16 @@ def sys_smrts(df:pd.DataFrame, project=False, i_star=0, div_norm=6, round_to=6):
                 eff_dmu_name.append(key)
         
         df = transformed_df.loc[eff_dmu_name]
-
-    expansion_smrts_dfs = dmp.get_smrts_dfs(dmu=df.index, x=np.array(df[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(df[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T), trace=False, round_to=5, wanted_idxs=None, i_star=i_star, DMP_contraction=False)
-    contraction_smrts_dfs = dmp.get_smrts_dfs(dmu=df.index, x=np.array(df[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(df[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T), trace=False, round_to=5, wanted_idxs=None, i_star=i_star, DMP_contraction=True)
+        
+    expansion_smrts_dfs_i = {}
+    for i_star in [0, 1]:
+        expansion_smrts_dfs_i[i_star] = dmp.get_smrts_dfs(dmu=df.index, x=np.array(df[[const.INSURANCE_EXP, const.OPERATION_EXP]].T), y=np.array(df[[const.UNDERWRITING_PROFIT, const.INVESTMENT_PROFIT]].T), trace=False, round_to=5, wanted_idxs=None, i_star=i_star, DMP_contraction=False)
     
-    if project:
-        return expansion_smrts_dfs, eff_dict, lambdas_dict, df
-    return expansion_smrts_dfs, contraction_smrts_dfs, eff_dict, lambdas_dict
+    return expansion_smrts_dfs_i[0], expansion_smrts_dfs_i[1], eff_dict, lambdas_dict
 #%%
-EXPANSION_INSURANCE_SMRTS_181920, CONTRACTION_INSURANCE_SMRTS_181920, EFF_DICT181920, LAMBDA_DICT181920 = sys_smrts(df=LIFE181920, i_star=0)
-EXPANSION_OPERATION_SMRTS_181920, CONTRACTION_OPERATION_SMRTS_181920, EFF_DICT181920, LAMBDA_DICT181920 = sys_smrts(df=LIFE181920, i_star=1)
+INSURANCE_SMRTS181920, OPERATION_SMRTS181920, EFF_DICT181920, LAMBDA_DICT181920 = sys_smrts(df=LIFE181920, project=True)
 #%%
-# INSURANCE_SMRTS141516, EFF_DICT141516, LAMBDA_DICT141516 = sys_smrts(df=LIFE141516, i_star=0)
-# OPERATION_SMRTS141516, EFF_DICT141516, LAMBDA_DICT141516 = sys_smrts(df=LIFE141516, i_star=1)
-#%%
-# EXPANSION_INSURANCE_SMRTS_DUMMY141516, CONTRACTION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516 = sys_smrts(df=LIFE_DUMMY141516, i_star=0)
-# EXPANSION_OPERATION_SMRTS_DUMMY141516, CONTRACTION_OPERATION_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516 = sys_smrts(df=LIFE_DUMMY141516, i_star=1)
+EXPANSION_INSURANCE_SMRTS_DUMMY141516, EXPANSION_OPERATION_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516 = sys_smrts(df=LIFE_DUMMY141516, project=True)
 #%%
 if __name__ == "__main__":
     n, d, df = sys_smrts(df=LIFE_DUMMY141516, i_star=1, project=True)

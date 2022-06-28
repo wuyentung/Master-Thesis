@@ -25,11 +25,11 @@ EXPANSION_OPERATION_MAXDMP = "expansion operation_exp max direction of MP"
 EXPANSION_OPERATION_COS_SIM = "expansion operation_exp cosine similarity"
 EXPANSION_CONSISTENCY = "Expansion Marginal Profit Consistency"
 
-CONTRACTION_INSURANCE_MAXDMP = "contraction insurance_exp max direction of MP"
-CONTRACTION_INSURANCE_COS_SIM = "contraction insurance_exp cosine similarity"
-CONTRACTION_OPERATION_MAXDMP = "contraction operation_exp max direction of MP"
-CONTRACTION_OPERATION_COS_SIM = "contraction operation_exp cosine similarity"
-CONTRACTION_CONSISTENCY = "Contraction Marginal Profit Consistency"
+# CONTRACTION_INSURANCE_MAXDMP = "contraction insurance_exp max direction of MP"
+# CONTRACTION_INSURANCE_COS_SIM = "contraction insurance_exp cosine similarity"
+# CONTRACTION_OPERATION_MAXDMP = "contraction operation_exp max direction of MP"
+# CONTRACTION_OPERATION_COS_SIM = "contraction operation_exp cosine similarity"
+# CONTRACTION_CONSISTENCY = "Contraction Marginal Revenue Consistency"
 EC = "Efficiency Change"
 
 ## DMU

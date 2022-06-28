@@ -7,7 +7,7 @@ import solver
 import solver_r
 import constant as const
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES
-from exp_fiscal_data import EXPANSION_INSURANCE_SMRTS_181920, CONTRACTION_INSURANCE_SMRTS_181920, EFF_DICT181920, LAMBDA_DICT181920, EXPANSION_OPERATION_SMRTS_181920, CONTRACTION_OPERATION_SMRTS_181920
+from smrts_fiscal_data import INSURANCE_SMRTS181920,  EFF_DICT181920, LAMBDA_DICT181920
 from itertools import combinations
 import matplotlib.pyplot as plt
 CMAP = plt.get_cmap('jet')
@@ -184,15 +184,15 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     out_dirs = [_out_dir(i, i+1) if dmu_ks[i] not in const.LAST_Y else [np.nan, np.nan] for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
     
-    reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT181920[k], DMP_contraction=False) for k in dmu_ks]
-    reference_lambdas = [LAMBDA_DICT181920[dmu_ks[i]].loc[reference_dmus[i]][const.LAMBDA] for i in range(len(dmu_ks))]
+    # reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=True) for k in dmu_ks]
+    # reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]][const.LAMBDA] for i in range(len(dmu_ks))]
     
     def _cal_cos_sim(smrts_dict, DMP_contraction):
         max_dirs = []
         cos_sims = []
         for i in range(len(dmu_ks)):
             ## max direction of MP
-            smrts_df = smrts_dict[reference_dmus[i]]
+            smrts_df = smrts_dict[dmu_ks[i]]
             max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df, DMP_contraction))
             max_dirs.append(max_dir_mp_str)
             if dmu_ks[i] in const.LAST_Y:
@@ -201,16 +201,12 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
                 cos_sims.append(_cal_cosine_similarity(out_dirs[i], max_dirs[i]))
         return max_dirs, cos_sims
     
-    expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_181920, DMP_contraction=False)
-    expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_OPERATION_SMRTS_181920, DMP_contraction=False)
-    contraction_insurance_max_dirs, contraction_insurance_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_INSURANCE_SMRTS_181920, DMP_contraction=True)
-    contraction_operation_max_dirs, contraction_operation_cos_sims = _cal_cos_sim(smrts_dict=CONTRACTION_OPERATION_SMRTS_181920, DMP_contraction=True)
+    expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=INSURANCE_SMRTS181920, DMP_contraction=False)
+    expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=INSURANCE_SMRTS181920, DMP_contraction=False)
     
     ## marginal consistency
     expansion_consistencies = [expansion_insurance_cos_sims[i] if expansion_insurance_cos_sims[i] else expansion_operation_cos_sims[i] for i in range(len(dmu_ks))]
     # expansion_consistencies = [expansion_consistencies[i] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks))]
-    contraction_consistencies = [contraction_insurance_cos_sims[i] if contraction_insurance_cos_sims[i] else contraction_operation_cos_sims[i] for i in range(len(dmu_ks))]
-    # contraction_consistencies = [contraction_consistencies[i] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks))]
     
     ## effiency and eff_change
     effiencies = [EFF_DICT181920[k] for k in dmu_ks]
@@ -224,21 +220,15 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             const.UNDERWRITING_PROFIT: underwriting_profits, 
             const.INVESTMENT_PROFIT: investment_profits, 
             const.OUT_DIR: out_dirs, 
-            const.REF_DMU: reference_dmus, 
-            const.REF_LAMBDA: reference_lambdas, 
+            # const.REF_DMU: reference_dmus, 
+            # const.REF_LAMBDA: reference_lambdas, 
             
             const.EXPANSION_INSURANCE_MAXDMP: expansion_insurance_max_dirs, 
             const.EXPANSION_INSURANCE_COS_SIM: expansion_insurance_cos_sims, 
             const.EXPANSION_OPERATION_MAXDMP: expansion_operation_max_dirs, 
             const.EXPANSION_OPERATION_COS_SIM: expansion_operation_cos_sims, 
             const.EXPANSION_CONSISTENCY: expansion_consistencies,
-             
-            const.CONTRACTION_INSURANCE_MAXDMP: contraction_insurance_max_dirs, 
-            const.CONTRACTION_INSURANCE_COS_SIM: contraction_insurance_cos_sims, 
-            const.CONTRACTION_OPERATION_MAXDMP: contraction_operation_max_dirs, 
-            const.CONTRACTION_OPERATION_COS_SIM: contraction_operation_cos_sims, 
-            const.CONTRACTION_CONSISTENCY: contraction_consistencies,
-             
+            
             const.EFFICIENCY: effiencies, 
             const.EC: eff_changes, 
         }, index=dmu_ks
