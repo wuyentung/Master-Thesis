@@ -216,22 +216,22 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             const.OPERATION_EXP: operation_exps, 
             const.UNDERWRITING_PROFIT: underwriting_profits, 
             const.INVESTMENT_PROFIT: investment_profits, 
+            
+            const.SCALE: insurance_exps + operation_exps, 
+            const.PROFIT: underwriting_profits + investment_profits, 
             const.OUT_DIR: out_dirs, 
-            # const.REF_DMU: reference_dmus, 
-            # const.REF_LAMBDA: reference_lambdas, 
             
             const.EXPANSION_INSURANCE_MAXDMP: expansion_insurance_max_dirs, 
-            const.EXPANSION_INSURANCE_COS_SIM: expansion_insurance_cos_sims, 
+            # const.EXPANSION_INSURANCE_COS_SIM: expansion_insurance_cos_sims, 
             const.EXPANSION_OPERATION_MAXDMP: expansion_operation_max_dirs, 
-            const.EXPANSION_OPERATION_COS_SIM: expansion_operation_cos_sims, 
+            # const.EXPANSION_OPERATION_COS_SIM: expansion_operation_cos_sims, 
             const.EXPANSION_CONSISTENCY: expansion_consistencies,
             
             const.EFFICIENCY: effiencies, 
             const.EC: eff_changes, 
         }, index=dmu_ks
         )
-    dmu_df[const.SCALE] = dmu_df[const.INSURANCE_EXP] + dmu_df[const.OPERATION_EXP]
-    dmu_df[const.PROFIT] = dmu_df[const.UNDERWRITING_PROFIT] + dmu_df[const.INVESTMENT_PROFIT]
+    
     return dmu_df
 #%%
 def label_data(zip_x, zip_y, labels, xytext=(0, 5), ha='center', fontsize=5):
