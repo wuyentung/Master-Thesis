@@ -53,7 +53,7 @@ all_analysis = utils.get_analyze_df(
         'TransGlobe Life 14', 'TransGlobe Life 15', 'TransGlobe Life 16', 
         'Yuanta Life 14', 'Yuanta Life 15', 'Yuanta Life 16', 
         'Zurich 14', 'Zurich 15', 'Zurich 16', 
-            ], df=denoise_nonpositive(LIFE_DUMMY141516),)
+            ], df=denoise_nonpositive(LIFE_DUMMY141516), year=14)
 utils.round_analyze_df(all_analysis, round_to=4)#.to_excel("14-16 all_dmu analysis.xlsx")
 #%%
 no16 = all_analysis.loc[["16" not in idx for idx in all_analysis.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])

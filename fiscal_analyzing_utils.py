@@ -7,7 +7,7 @@ import solver
 import solver_r
 import constant as const
 from load_data import denoise_nonpositive, FISCAL_ATTRIBUTES
-from smrts_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516
+from smrts_fiscal_data import EXPANSION_OPERATION_SMRTS_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516, INSURANCE_SMRTS181920, OPERATION_SMRTS181920, EFF_DICT181920, LAMBDA_DICT181920
 from itertools import combinations
 import matplotlib.pyplot as plt
 CMAP = plt.get_cmap('jet')
@@ -30,7 +30,14 @@ class Arrow3D(FancyArrowPatch):
         self.set_positions((xs[0],ys[0]),(xs[1],ys[1]))
         FancyArrowPatch.draw(self, renderer)
         
-
+#%%
+def year_determin(year:int):
+    if year in [14, 15, 16]:
+        if 16 == year:
+            print("this could be default value using 2014-2016 data")
+        return EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EXPANSION_OPERATION_SMRTS_DUMMY141516, const.LAST_Y_14
+    return EFF_DICT181920, LAMBDA_DICT181920, INSURANCE_SMRTS181920, OPERATION_SMRTS181920, const.LAST_Y_18
+#%%
 def _find_max_dir_mp(smrts_df:pd.DataFrame, DMP_contraction:bool):
     max_dmp_dis = -np.inf
     max_dir_mp = "[0, 0]"
@@ -85,7 +92,8 @@ def _find_ref_dmu(lamda_df:pd.DataFrame, DMP_contraction:str, ):
             continue
         return dmu_k
 ## 成功計算出 s-MRTS 後視覺化資料
-def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input=const.INSURANCE_EXP, view_v=45, view_h=-80, dummy_dmu:list=None, DMP_contraction:bool=False):
+def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input=const.INSURANCE_EXP, view_v=45, view_h=-80, dummy_dmu:list=None, DMP_contraction:bool=False, year:int=16):
+    eff_dict, lambda_dict, insurance_smrts, operation_smrts, last_Y = year_determin(year)
     
     if const.INSURANCE_EXP != target_input and const.OPERATION_EXP != target_input:
         raise ValueError("target_input should be const.INSURANCE_EXP or const.OPERATION_EXP.")
@@ -121,9 +129,9 @@ def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, target_input
         else:
             # max_dir_mp = [0.5, 0.5]
             smrts_color = "orangered"
-        reference_dmu = LAMBDA_DICT_DUMMY141516[all_dmu[i]][const.LAMBDA].idxmax()
+        reference_dmu = lambda_dict[all_dmu[i]][const.LAMBDA].idxmax()
         
-        reference_dmu = _find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[all_dmu[i]], DMP_contraction=DMP_contraction)
+        reference_dmu = _find_ref_dmu(lamda_df=lambda_dict[all_dmu[i]], DMP_contraction=DMP_contraction)
         # print(reference_dmu, LAMBDA_DICT_DUMMY141516[all_dmu[i]][const.LAMBDA])
         smrts_df = smrts_dict[reference_dmu]
         max_dir_mp = _float_direction(_find_max_dir_mp(smrts_df, DMP_contraction))
@@ -168,7 +176,9 @@ def round_analyze_df(analyze_df:pd.DataFrame, round_to:int=2):
             # const.OPERATION_COS_SIM: np.round(operation_cos_sims, round_to).tolist(), 
     return analyze_df
 #%%
-def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
+def get_analyze_df(dmu_ks:list, df:pd.DataFrame, year:int=16):
+    
+    eff_dict, lambda_dict, insurance_smrts, operation_smrts, last_Y = year_determin(year)
     
     insurance_exps = df[const.INSURANCE_EXP][dmu_ks]
     operation_exps = df[const.OPERATION_EXP][dmu_ks]
@@ -178,7 +188,7 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
     def _out_dir(start_idx, end_idx):
         return [((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2)/np.abs(np.abs((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + np.abs((investment_profits[end_idx]-investment_profits[start_idx])/2)), ((investment_profits[end_idx]-investment_profits[start_idx])/2)/np.abs(np.abs((underwriting_profits[end_idx]-underwriting_profits[start_idx])/2) + np.abs((investment_profits[end_idx]-investment_profits[start_idx])/2))]
     
-    out_dirs = [_out_dir(i, i+1) if dmu_ks[i] not in const.LAST_Y else [np.nan, np.nan] for i in range(len(dmu_ks)-1)]
+    out_dirs = [_out_dir(i, i+1) if dmu_ks[i] not in last_Y else [np.nan, np.nan] for i in range(len(dmu_ks)-1)]
     out_dirs.append([np.nan, np.nan])
     
     # reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=True) for k in dmu_ks]
@@ -192,22 +202,21 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame,):
             smrts_df = smrts_dict[dmu_ks[i]]
             max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df, DMP_contraction))
             max_dirs.append(max_dir_mp_str)
-            if dmu_ks[i] in const.LAST_Y:
+            if dmu_ks[i] in last_Y:
                 cos_sims.append(np.nan)
             else:
                 cos_sims.append(_cal_cosine_similarity(out_dirs[i], max_dirs[i]))
         return max_dirs, cos_sims
     
-    expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_INSURANCE_SMRTS_DUMMY141516, DMP_contraction=False)
-    expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=EXPANSION_OPERATION_SMRTS_DUMMY141516, DMP_contraction=False)
+    expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=insurance_smrts, DMP_contraction=False)
+    expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=operation_smrts, DMP_contraction=False)
     
     ## marginal consistency
     expansion_consistencies = [expansion_insurance_cos_sims[i] if expansion_insurance_cos_sims[i] else expansion_operation_cos_sims[i] for i in range(len(dmu_ks))]
-    # expansion_consistencies = [expansion_consistencies[i] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks))]
     
     ## effiency and eff_change
-    effiencies = [EFF_DICT_DUMMY141516[k] for k in dmu_ks]
-    eff_changes = [effiencies[i]/effiencies[i+1] if dmu_ks[i] not in const.LAST_Y else np.nan for i in range(len(dmu_ks)-1)]
+    effiencies = [eff_dict[k] for k in dmu_ks]
+    eff_changes = [effiencies[i]/effiencies[i+1] if dmu_ks[i] not in last_Y else np.nan for i in range(len(dmu_ks)-1)]
     eff_changes.append(np.nan)
     
     dmu_df = pd.DataFrame(
