@@ -54,9 +54,9 @@ utils.round_analyze_df(all_analysis_14, round_to=4)#.to_excel("14-16 all_dmu ana
 #%%
 no16 = all_analysis_14.loc[["16" not in idx for idx in all_analysis_14.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
 #%%
-for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
+for col in [const.SCALE,]:
     for y_col in [const.EXPANSION_CONSISTENCY,]:
-        fig, ax = plt.subplots(figsize=(12, 9), dpi=800)
+        fig, ax = plt.subplots(figsize=(8, 6), dpi=800)
         utils.analyze_plot(ax, no16, y_col=y_col, according_col=col)
         stitle = f"2014-2016 all DMUs {y_col} with {col}"
         ax.set_title(stitle)
@@ -92,9 +92,9 @@ utils.round_analyze_df(all_analysis_18, round_to=4)#.to_excel("18-20 all_dmu ana
 #%%
 no20 = all_analysis_18.loc[["20" not in idx for idx in all_analysis_18.index.tolist()]]
 #%%
-for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
+for col in [const.SCALE, ]:
     for y_col in [const.EXPANSION_CONSISTENCY,]:
-        fig, ax = plt.subplots(figsize=(12, 9), dpi=800)
+        fig, ax = plt.subplots(figsize=(8, 6), dpi=800)
         utils.analyze_plot(ax, no20, y_col=y_col, according_col=col)
         stitle = f"2018-2020 all DMUs {y_col} with {col}"
         ax.set_title(stitle)
