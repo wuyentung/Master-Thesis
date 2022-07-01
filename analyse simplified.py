@@ -58,7 +58,7 @@ for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     for y_col in [const.EXPANSION_CONSISTENCY,]:
         fig, ax = plt.subplots(figsize=(12, 9), dpi=800)
         utils.analyze_plot(ax, no16, y_col=y_col, according_col=col)
-        stitle = f"2014-2016 all DMU {y_col} with {col}"
+        stitle = f"2014-2016 all DMUs {y_col} with {col}"
         ax.set_title(stitle)
         # plt.savefig(f"{stitle}.png")
         plt.show()
@@ -96,7 +96,7 @@ for col in [const.SCALE, const.PROFIT, const.EFFICIENCY,]:
     for y_col in [const.EXPANSION_CONSISTENCY,]:
         fig, ax = plt.subplots(figsize=(12, 9), dpi=800)
         utils.analyze_plot(ax, no20, y_col=y_col, according_col=col)
-        stitle = f"2018-2020 all DMU {y_col} with {col}"
+        stitle = f"2018-2020 all DMUs {y_col} with {col}"
         ax.set_title(stitle)
         # plt.savefig(f"{stitle}.png")
         plt.show()
