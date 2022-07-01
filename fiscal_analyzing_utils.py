@@ -194,25 +194,23 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame, year:int=16):
     # reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=True) for k in dmu_ks]
     # reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]][const.LAMBDA] for i in range(len(dmu_ks))]
     
-    def _cal_cos_sim(smrts_dict, DMP_contraction):
+    def _cal_cos_sim(insurance_smrts_dict, operation_smrts_dict, DMP_contraction):
         max_dirs = []
         cos_sims = []
         for i in range(len(dmu_ks)):
             ## max direction of MP
-            smrts_df = smrts_dict[dmu_ks[i]]
-            max_dir_mp_str = _float_direction(_find_max_dir_mp(smrts_df, DMP_contraction))
-            max_dirs.append(max_dir_mp_str)
+            max_dir_mps = np.array([_float_direction(_find_max_dir_mp(smrts_dict[dmu_ks[i]], DMP_contraction)) for smrts_dict in [insurance_smrts_dict, operation_smrts_dict]])
+            max_dirs.append([np.mean(max_dir_mp) for max_dir_mp in max_dir_mps.T])
             if dmu_ks[i] in last_Y:
                 cos_sims.append(np.nan)
             else:
                 cos_sims.append(_cal_cosine_similarity(out_dirs[i], max_dirs[i]))
         return max_dirs, cos_sims
     
-    expansion_insurance_max_dirs, expansion_insurance_cos_sims = _cal_cos_sim(smrts_dict=insurance_smrts, DMP_contraction=False)
-    expansion_operation_max_dirs, expansion_operation_cos_sims = _cal_cos_sim(smrts_dict=operation_smrts, DMP_contraction=False)
+    max_dirs, cos_sims = _cal_cos_sim(insurance_smrts_dict=insurance_smrts, operation_smrts_dict=operation_smrts, DMP_contraction=False)
     
     ## marginal consistency
-    expansion_consistencies = [expansion_insurance_cos_sims[i] if expansion_insurance_cos_sims[i] else expansion_operation_cos_sims[i] for i in range(len(dmu_ks))]
+    consistencies = [cos_sims[i] if cos_sims[i] else cos_sims[i] for i in range(len(dmu_ks))]
     
     ## effiency and eff_change
     effiencies = [eff_dict[k] for k in dmu_ks]
@@ -230,11 +228,14 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame, year:int=16):
             const.PROFIT: underwriting_profits + investment_profits, 
             const.OUT_DIR: out_dirs, 
             
-            const.EXPANSION_INSURANCE_MAXDMP: expansion_insurance_max_dirs, 
+            # const.EXPANSION_INSURANCE_MAXDMP: expansion_insurance_max_dirs, 
             # const.EXPANSION_INSURANCE_COS_SIM: expansion_insurance_cos_sims, 
-            const.EXPANSION_OPERATION_MAXDMP: expansion_operation_max_dirs, 
+            # const.EXPANSION_OPERATION_MAXDMP: expansion_operation_max_dirs, 
             # const.EXPANSION_OPERATION_COS_SIM: expansion_operation_cos_sims, 
-            const.EXPANSION_CONSISTENCY: expansion_consistencies,
+            # const.EXPANSION_CONSISTENCY: expansion_consistencies,
+            
+            const.MAX_DIR_MP: max_dirs,
+            const.CONSISTENCY: consistencies,
             
             const.EFFICIENCY: effiencies, 
             const.EC: eff_changes, 
@@ -260,8 +261,8 @@ def label_data(zip_x, zip_y, labels, xytext=(0, 5), ha='center', fontsize=5):
         c+=1
     
 #%%
-def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.EXPANSION_CONSISTENCY, according_col=const.EFFICIENCY):
+def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.CONSISTENCY, according_col=const.EFFICIENCY, fontsize=5):
     ax.hlines(y=df[y_col].median(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
     ax.vlines(x=1 if x_col == const.EC else df[x_col].median(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
     sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
-    label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index)
+    label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize)
