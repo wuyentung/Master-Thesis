@@ -16,10 +16,10 @@ import seaborn as sns
 sns.set_theme(style="darkgrid")
 #%%
 dmu_ks=[
-        "CTBC Life 14", "CTBC Life 15", 'Taiwan Life 16',
-        "CTBC Life 15", "DUMMY Taiwan 16", 
-        'Taiwan Life 14', 'Taiwan Life 15', 'Taiwan Life 16', 
-        'Taiwan Life 15', "DUMMY Taiwan 16", 
+        "CTBC Life 14", "CTBC Life 15 to real", 'Taiwan Life 16',
+        "CTBC Life 15 to dummy", "DUMMY Taiwan 16", 
+        'Taiwan Life 14', 'Taiwan Life 15 to real', 'Taiwan Life 16', 
+        'Taiwan Life 15 to dummy', "DUMMY Taiwan 16", 
             ]
 INSURANCE_EXP = [10.8484, 10.632, 17.6594, 10.632, 12.9615, 2.54, 2.3295, 17.6594, 2.3295, 12.9615, ]
 OPERATION_EXP = [2.3518, 2.4684, 4.9022, 2.4684, 6.1227, 3.739, 3.6542, 4.9022, 3.6542, 6.1227, ]
@@ -41,6 +41,8 @@ CONSISTENCY = [utils._cal_cosine_similarity(out_dirs[i], max_dirs[i]) for i in r
 EC = [EFFICIENCY[i]/EFFICIENCY[i+1] for i in range(len(dmu_ks)-1)]
 EC.append(np.nan)
 #%%
+ctbc="CTBC Life"
+taiwan="Taiwan Life"
 merged_df = pd.DataFrame(
     {
         const.INSURANCE_EXP: INSURANCE_EXP,
@@ -54,6 +56,23 @@ merged_df = pd.DataFrame(
         const.CONSISTENCY: CONSISTENCY,
         const.EFFICIENCY: EFFICIENCY, 
         const.EC: EC,
+        const.REF_DMU: [ctbc, ctbc, ctbc, ctbc, ctbc, taiwan, taiwan, taiwan, taiwan, taiwan]
     }, index=dmu_ks
 )
+no16 = merged_df.loc[["16" not in idx for idx in merged_df.index.tolist()]]
+#%%
+def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.CONSISTENCY, according_col=const.EFFICIENCY, fontsize=5):
+    ax.hlines(y=0, xmin=.95, xmax=1.002, colors="gray", lw=1)
+    ax.vlines(x=1 , ymin=-1, ymax=1, colors="gray", lw=1)
+    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, style=according_col, hue=according_col, )
+    utils.label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize)
+
+for col in [const.REF_DMU, ]:
+    for y_col in [const.CONSISTENCY,]:
+        fig, ax = plt.subplots(figsize=(8, 6), dpi=800)
+        analyze_plot(ax, no16, y_col=y_col, according_col=col, fontsize=6)
+        stitle = f"2014-2016 merged DMUs {y_col} with {col}"
+        ax.set_title(stitle)
+        # plt.savefig(f"{stitle}.png")
+        plt.show()
 #%%
