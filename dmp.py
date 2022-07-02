@@ -65,7 +65,7 @@ def cal_alpha_r(dmu_idxs:list, x:np.ndarray, y:np.ndarray, gy:np.ndarray, i_star
         return m.objVal
     # return np.nan
     multiplier = 1.0005
-    print(f"DMU index {r} using direction {gy} is infeasible or unbounded, multipling y with {multiplier} to meet the frontier,")
+    # print(f"DMU index {r} using direction {gy} is infeasible or unbounded, multipling y with {multiplier} to meet the frontier,")
     # print(f"x: {x}, \ny:{y}")
     # print("=======\n\n")
     y[:, r]*=(multiplier)

@@ -176,9 +176,11 @@ def round_analyze_df(analyze_df:pd.DataFrame, round_to:int=2):
             # const.OPERATION_COS_SIM: np.round(operation_cos_sims, round_to).tolist(), 
     return analyze_df
 #%%
-def get_analyze_df(dmu_ks:list, df:pd.DataFrame, year:int=16):
+def get_analyze_df(dmu_ks:list, df:pd.DataFrame, year:int=16, remain_last=False):
     
     eff_dict, lambda_dict, insurance_smrts, operation_smrts, last_Y = year_determin(year)
+    if remain_last:
+        last_Y = []
     
     insurance_exps = df[const.INSURANCE_EXP][dmu_ks]
     operation_exps = df[const.OPERATION_EXP][dmu_ks]
