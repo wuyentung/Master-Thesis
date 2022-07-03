@@ -41,6 +41,7 @@ CONSISTENCY = [utils._cal_cosine_similarity(out_dirs[i], max_dirs[i]) for i in r
 EC = [EFFICIENCY[i]/EFFICIENCY[i+1] for i in range(len(dmu_ks)-1)]
 EC.append(np.nan)
 #%%
+DMU = "Insurer"
 ctbc="CTBC Life"
 taiwan="Taiwan Life"
 merged_df = pd.DataFrame(
@@ -56,7 +57,7 @@ merged_df = pd.DataFrame(
         const.CONSISTENCY: CONSISTENCY,
         const.EFFICIENCY: EFFICIENCY, 
         const.EC: EC,
-        const.REF_DMU: [ctbc, ctbc, ctbc, ctbc, ctbc, taiwan, taiwan, taiwan, taiwan, taiwan]
+        DMU: [ctbc, ctbc, ctbc, ctbc, ctbc, taiwan, taiwan, taiwan, taiwan, taiwan]
     }, index=dmu_ks
 )
 no16 = merged_df.loc[["16" not in idx for idx in merged_df.index.tolist()]]
@@ -64,13 +65,13 @@ no16 = merged_df.loc[["16" not in idx for idx in merged_df.index.tolist()]]
 def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.CONSISTENCY, according_col=const.EFFICIENCY, fontsize=5):
     ax.hlines(y=0, xmin=.95, xmax=1.002, colors="gray", lw=1)
     ax.vlines(x=1 , ymin=-1, ymax=1, colors="gray", lw=1)
-    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, style=according_col, hue=according_col, )
-    utils.label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize)
+    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, style=according_col, hue=according_col, s=100, zorder=10)
+    utils.label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize, xytext=(-10, 10), ha="left")
 
-for col in [const.REF_DMU, ]:
+for col in [DMU, ]:
     for y_col in [const.CONSISTENCY,]:
         fig, ax = plt.subplots(figsize=(8, 6), dpi=800)
-        analyze_plot(ax, no16, y_col=y_col, according_col=col, fontsize=6)
+        analyze_plot(ax, no16, y_col=y_col, according_col=col, fontsize=10)
         stitle = f"2014-2016 merged DMUs {y_col} with {col}"
         ax.set_title(stitle)
         # plt.savefig(f"{stitle}.png")
