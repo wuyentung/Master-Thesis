@@ -63,19 +63,21 @@ utils.round_analyze_df(all_analysis_14, round_to=4)#.to_excel("14-16 all_dmu ana
 #%%
 no16 = all_analysis_14.loc[["16" not in idx for idx in all_analysis_14.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
 #%%
-df = no16.drop(["CTBC Life 14"])
-scale_mean = [np.mean([df[const.SCALE][df.index[i]], df[const.SCALE][df.index[i+1]]]) for i in range(0, df.shape[0], 2)]
-consistency_abs = [np.abs(df[const.CONSISTENCY][df.index[i]] - df[const.CONSISTENCY][df.index[i+1]]) for i in range(0, df.shape[0], 2)]
-ec_abs = [np.abs(df[const.EC][df.index[i]] - df[const.EC][df.index[i+1]]) for i in range(0, df.shape[0], 2)]
-moving_df = pd.DataFrame({
-    const.SCALE: scale_mean, 
-    const.CONSISTENCY: consistency_abs,
-    const.EC: ec_abs,
-})
+# df = no16.drop(["CTBC Life 14"])
+def cal_moving_df(df:pd.DataFrame):
+    scale_mean = [np.mean([df[const.SCALE][df.index[i]], df[const.SCALE][df.index[i+1]]]) for i in range(0, df.shape[0], 2)]
+    consistency_abs = [np.abs(df[const.CONSISTENCY][df.index[i]] - df[const.CONSISTENCY][df.index[i+1]]) for i in range(0, df.shape[0], 2)]
+    ec_abs = [np.abs(df[const.EC][df.index[i]] - df[const.EC][df.index[i+1]]) for i in range(0, df.shape[0], 2)]
+    moving_df = pd.DataFrame({
+        const.SCALE: scale_mean, 
+        const.CONSISTENCY: consistency_abs,
+        const.EC: ec_abs,
+    })
+    return moving_df
 #%%
-sns.scatterplot(data=moving_df, x=const.SCALE, y=const.CONSISTENCY)
+sns.scatterplot(data=cal_moving_df(no16.drop(["CTBC Life 14"])), x=const.SCALE, y=const.CONSISTENCY)
 #%%
-sns.scatterplot(data=moving_df, x=const.SCALE, y=const.EC)
+sns.scatterplot(data=cal_moving_df(no16.drop(["CTBC Life 14"])), x=const.SCALE, y=const.EC)
 #%%
 
 
@@ -122,6 +124,18 @@ all_analysis_18 = utils.get_analyze_df(
 utils.round_analyze_df(all_analysis_18, round_to=4)#.to_excel("18-20 all_dmu analysis.xlsx")
 #%%
 no20 = all_analysis_18.loc[["20" not in idx for idx in all_analysis_18.index.tolist()]]
+#%%
+sns.scatterplot(data=cal_moving_df(no20), x=const.SCALE, y=const.CONSISTENCY)
+#%%
+sns.scatterplot(data=cal_moving_df(no20), x=const.SCALE, y=const.EC)
+#%%
+
+
+
+
+
+
+
 #%%
 for col in [const.SCALE, ]:
     for y_col in [const.CONSISTENCY,]:
