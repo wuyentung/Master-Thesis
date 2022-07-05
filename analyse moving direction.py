@@ -63,39 +63,6 @@ utils.round_analyze_df(all_analysis_14, round_to=4)#.to_excel("14-16 all_dmu ana
 #%%
 no16 = all_analysis_14.loc[["16" not in idx for idx in all_analysis_14.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
 #%%
-# df = no16.drop(["CTBC Life 14"])
-def cal_moving_df(df:pd.DataFrame):
-    scale_mean = [np.mean([df[const.SCALE][df.index[i]], df[const.SCALE][df.index[i+1]]]) for i in range(0, df.shape[0], 2)]
-    consistency_abs = [np.abs(df[const.CONSISTENCY][df.index[i]] - df[const.CONSISTENCY][df.index[i+1]]) for i in range(0, df.shape[0], 2)]
-    ec_abs = [np.abs(df[const.EC][df.index[i]] - df[const.EC][df.index[i+1]]) for i in range(0, df.shape[0], 2)]
-    moving_df = pd.DataFrame({
-        const.SCALE: scale_mean, 
-        const.CONSISTENCY: consistency_abs,
-        const.EC: ec_abs,
-    })
-    return moving_df
-#%%
-sns.scatterplot(data=cal_moving_df(no16.drop(["CTBC Life 14"])), x=const.SCALE, y=const.CONSISTENCY)
-#%%
-sns.scatterplot(data=cal_moving_df(no16.drop(["CTBC Life 14"])), x=const.SCALE, y=const.EC)
-#%%
-
-
-
-
-
-
-
-#%%
-for col in [const.SCALE,]:
-    for y_col in [const.CONSISTENCY,]:
-        fig, ax = plt.subplots(figsize=(8, 6), dpi=800)
-        analyze_plot(ax, no16, y_col=y_col, according_col=col, fontsize=6)
-        stitle = f"2014-2016 all DMUs {y_col} with {col}"
-        ax.set_title(stitle)
-        # plt.savefig(f"{stitle}.png")
-        plt.show()
-#%%
 all_analysis_18 = utils.get_analyze_df(
     dmu_ks=[
         'AIA Taiwan 18', 'AIA Taiwan 19', 'AIA Taiwan 20', 
@@ -125,24 +92,32 @@ utils.round_analyze_df(all_analysis_18, round_to=4)#.to_excel("18-20 all_dmu ana
 #%%
 no20 = all_analysis_18.loc[["20" not in idx for idx in all_analysis_18.index.tolist()]]
 #%%
-sns.scatterplot(data=cal_moving_df(no20), x=const.SCALE, y=const.CONSISTENCY)
+# df = no16.drop(["CTBC Life 14"])
+def cal_moving_df(df:pd.DataFrame):
+    scale_mean = [np.mean([df[const.SCALE][df.index[i]], df[const.SCALE][df.index[i+1]]]) for i in range(0, df.shape[0], 2)]
+    consistency_abs = [np.abs(df[const.CONSISTENCY][df.index[i]] - df[const.CONSISTENCY][df.index[i+1]]) for i in range(0, df.shape[0], 2)]
+    ec_abs = [np.abs(df[const.EC][df.index[i]] - df[const.EC][df.index[i+1]]) for i in range(0, df.shape[0], 2)]
+    moving_df = pd.DataFrame({
+        const.SCALE: scale_mean, 
+        const.CONSISTENCY: consistency_abs,
+        const.EC: ec_abs,
+    })
+    return moving_df
 #%%
-sns.scatterplot(data=cal_moving_df(no20), x=const.SCALE, y=const.EC)
+moving_df_14 = cal_moving_df(no16.drop(["CTBC Life 14"]))
+moving_df_18 = cal_moving_df(no20)
 #%%
-
-
-
-
-
-
-
+period = "Period"
+moving_df_14[period] = "2014-2016"
+moving_df_18[period] = "2018-2020"
 #%%
-for col in [const.SCALE, ]:
-    for y_col in [const.CONSISTENCY,]:
-        fig, ax = plt.subplots(figsize=(8, 6), dpi=800)
-        analyze_plot(ax, no20, y_col=y_col, according_col=col, fontsize=6)
-        stitle = f"2018-2020 all DMUs {y_col} with {col}"
-        ax.set_title(stitle)
-        # plt.savefig(f"{stitle}.png")
-        plt.show()
+moving_df = pd.concat([moving_df_14, moving_df_18])
+#%%
+for y_col in [const.CONSISTENCY, const.EC]:
+    fig, ax = plt.subplots(figsize=(8, 6), dpi=800)
+    sns.scatterplot(data=moving_df, x=const.SCALE, y=y_col, style=period, hue=period, s=100)
+    stitle = f"moving directions two exp DMUs {y_col}"
+    # ax.set_title(stitle)
+    plt.savefig(f"{stitle}.png")
+    plt.show()
 #%%
