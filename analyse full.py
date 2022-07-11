@@ -172,11 +172,11 @@ sns.scatterplot(x=const.INSURANCE_EXP, y=const.OPERATION_EXP, data=all_analysis,
 ax.set_title("inputs plot")
 # plt.savefig(f"inputs plot.png")
 plt.show()
-
+#%%
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
-sns.scatterplot(x=const.UNDERWRITING_PROFIT, y=const.INVESTMENT_PROFIT, data=all_analysis, ax=ax, )
-ax.set_title("outputs plot")
-# plt.savefig(f"outputs plot.png")
+sns.scatterplot(x=const.UNDERWRITING_PROFIT, y=const.INVESTMENT_PROFIT, data=all_analysis, ax=ax, size=const.SCALE, hue=const.SCALE, sizes=(20, 200))
+ax.set_title("Outputs Scatter Plot for 2014-2016 DMUs")
+# plt.savefig(f"Outputs Scatter Plot for 2014-2016 DMUs.png")
 plt.show()
 #%%
 eff = all_analysis.loc[[1 == ef for ef in all_analysis[const.EFFICIENCY].tolist()]]
