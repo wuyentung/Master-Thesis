@@ -179,10 +179,24 @@ ax.set_title("Outputs Scatter Plot for 2014-2016 DMUs")
 # plt.savefig(f"Outputs Scatter Plot for 2014-2016 DMUs.png")
 plt.show()
 #%%
+def bidireciton_arrows(df:pd.DataFrame, ax:Axes, hw=.5, hl=.5, multiplier=5):
+    for i in range(df.shape[0]):
+        ax.arrow(x=df[const.UNDERWRITING_PROFIT][i], y=df[const.INVESTMENT_PROFIT][i], dx=multiplier*df[const.MAX_DIR_MP][i][0], dy=multiplier*df[const.MAX_DIR_MP][i][1], color="blue", length_includes_head=True, head_width=hw, head_length=hl)
+        ax.arrow(x=df[x_col][i], y=df[y_col][i], dx=multiplier*df[const.OUT_DIR][i][0], dy=multiplier*df[const.OUT_DIR][i][1], color="red", length_includes_head=True, head_width=hw, head_length=hl)
+#%%
+x_col = const.UNDERWRITING_PROFIT
+y_col = const.INVESTMENT_PROFIT
+fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
+sns.scatterplot(x=x_col, y=y_col, data=all_analysis, ax=ax, size=const.SCALE, hue=const.SCALE, sizes=(20, 200))
+bidireciton_arrows(df=all_analysis, ax=ax)
+ax.set_title("Outputs Scatter Plot for 2014-2016 DMUs")
+# plt.savefig(f"Outputs Scatter Plot for 2014-2016 DMUs.png")
+plt.show()
+#%%
 eff = all_analysis.loc[[1 == ef for ef in all_analysis[const.EFFICIENCY].tolist()]]
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
 # utils.analyze_plot(ax=ax, df=eff, x_col=const.SCALE, y_col=const.PROFIT, according_col=const.COS_SIM)
-sns.scatterplot(x=const.SCALE, y=const.PROFIT, data=eff, ax=ax, hue=const.EXPANSION_CONSISTENCY, palette=CMAP,)
+sns.scatterplot(x=const.SCALE, y=const.PROFIT, data=eff, ax=ax, hue=const.CONSISTENCY, palette=CMAP,)
 utils.label_data(zip_x=eff[const.SCALE], zip_y=eff[const.PROFIT], labels=eff.index)
 stitle = f"Efficient DMU"
 ax.set_title(stitle)
@@ -193,7 +207,7 @@ large_eff = eff.loc[[10 < scale for scale in eff[const.SCALE].tolist()]]
 small_eff = eff.loc[[10 > scale for scale in eff[const.SCALE].tolist()]]
 fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
 # utils.analyze_plot(ax=ax, df=eff, x_col=const.SCALE, y_col=const.PROFIT, according_col=const.COS_SIM)
-sns.scatterplot(x=const.SCALE, y=const.PROFIT, data=small_eff, ax=ax, hue=const.EXPANSION_CONSISTENCY, palette=CMAP,)
+sns.scatterplot(x=const.SCALE, y=const.PROFIT, data=small_eff, ax=ax, hue=const.CONSISTENCY, palette=CMAP,)
 utils.label_data(zip_x=small_eff[const.SCALE], zip_y=small_eff[const.PROFIT], labels=small_eff.index)
 stitle = f"Efficient Small Size DMU"
 ax.set_title(stitle)
@@ -204,6 +218,17 @@ fig, ax = plt.subplots(figsize=(12, 9), dpi=400)
 sns.scatterplot(x=const.EC, y=const.EC, data=no16no1.loc[["Zurich 16" == ref_dmu for ref_dmu in no16no1[const.REF_DMU].tolist()]], ax=ax, style=const.REF_DMU, palette=CMAP, s=100)
 # utils.analyze_plot(ax, no16no1, according_col=col)
 stitle = f"Inefficient with {col}"
+ax.set_title(stitle)
+# plt.savefig(f"{stitle}.png")
+plt.show()
+#%%
+small = all_analysis.loc[[20 > scale for scale in all_analysis[const.SCALE].tolist()]]
+x_col = const.UNDERWRITING_PROFIT
+y_col = const.INVESTMENT_PROFIT
+fig, ax = plt.subplots(figsize=(8, 6), dpi=400)
+sns.scatterplot(x=x_col, y=y_col, data=small, ax=ax, size=const.SCALE, hue=const.SCALE, sizes=(20, 200))
+bidireciton_arrows(df=small, ax=ax)
+stitle = "Outputs Direction Difference Plot for 2014-2016 Small DMUs"
 ax.set_title(stitle)
 # plt.savefig(f"{stitle}.png")
 plt.show()
