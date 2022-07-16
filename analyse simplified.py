@@ -18,6 +18,7 @@ import matplotlib.pyplot as plt
 from textwrap import wrap
 CMAP = plt.get_cmap('jet')
 import seaborn as sns
+import plotting_utils as plotting
 sns.set_theme(style="darkgrid")
 #%%
 all_analysis_14 = utils.get_analyze_df(
@@ -53,14 +54,17 @@ all_analysis_14 = utils.get_analyze_df(
 utils.round_analyze_df(all_analysis_14, round_to=4)#.to_excel("14-16 all_dmu analysis.xlsx")
 #%%
 no16 = all_analysis_14.loc[["16" not in idx for idx in all_analysis_14.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
+wanted_dmus = no16.loc[[idx in ["Fubon Life 14", "Fubon Life 15", "Shin Kong Life 14", "Shin Kong Life 15", "TransGlobe Life 14", "TransGlobe Life 15", "AIA Taiwan 14", "AIA Taiwan 15", "Yuanta Life 14", "Yuanta Life 15"] for idx in no16.index.tolist()]]
+wanted_dmus.at["Yuanta Life 15", const.CONSISTENCY] = 1.02
 #%%
 for col in [const.SCALE,]:
     for y_col in [const.CONSISTENCY,]:
         fig, ax = plt.subplots(figsize=(8, 6), dpi=800)
-        utils.analyze_plot(ax, no16, y_col=y_col, according_col=col, fontsize=6)
+        plotting.analyze_plot(ax, no16, y_col=y_col, according_col=col, fontsize=6, label=False)
+        plotting.label_data(zip_x=wanted_dmus[const.EC], zip_y=wanted_dmus[y_col], labels=wanted_dmus.index, fontsize=6)
         stitle = f"2014-2016 all DMUs {y_col} with {col}"
         ax.set_title(stitle)
-        # plt.savefig(f"{stitle}.png")
+        # plt.savefig(f"{stitle} label specific.png")
         plt.show()
 #%%
 all_analysis_18 = utils.get_analyze_df(
@@ -91,13 +95,19 @@ all_analysis_18 = utils.get_analyze_df(
 utils.round_analyze_df(all_analysis_18, round_to=4)#.to_excel("18-20 all_dmu analysis.xlsx")
 #%%
 no20 = all_analysis_18.loc[["20" not in idx for idx in all_analysis_18.index.tolist()]]
+large_scale = no20.loc[[scale > 17 for scale in no20[const.SCALE].tolist()]]
+bank_taiwan = no20.loc[["Bank" in idx for idx in no20.index.tolist()]]
+transglobe = no20.loc[["Globe" in idx for idx in no20.index.tolist()]]
 #%%
 for col in [const.SCALE, ]:
     for y_col in [const.CONSISTENCY,]:
         fig, ax = plt.subplots(figsize=(8, 6), dpi=800)
-        utils.analyze_plot(ax, no20, y_col=y_col, according_col=col, fontsize=6)
+        plotting.analyze_plot(ax, no20, y_col=y_col, according_col=col, fontsize=6, label=False)
         stitle = f"2018-2020 all DMUs {y_col} with {col}"
+        plotting.label_data(zip_x=large_scale[const.EC], zip_y=large_scale[y_col], labels=large_scale.index, fontsize=6)
+        plotting.label_data(zip_x=bank_taiwan[const.EC], zip_y=bank_taiwan[y_col], labels=bank_taiwan.index, fontsize=6)
+        plotting.label_data(zip_x=transglobe[const.EC], zip_y=transglobe[y_col], labels=transglobe.index, fontsize=6)
         ax.set_title(stitle)
-        # plt.savefig(f"{stitle}.png")
+        # plt.savefig(f"{stitle} label specific.png")
         plt.show()
 #%%
