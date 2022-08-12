@@ -19,11 +19,13 @@ OUT_DIR = "Output Progress Direction"
 REF_DMU = "reference DMU"
 REF_LAMBDA = "reference lambda"
 
-# EXPANSION_INSURANCE_MAXDMP = "Ins. Exp. max direction of MP"
-# EXPANSION_INSURANCE_COS_SIM = "Ins. Exp. cosine similarity"
-# EXPANSION_OPERATION_MAXDMP = "Op. Exp. max direction of MP"
-# EXPANSION_OPERATION_COS_SIM = "Op. Exp. cosine similarity"
-# EXPANSION_CONSISTENCY = "Marginal Profit Consistency"
+
+INS_MAX_DIR_MP = "Ins. Marginal Profit Max Direction"
+INS_CONSISTENCY = "Ins. Marginal Profit Consistency"
+
+OP_MAX_DIR_MP = "Op. Marginal Profit Max Direction"
+OP_CONSISTENCY = "Op. Marginal Profit Consistency"
+
 MAX_DIR_MP = "Marginal Profit Max Direction"
 CONSISTENCY = "Marginal Profit Consistency"
 

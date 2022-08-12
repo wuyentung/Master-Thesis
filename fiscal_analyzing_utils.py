@@ -38,7 +38,7 @@ def year_determin(year:int):
         return EFF_DICT_DUMMY141516, LAMBDA_DICT_DUMMY141516, EXPANSION_INSURANCE_SMRTS_DUMMY141516, EXPANSION_OPERATION_SMRTS_DUMMY141516, const.LAST_Y_14
     return EFF_DICT181920, LAMBDA_DICT181920, INSURANCE_SMRTS181920, OPERATION_SMRTS181920, const.LAST_Y_18
 #%%
-def _find_max_dir_mp(smrts_df:pd.DataFrame, DMP_contraction:bool):
+def _find_max_dir_mp(smrts_df:pd.DataFrame, DMP_contraction:bool=False):
     max_dmp_dis = -np.inf
     max_dir_mp = "[0, 0]"
     for idx, row in smrts_df.iterrows():
@@ -178,7 +178,7 @@ def round_analyze_df(analyze_df:pd.DataFrame, round_to:int=2):
 #%%
 def get_analyze_df(dmu_ks:list, df:pd.DataFrame, year:int=16, remain_last=False):
     
-    eff_dict, lambda_dict, insurance_smrts, operation_smrts, last_Y = year_determin(year)
+    eff_dict, lambda_dict, insurance_smrts_dict, operation_smrts_dict, last_Y = year_determin(year)
     if remain_last:
         last_Y = []
     
@@ -196,23 +196,26 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame, year:int=16, remain_last=False)
     # reference_dmus = [_find_ref_dmu(lamda_df=LAMBDA_DICT_DUMMY141516[k], DMP_contraction=True) for k in dmu_ks]
     # reference_lambdas = [LAMBDA_DICT_DUMMY141516[dmu_ks[i]].loc[reference_dmus[i]][const.LAMBDA] for i in range(len(dmu_ks))]
     
-    def _cal_cos_sim(insurance_smrts_dict, operation_smrts_dict, DMP_contraction):
-        max_dirs = []
-        cos_sims = []
-        for i in range(len(dmu_ks)):
-            ## max direction of MP
-            max_dir_mps = np.array([_float_direction(_find_max_dir_mp(smrts_dict[dmu_ks[i]], DMP_contraction)) for smrts_dict in [insurance_smrts_dict, operation_smrts_dict]])
-            max_dirs.append([np.mean(max_dir_mp) for max_dir_mp in max_dir_mps.T])
-            if dmu_ks[i] in last_Y:
-                cos_sims.append(np.nan)
+    ins_max_dirs = []
+    op_max_dirs = []
+    consistencies = []
+    for i in range(len(dmu_ks)):
+        ## max direction of MP
+        ins_max_dirs.append(_float_direction(_find_max_dir_mp(insurance_smrts_dict[dmu_ks[i]])))
+        op_max_dirs.append(_float_direction(_find_max_dir_mp(operation_smrts_dict[dmu_ks[i]])))
+        
+        ## marginal consistency
+        if dmu_ks[i] in last_Y:
+            consistencies.append(np.nan)
+        else:
+            ins_cos_sim = _cal_cosine_similarity(out_dirs[i], ins_max_dirs[i]) if np.sum(ins_max_dirs[i]) else np.nan
+            op_cos_sim = _cal_cosine_similarity(out_dirs[i], op_max_dirs[i]) if np.sum(op_max_dirs[i]) else np.nan
+            if np.isnan(ins_cos_sim) and np.isnan(op_cos_sim):
+                consistencies.append(0)
             else:
-                cos_sims.append(_cal_cosine_similarity(out_dirs[i], max_dirs[i]))
-        return max_dirs, cos_sims
+                consistencies.append(np.nanmean([ins_cos_sim, op_cos_sim]))
     
-    max_dirs, cos_sims = _cal_cos_sim(insurance_smrts_dict=insurance_smrts, operation_smrts_dict=operation_smrts, DMP_contraction=False)
     
-    ## marginal consistency
-    consistencies = [cos_sims[i] if cos_sims[i] else cos_sims[i] for i in range(len(dmu_ks))]
     
     ## effiency and eff_change
     effiencies = [eff_dict[k] for k in dmu_ks]
@@ -236,7 +239,8 @@ def get_analyze_df(dmu_ks:list, df:pd.DataFrame, year:int=16, remain_last=False)
             # const.EXPANSION_OPERATION_COS_SIM: expansion_operation_cos_sims, 
             # const.EXPANSION_CONSISTENCY: expansion_consistencies,
             
-            const.MAX_DIR_MP: max_dirs,
+            const.INS_MAX_DIR_MP: ins_max_dirs,
+            const.OP_MAX_DIR_MP: op_max_dirs,
             const.CONSISTENCY: consistencies,
             
             const.EFFICIENCY: effiencies, 
