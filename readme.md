@@ -3,14 +3,12 @@
 ###### Key paper: [Lee (2017)](https://doi.org/10.1057/s41274-016-0129-8)
 ###### Process *main.py* will show all figures of the analysis (requirement: [Gurobi lisence](https://www.gurobi.com/academia/academic-program-and-licenses/))
 ## Abstract
----
 This study proposes a novel analysis chart with Marginal Profit Consistency, which is a derivative from Directional Marginal Productivity, and Efficiency Change. Where the Marginal Profit Consistency can help us investigate how a DMU’s progress in history be related to the direction which leads to gain maximum marginal profit. We use life insurance industrial data in Taiwan as the application field, with the assumption that there is no technical change in the paneled 3 years. Using our proposing chart, we can highlight the industry event related to company performance and its marginal output portfolio. Besides, we further explain the usage when we face the merger effect in industry, which is always a worth discussing issue once incurred. To the best of our knowledge, we suggest how an insurance company can move forward if it falls in Laggard quadrant. 
 ## Research Purposes
 ---
 - Propose a novel analysis chart examining how a decision making unit's (DMU) reaction to the margin will affect its performance. 
 - The proposed chart aims to highlight the industrial major and minor events related to company performance and its marginal output portfolio.
 ## Application Field, Database, and Parameters
----
 - Taiwan Life Insurance Industry, 2014-2016, 2018-2020
 - Database: annual Income Statements collected by [Taiwan Insurance Institute](https://www.tii.org.tw/tii/actuarial/actuarial3/)
 - Inputs:
@@ -27,7 +25,6 @@ Figure below represents the module we use when implementing the research. Util m
 <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/module%20flowchart.png" width="900" />  
 
 ## Analysis Result
----
 ### Result Tables (round in 3, amount: million NTD)
 Table below is the example of the panel data and analysis value in period 2014-2016 (round in 3), including two insurance companies. The first four columns are the input and output data. From the row perspective, we combine insurer’s name with its year collected. For example, insurer AIA Taiwan 14 refers to company AIA (American International Assurance) Taiwan with 2014 data, AIA Taiwan 15 refers to company AIA Taiwan with 2015 data, etc. We use vectors to represent Underwriting Profit and Investment Profit respectively on column of Output Progress Direction and Marginal Profit Max Direction. Where Marginal Profit Max Direction is the mean of marginal profit max direction retrieved from DMPs under specifying input Insurance Expenses and Operation Expenses. 
 
