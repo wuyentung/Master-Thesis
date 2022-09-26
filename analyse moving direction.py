@@ -6,18 +6,16 @@
 最後有時間再來 scope property
 '''
 # %%
-from turtle import shape
 from matplotlib.axes import Axes
-from sklearn.preprocessing import scale
-import fiscal_analyzing_utils as utils
+import calculating_utils as cal_utils
+import smrts_analyzing_utils as smrts_utils
+import plotting_utils as plotting
 import os
 import pandas as pd
 import numpy as np
 import constant as const
 from load_data import denoise_nonpositive, LIFE_DUMMY141516, LIFE181920
-from itertools import combinations
 import matplotlib.pyplot as plt
-from textwrap import wrap
 CMAP = plt.get_cmap('jet')
 import seaborn as sns
 sns.set_theme(style="darkgrid")
@@ -27,9 +25,9 @@ def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.CONSI
     ax.vlines(x=1 if x_col == const.EC else df[x_col].median(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
     sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
     ax.annotate("", xy=(df[x_col]['AIA Taiwan 15'], df[y_col]['AIA Taiwan 15']), xytext=(df[x_col]['AIA Taiwan 14'], df[y_col]['AIA Taiwan 14']), arrowprops=dict(arrowstyle="->", color="black"))
-    utils.label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize)
+    plotting.label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize)
 #%%
-all_analysis_14 = utils.get_analyze_df(
+all_analysis_14 = smrts_utils.get_analyze_df(
     dmu_ks=[
         'AIA Taiwan 14', 'AIA Taiwan 15', 'AIA Taiwan 16', 
         'Allianz Taiwan Life 14', 'Allianz Taiwan Life 15', 'Allianz Taiwan Life 16', 
@@ -59,11 +57,11 @@ all_analysis_14 = utils.get_analyze_df(
         'Yuanta Life 14', 'Yuanta Life 15', 'Yuanta Life 16', 
         'Zurich 14', 'Zurich 15', 'Zurich 16', 
             ], df=denoise_nonpositive(LIFE_DUMMY141516), year=14)
-utils.round_analyze_df(all_analysis_14, round_to=4)#.to_excel("14-16 all_dmu analysis.xlsx")
+cal_utils.round_analyze_df(all_analysis_14, round_to=4)#.to_excel("14-16 all_dmu analysis.xlsx")
 #%%
 no16 = all_analysis_14.loc[["16" not in idx for idx in all_analysis_14.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
 #%%
-all_analysis_18 = utils.get_analyze_df(
+all_analysis_18 = smrts_utils.get_analyze_df(
     dmu_ks=[
         'AIA Taiwan 18', 'AIA Taiwan 19', 'AIA Taiwan 20', 
         'Allianz Taiwan Life 18', 'Allianz Taiwan Life 19', 'Allianz Taiwan Life 20', 
@@ -88,7 +86,7 @@ all_analysis_18 = utils.get_analyze_df(
         'TransGlobe Life 18', 'TransGlobe Life 19', 'TransGlobe Life 20', 
         'Yuanta Life 18', 'Yuanta Life 19', 'Yuanta Life 20', 
             ], df=denoise_nonpositive(LIFE181920), year=18)
-utils.round_analyze_df(all_analysis_18, round_to=4)#.to_excel("18-20 all_dmu analysis.xlsx")
+cal_utils.round_analyze_df(all_analysis_18, round_to=4)#.to_excel("18-20 all_dmu analysis.xlsx")
 #%%
 no20 = all_analysis_18.loc[["20" not in idx for idx in all_analysis_18.index.tolist()]]
 #%%
@@ -118,6 +116,6 @@ for y_col in [const.CONSISTENCY, const.EC]:
     sns.scatterplot(data=moving_df, x=const.SCALE, y=y_col, style=period, hue=period, s=100)
     stitle = f"moving directions two exp DMUs {y_col}"
     # ax.set_title(stitle)
-    plt.savefig(f"{stitle}.png")
+    # plt.savefig(f"{stitle}.png")
     plt.show()
 #%%

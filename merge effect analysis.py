@@ -1,19 +1,16 @@
 #%%
 # 分析合併公司:
 # - 2016 CTBC Life 與 Taiwan Life 合併成 Taiwan Life
-import fiscal_analyzing_utils as utils
 from matplotlib.axes import Axes
-import os
 import pandas as pd
 import numpy as np
-import constant as const
-from load_data import denoise_nonpositive, LIFE_DUMMY141516, LIFE181920
-from itertools import combinations
 import matplotlib.pyplot as plt
-from textwrap import wrap
 CMAP = plt.get_cmap('jet')
 import seaborn as sns
 sns.set_theme(style="darkgrid")
+import constant as const
+from calculating_utils import cal_cosine_similarity
+import plotting_utils as plotting
 #%%
 dmu_ks=[
         "CTBC Life 14", "CTBC Life 15 to real", 'Taiwan Life 16',
@@ -37,7 +34,7 @@ out_dirs = [_out_dir(i, i+1) for i in range(len(dmu_ks)-1)]
 out_dirs.append([np.nan, np.nan])
 #%%
 max_dirs = [[0.495, 0.005], [0.005, 0.495], [0.495, 0.005], [0.005, 0.495], [0., 0.], [0.495, 0.005], [0.495, 0.005], [0.495, 0.005], [0.495, 0.005], [0., 0.], ]
-CONSISTENCY = [utils._cal_cosine_similarity(out_dirs[i], max_dirs[i]) for i in range(len(dmu_ks))]
+CONSISTENCY = [cal_cosine_similarity(out_dirs[i], max_dirs[i]) for i in range(len(dmu_ks))]
 EC = [EFFICIENCY[i]/EFFICIENCY[i+1] for i in range(len(dmu_ks)-1)]
 EC.append(np.nan)
 #%%
@@ -66,7 +63,7 @@ def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.CONSI
     ax.hlines(y=0, xmin=.95, xmax=1.002, colors="gray", lw=1)
     ax.vlines(x=1 , ymin=-1, ymax=1, colors="gray", lw=1)
     sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, style=according_col, hue=according_col, s=100, zorder=10)
-    utils.label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize, xytext=(-10, 10), ha="left")
+    plotting.label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize, xytext=(-10, 10), ha="left")
 
 for col in [DMU, ]:
     for y_col in [const.CONSISTENCY,]:

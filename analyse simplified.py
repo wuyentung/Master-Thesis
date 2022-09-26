@@ -6,24 +6,21 @@
 最後有時間再來 scope property
 '''
 # %%
-from matplotlib.axes import Axes
-import fiscal_analyzing_utils as utils
-import os
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+CMAP = plt.get_cmap('jet')
+sns.set_theme(style="darkgrid")
 import constant as const
 from load_data import denoise_nonpositive, LIFE_DUMMY141516, LIFE181920
-from itertools import combinations
-import matplotlib.pyplot as plt
-from textwrap import wrap
-CMAP = plt.get_cmap('jet')
-import seaborn as sns
+import calculating_utils as cal_utils
 import plotting_utils as plotting
-sns.set_theme(style="darkgrid")
+import smrts_analyzing_utils as smrts_utils
 #%%
 FONT_SIZE = 8
 #%%
-all_analysis_14 = utils.get_analyze_df(
+all_analysis_14 = smrts_utils.get_analyze_df(
     dmu_ks=[
         'AIA Taiwan 14', 'AIA Taiwan 15', 'AIA Taiwan 16', 
         'Allianz Taiwan Life 14', 'Allianz Taiwan Life 15', 'Allianz Taiwan Life 16', 
@@ -53,7 +50,7 @@ all_analysis_14 = utils.get_analyze_df(
         'Yuanta Life 14', 'Yuanta Life 15', 'Yuanta Life 16', 
         'Zurich 14', 'Zurich 15', 'Zurich 16', 
             ], df=denoise_nonpositive(LIFE_DUMMY141516), year=14)
-utils.round_analyze_df(all_analysis_14, round_to=3)#.to_excel("14-16 all_dmu analysis.xlsx")
+cal_utils.round_analyze_df(all_analysis_14, round_to=3)#.to_excel("14-16 all_dmu analysis.xlsx")
 #%%
 no16 = all_analysis_14.loc[["16" not in idx for idx in all_analysis_14.index.tolist()]].drop(["DUMMY Cathay 15", "Singfor Life 14", "CTBC Life 15", "Global Life 14"])
 wanted_dmus = no16.loc[[idx in ["Fubon Life 14", "Fubon Life 15", "Shin Kong Life 14", "Shin Kong Life 15", "TransGlobe Life 14", "TransGlobe Life 15", "AIA Taiwan 14", "AIA Taiwan 15", "Yuanta Life 14", "Yuanta Life 15"] for idx in no16.index.tolist()]]
@@ -69,7 +66,7 @@ for col in [const.SCALE,]:
         # plt.savefig(f"{stitle} label specific.png")
         plt.show()
 #%%
-all_analysis_18 = utils.get_analyze_df(
+all_analysis_18 = smrts_utils.get_analyze_df(
     dmu_ks=[
         'AIA Taiwan 18', 'AIA Taiwan 19', 'AIA Taiwan 20', 
         'Allianz Taiwan Life 18', 'Allianz Taiwan Life 19', 'Allianz Taiwan Life 20', 
@@ -94,7 +91,7 @@ all_analysis_18 = utils.get_analyze_df(
         'TransGlobe Life 18', 'TransGlobe Life 19', 'TransGlobe Life 20', 
         'Yuanta Life 18', 'Yuanta Life 19', 'Yuanta Life 20', 
             ], df=denoise_nonpositive(LIFE181920), year=18)
-utils.round_analyze_df(all_analysis_18, round_to=3)#.to_excel("18-20 all_dmu analysis.xlsx")
+cal_utils.round_analyze_df(all_analysis_18, round_to=3)#.to_excel("18-20 all_dmu analysis.xlsx")
 #%%
 no20 = all_analysis_18.loc[["20" not in idx for idx in all_analysis_18.index.tolist()]]
 large_scale = no20.loc[[scale > 17 for scale in no20[const.SCALE].tolist()]]
