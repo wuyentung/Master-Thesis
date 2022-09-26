@@ -16,7 +16,7 @@ This study proposes a novel analysis chart with Marginal Profit Consistency, whi
     - Underwriting Profit ($Y_1$): profit earned from the insurance business
     - Investment Profit ($Y_2$): profit earned from the investment portfolio  
 ## Research Flowchart
-- ![flowchart](https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/methodology%20flowchart.png)
+- ![flowchart](https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/methodology%20flowchart.png | width=100)
 
 1. 改用保險業實證 dmp
     1. 三年資料，假設沒有 tech. change
