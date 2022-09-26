@@ -1,7 +1,7 @@
 # Marginal Productivity and Efficiency Analysis on Taiwan’s Life Insurance Industry through Meta-Data Envelopment Analysis
 ###### Thesis [link](doi:10.6342/NTU202202824) (open access in 2025)
 ###### Key paper: [Lee (2017)](https://doi.org/10.1057/s41274-016-0129-8)
-###### Process *main.py* will show all figures of the analysis (requirement: [Gurobi lisence](https://www.gurobi.com/academia/academic-program-and-licenses/))
+###### Requirement: [Gurobi lisence](https://www.gurobi.com/academia/academic-program-and-licenses/)
 ## Abstract
 This study proposes a novel analysis chart with Marginal Profit Consistency, which is a derivative from Directional Marginal Productivity, and Efficiency Change. Where the Marginal Profit Consistency can help us investigate how a DMU’s progress in history be related to the direction which leads to gain maximum marginal profit. We use life insurance industrial data in Taiwan as the application field, with the assumption that there is no technical change in the paneled 3 years. Using our proposing chart, we can highlight the industry event related to company performance and its marginal output portfolio. Besides, we further explain the usage when we face the merger effect in industry, which is always a worth discussing issue once incurred. To the best of our knowledge, we suggest how an insurance company can move forward if it falls in Laggard quadrant. 
 ## Research Purposes
@@ -25,6 +25,7 @@ Figure below represents the module we use when implementing the research. Util m
 
 ## Analysis Result
 ### Result Tables (round in 3, amount: million NTD)
+###### module: *analyze simplified.py*
 Table below is the example of the panel data and analysis value in period 2014-2016 (round in 3), including two insurance companies. The first four columns are the input and output data. From the row perspective, we combine insurer’s name with its year collected. For example, insurer AIA Taiwan 14 refers to company AIA (American International Assurance) Taiwan with 2014 data, AIA Taiwan 15 refers to company AIA Taiwan with 2015 data, etc. We use vectors to represent Underwriting Profit and Investment Profit respectively on column of Output Progress Direction and Marginal Profit Max Direction. Where Marginal Profit Max Direction is the mean of marginal profit max direction retrieved from DMPs under specifying input Insurance Expenses and Operation Expenses. 
 
 | Company Name | Insurance Expenses | Operation Expenses |Underwriting Profit | Investment Profit | Scale|Profit | Output Progress Direction | Marginal Profit Max_Direction Insurance |  Marginal Profit Max_Direction Operation | Marginal Profit Consistency | Efficiency | Efficiency Change |
@@ -38,15 +39,18 @@ Table below is the example of the panel data and analysis value in period 2014-2
 
 ### Analysis Figures
 #### 2014-2016
+###### module: *analyze simplified.py*
 Empirical analysis for marginal profit consistency and efficiency change in period 2014-2016 is shown below. Our proposing chart can identify industrial major events. For example, Fubon Life and Shin Kong Life suffered efficiency regress during 2015 to 2016 seriously (see the red circle). From historical news, these two insurance companies did not invest well in 2015. Shin Kong Life even sold off its real estate.  
 <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/2014-2016.png" width="900" />  
 
 #### Merger Effect
+###### module: *merger effect analysis.py*
 With our proposed analysis chart, we can intuitively find out the performance and portfolio change. This can also help us to investigate the merger effect. Taiwan Life merged with CTBT Life in 2016. The industry predicted this merger would make Taiwan Life become one of the top 6 large life insurance companies.  
 We add a dummy DMU, named DUMMY Taiwan 16, naively summing up the inputs and outputs, represents the merged company of CTBC Life and Taiwan Life in theory. We then summarize the analysis of real word merger and the dummy merger in figure below. The merged Taiwan Life 16 performs better than DUMMY Taiwan 16 in efficiency. Namely, the real-world merging for CTBC Life and Taiwan Life in 2016 did better than theoretical predicted.  
 <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/merger%20effect.png" width="900" />
 
 ### Suggestion for DMUs
+###### module: *analyze moving direction.py*
 - In the analysis chart, we want not only the indusrial events, but also the manageral suggestion for DMUs perform bad. We then split the analysis figure into four quadrants like below. Where the vertical axis (Marginal Profit Consistency) is split by the mean of DMUs; the horizental axis (Efficiency Change) is seperated by $1$, as the boundary of efficiency progress and regress.  
 <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/four%20quadrant.png" width="800" />
 

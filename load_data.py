@@ -130,14 +130,14 @@ def single_insurer(df, name):
 
 
 # %%
-files181920 = os.listdir("./fisal data 18-20")
+files181920 = os.listdir("./fiscal data 18-20")
 # %%
 life2018_raw_df = pd.read_excel(
-    "./fisal data 18-20/%s" % files181920[0], header=3, index_col=0)
+    "./fiscal data 18-20/%s" % files181920[0], header=3, index_col=0)
 life2019_raw_df = pd.read_excel(
-    "./fisal data 18-20/%s" % files181920[1], header=3, index_col=0)
+    "./fiscal data 18-20/%s" % files181920[1], header=3, index_col=0)
 life2020_raw_df = pd.read_excel(
-    "./fisal data 18-20/%s" % files181920[2], header=3, index_col=0)
+    "./fiscal data 18-20/%s" % files181920[2], header=3, index_col=0)
 # %%
 ENG_NAMES_18 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life',  'Mercuries Life', 'Farglory Life', 'Hontai Life',
                 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'Chubb Tempest Life']
@@ -155,14 +155,14 @@ FISCAL_LIFE2020 = pd.DataFrame([single_insurer(df=life2020_raw_df, name=name) fo
 LIFE181920 = pd.concat([FISCAL_LIFE2018, FISCAL_LIFE2019, FISCAL_LIFE2020])
 # denoise_nonpositive(df=LIFE)["reinsurance_income"].to_list()
 # %%
-files141516 = os.listdir("./fisal data 14-16")
+files141516 = os.listdir("./fiscal data 14-16")
 # %%
 life2014_raw_df = pd.read_excel(
-    "./fisal data 14-16/PDF2060_2014.xls", header=3, index_col=0)
+    "./fiscal data 14-16/PDF2060_2014.xls", header=3, index_col=0)
 life2015_raw_df = pd.read_excel(
-    "./fisal data 14-16/PDF2060_2015.xls", header=3, index_col=0)
+    "./fiscal data 14-16/PDF2060_2015.xls", header=3, index_col=0)
 life2016_raw_df = pd.read_excel(
-    "./fisal data 14-16/PDF2060_2016.xls", header=3, index_col=0)
+    "./fiscal data 14-16/PDF2060_2016.xls", header=3, index_col=0)
 # %%
 ENG_NAMES_14 = ['Bank Taiwan Life', 'Taiwan Life', 'PCA Life', 'Cathay Life', 'China Life', 'Nan Shan Life', 'Shin Kong Life', 'Fubon Life', 'Global Life', 'Mercuries Life', 'Chaoyang Life', 'Singfor Life', 'Farglory Life', 'Hontai Life', 'Allianz Taiwan Life', 'Chunghwa Post', 'First-Aviva Life', 'BNP Paribas Cardif TCB', 'CTBC Life', 'Prudential of Taiwan', 'CIGNA', 'Yuanta Life', 'TransGlobe Life', 'AIA Taiwan', 'Cardif', 'ACE Tempest Life', 'Zurich']
 
@@ -178,9 +178,9 @@ try:
         name+" 16" for name in ENG_NAMES_16], columns=FISCAL_ATTRIBUTES)
 except:
     print("this device should be MAC")
-    FISCAL_LIFE2014 = pd.read_csv("./fisal data 14-16/2014.csv", index_col=0)
-    FISCAL_LIFE2015 = pd.read_csv("./fisal data 14-16/2015.csv", index_col=0)
-    FISCAL_LIFE2016 = pd.read_csv("./fisal data 14-16/2016.csv", index_col=0)
+    FISCAL_LIFE2014 = pd.read_csv("./fiscal data 14-16/2014.csv", index_col=0)
+    FISCAL_LIFE2015 = pd.read_csv("./fiscal data 14-16/2015.csv", index_col=0)
+    FISCAL_LIFE2016 = pd.read_csv("./fiscal data 14-16/2016.csv", index_col=0)
 # %%
 LIFE141516 = pd.concat([FISCAL_LIFE2014, FISCAL_LIFE2015, FISCAL_LIFE2016])
 # %%
