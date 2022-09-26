@@ -18,7 +18,7 @@ This study proposes a novel analysis chart with Marginal Profit Consistency, whi
 ## Research Flowchart
 - <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/methodology%20flowchart.png" width="500" height="500" />
 ### Module Flowchart
-- <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/module%20flowchart.png" width="900" height="500" />
+- <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/module%20flowchart.png" width="900" />
   
 ---
 ---
