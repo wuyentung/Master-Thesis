@@ -40,12 +40,18 @@ def label_data(zip_x, zip_y, labels, xytext=(0, 5), ha='center', fontsize=5):
         c+=1
     
 #%%
-def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.CONSISTENCY, according_col=const.EFFICIENCY, fontsize=5, label=True):
-    ax.hlines(y=df[y_col].median(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
-    ax.vlines(x=1 if x_col == const.EC else df[x_col].median(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
-    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
-    if label:
-        label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize)
+def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.CONSISTENCY, according_col=const.EFFICIENCY, fontsize=5, label=True, merger_flag=False):
+    if merger_flag:
+        ax.hlines(y=0, xmin=.95, xmax=1.002, colors="gray", lw=1)
+        ax.vlines(x=1 , ymin=-1, ymax=1, colors="gray", lw=1)
+        sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, style=according_col, hue=according_col, s=100, zorder=10)
+        label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize, xytext=(-10, 10), ha="left")
+    else:
+        ax.hlines(y=df[y_col].median(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
+        ax.vlines(x=1 if x_col == const.EC else df[x_col].median(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
+        sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
+        if label:
+            label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize)
 #%%
 ## 成功計算出 s-MRTS 後視覺化資料
 def plot_3D(dmu:list, stitle:str, df:pd.DataFrame, smrts_dict:dict, lambda_dict:dict, target_input=const.INSURANCE_EXP, view_v=45, view_h=-80, dummy_dmu:list=None, DMP_contraction:bool=False):

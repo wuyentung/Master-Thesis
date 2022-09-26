@@ -19,13 +19,6 @@ import calculating_utils as cal_utils
 import smrts_analyzing_utils as smrts_utils
 import plotting_utils as plotting
 #%%
-def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.CONSISTENCY, according_col=const.EFFICIENCY, fontsize=5):
-    ax.hlines(y=df[y_col].median(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)
-    ax.vlines(x=1 if x_col == const.EC else df[x_col].median(), ymin=df[y_col].min(), ymax=df[y_col].max(), colors="gray", lw=1)
-    sns.scatterplot(x=x_col, y=y_col, data=df, ax=ax, hue=according_col, palette=CMAP, )
-    ax.annotate("", xy=(df[x_col]['AIA Taiwan 15'], df[y_col]['AIA Taiwan 15']), xytext=(df[x_col]['AIA Taiwan 14'], df[y_col]['AIA Taiwan 14']), arrowprops=dict(arrowstyle="->", color="black"))
-    plotting.label_data(zip_x=df[x_col], zip_y=df[y_col], labels=df.index, fontsize=fontsize)
-#%%
 all_analysis_14 = smrts_utils.get_analyze_df(
     dmu_ks=[
         'AIA Taiwan 14', 'AIA Taiwan 15', 'AIA Taiwan 16', 
