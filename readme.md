@@ -5,7 +5,6 @@
 ## Abstract
 This study proposes a novel analysis chart with Marginal Profit Consistency, which is a derivative from Directional Marginal Productivity, and Efficiency Change. Where the Marginal Profit Consistency can help us investigate how a DMU’s progress in history be related to the direction which leads to gain maximum marginal profit. We use life insurance industrial data in Taiwan as the application field, with the assumption that there is no technical change in the paneled 3 years. Using our proposing chart, we can highlight the industry event related to company performance and its marginal output portfolio. Besides, we further explain the usage when we face the merger effect in industry, which is always a worth discussing issue once incurred. To the best of our knowledge, we suggest how an insurance company can move forward if it falls in Laggard quadrant. 
 ## Research Purposes
----
 - Propose a novel analysis chart examining how a decision making unit's (DMU) reaction to the margin will affect its performance. 
 - The proposed chart aims to highlight the industrial major and minor events related to company performance and its marginal output portfolio.
 ## Application Field, Database, and Parameters
