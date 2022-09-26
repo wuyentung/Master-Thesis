@@ -53,8 +53,9 @@ We add a dummy DMU, named DUMMY Taiwan 16, naively summing up the inputs and out
 ### Suggestion for DMUs
 - In the analysis chart, we want not only the indusrial events, but also the manageral suggestion for DMUs perform bad. We then split the analysis figure into four quadrants like below. Where the vertical axis (Marginal Profit Consistency) is split by the mean of DMUs; the horizental axis (Efficiency Change) is seperated by $1$, as the boundary of efficiency progress and regress.  
 <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/four%20quadrant.png" width="900" />
+
 - We would like to understand the improving direction for DMU falls in Laggard district. Belowing summarized the movement in panel data 2014-2016 and 2018-2020. In summary, our suggestion for DMU falling in Laggard quadrant:
     - Large scale DMU: focus on efficiency
     - Small scale DMU: change on marginal profit consistency
-    
+
 <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/suggestion.png" width="900" />
