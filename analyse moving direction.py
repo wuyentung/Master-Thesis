@@ -7,18 +7,17 @@
 '''
 # %%
 from matplotlib.axes import Axes
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+CMAP = plt.get_cmap('jet')
+sns.set_theme(style="darkgrid")
+import constant as const
+from load_data import denoise_nonpositive, LIFE_DUMMY141516, LIFE181920
 import calculating_utils as cal_utils
 import smrts_analyzing_utils as smrts_utils
 import plotting_utils as plotting
-import os
-import pandas as pd
-import numpy as np
-import constant as const
-from load_data import denoise_nonpositive, LIFE_DUMMY141516, LIFE181920
-import matplotlib.pyplot as plt
-CMAP = plt.get_cmap('jet')
-import seaborn as sns
-sns.set_theme(style="darkgrid")
 #%%
 def analyze_plot(ax:Axes, df:pd.DataFrame, x_col = const.EC, y_col = const.CONSISTENCY, according_col=const.EFFICIENCY, fontsize=5):
     ax.hlines(y=df[y_col].median(), xmin=df[x_col].min(), xmax=df[x_col].max(), colors="gray", lw=1)

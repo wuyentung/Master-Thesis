@@ -5,8 +5,8 @@ from matplotlib.axes import Axes
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-CMAP = plt.get_cmap('jet')
 import seaborn as sns
+CMAP = plt.get_cmap('jet')
 sns.set_theme(style="darkgrid")
 import constant as const
 from calculating_utils import cal_cosine_similarity
