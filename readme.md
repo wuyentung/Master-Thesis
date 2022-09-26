@@ -10,11 +10,11 @@ This study proposes a novel analysis chart with Marginal Profit Consistency, whi
 - Taiwan Life Insurance Industry, 2014-2016, 2018-2020
 - Database: annual Income Statements collected by [Taiwan Insurance Institute](https://www.tii.org.tw/tii/actuarial/actuarial3/)
 - Inputs:
-    - Insurance Expenses ($X_1$): expenses incurred in the service of insurance
-    - Operation Expenses ($X_2$): expenses incurred for other operations of an insurance company
+    - Insurance Expenses ($(X_1)$): expenses incurred in the service of insurance
+    - Operation Expenses ($(X_2)$): expenses incurred for other operations of an insurance company
 - Outputs: 
-    - Underwriting Profit ($Y_1$): profit earned from the insurance business
-    - Investment Profit ($Y_2$): profit earned from the investment portfolio  
+    - Underwriting Profit ($(Y_1)$): profit earned from the insurance business
+    - Investment Profit ($(Y_2)$): profit earned from the investment portfolio  
 ## Research Flowchart
 - <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/methodology%20flowchart.png" width="400" height="400" />
 
