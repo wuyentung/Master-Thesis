@@ -1,6 +1,6 @@
 # Marginal Productivity and Efficiency Analysis on Taiwan’s Life Insurance Industry through Meta-Data Envelopment Analysis
 ###### key paper: [Lee (2017)](https://doi.org/10.1057/s41274-016-0129-8)
-###### process main.py will show all figures of the analysis (requirement: [Gurobi lisence](https://www.gurobi.com/academia/academic-program-and-licenses/))
+###### process *main.py* will show all figures of the analysis (requirement: [Gurobi lisence](https://www.gurobi.com/academia/academic-program-and-licenses/))
 ## Abstract
 This study proposes a novel analysis chart with Marginal Profit Consistency, which is a derivative from Directional Marginal Productivity, and Efficiency Change. Where the Marginal Profit Consistency can help us investigate how a DMU’s progress in history be related to the direction which leads to gain maximum marginal profit. We use life insurance industrial data in Taiwan as the application field, with the assumption that there is no technical change in the paneled 3 years. Using our proposing chart, we can highlight the industry event related to company performance and its marginal output portfolio. Besides, we further explain the usage when we face the merger effect in industry, which is always a worth discussing issue once incurred. To the best of our knowledge, we suggest how an insurance company can move forward if it falls in Laggard quadrant. 
 ## Research Purposes
@@ -16,8 +16,12 @@ This study proposes a novel analysis chart with Marginal Profit Consistency, whi
     - Underwriting Profit ( $Y_1$ ): profit earned from the insurance business
     - Investment Profit ( $Y_2$ ): profit earned from the investment portfolio  
 ## Research Flowchart
-- <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/methodology%20flowchart.png" width="400" height="400" />
-
+- <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/methodology%20flowchart.png" width="500" height="500" />
+### Module Flowchart
+- <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/module%20flowchart.png" width="900" height="500" />
+  
+---
+---
 1. 改用保險業實證 dmp
     1. 三年資料，假設沒有 tech. change
     1. 先算整體的，有能力再用網路
