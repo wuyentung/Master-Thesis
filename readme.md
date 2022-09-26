@@ -17,7 +17,7 @@ This study proposes a novel analysis chart with Marginal Profit Consistency, whi
     - Investment Profit ($Y_2$): profit earned from the investment portfolio  
 ## Research Flowchart
 - ![flowchart](https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/methodology%20flowchart.png)
-- <img src="flowchart" data-canonical-src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/methodology%20flowchart.png" width="200" height="400" />
+- <img src="https://github.com/wuyentung/Master-Thesis/blob/main/IMAGES/methodology%20flowchart.png" width="200" height="400" />
 
 1. 改用保險業實證 dmp
     1. 三年資料，假設沒有 tech. change
